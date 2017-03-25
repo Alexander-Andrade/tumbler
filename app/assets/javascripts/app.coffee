@@ -17,9 +17,9 @@ app = angular.module('app',[
 
 # lodash
 app.constant('_', window._)
-  .run(($rootScope) ->
+  .run(['$rootScope',($rootScope) ->
     $rootScope._ = window._
-)
+])
 
 app.config([ '$stateProvider','$urlRouterProvider',
   ($stateProvider,$urlRouterProvider)->
