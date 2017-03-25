@@ -3,6 +3,7 @@ app = angular.module('app',[
   'ui.router',
   'ngResource',
   'ngWebSocket',
+  'Devise',
   'ngFlash',
   'ui-rangeSlider',
   'uiSwitch',
@@ -23,7 +24,13 @@ app.constant('_', window._)
 
 app.config([ '$stateProvider','$urlRouterProvider',
   ($stateProvider,$urlRouterProvider)->
-
+    $stateProvider
+      .state('dashboard',{
+        url: '/dashboard'
+        templateUrl: "dashboard/index.html"
+        controller: 'dashboardCtrl'
+      })
+    $urlRouterProvider.otherwise('/dashboard');
 ])
 
 angular.module('controllers',[])
