@@ -3,12 +3,13 @@ class AutomationServerController < ApplicationController
 
   def update
     server = AutomationServer.find_by(token: params[:token])
-    debugger
-    unless server.nil?
+
+    if server.nil?
+        render json: {msg: 'server not found'}, status: 404
+    else
         server.update_attributes(server_params)
+        render json: {status: :ok}, status: :ok
     end
-    render json: {status: :ok}, status: :ok
-    # head :no_content
   end
 
   private
