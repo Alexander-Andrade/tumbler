@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_one :automation_server
+  has_one :automation_server, inverse_of: :user
   accepts_nested_attributes_for :automation_server
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
