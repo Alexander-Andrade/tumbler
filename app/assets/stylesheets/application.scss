@@ -14,6 +14,10 @@
  *= require_self
  */
 
+$login-bg-color: #07082e;
+$img-path: '';
+$img-bg-login: image_url("bg-login.jpg");
+
 @import "patternfly-sprockets";
 @import "patternfly";
 @import "seiyria-bootstrap-slider/dist/css/bootstrap-slider";
