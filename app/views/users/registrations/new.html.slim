@@ -8,7 +8,7 @@ html.login-pf
           h1 style='font-weight: 700'
             | Cloud IoT Solution
       .col-sm-7.col-md-6.col-lg-5.login
-        = form_for resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'} do |f|
+        = form_for [resource, resource.with_automation_server], url: registration_path(resource), html: {class: 'form-horizontal'} do |f|
           = devise_error_messages!
           .form-group
             = f.label :email, class: 'col-sm-2 col-md-2 control-label'
@@ -28,14 +28,18 @@ html.login-pf
             .col-sm-10.col-md-10
               = f.password_field :password_confirmation, autocomplete: 'off'
 
-          = fields_for :permission, resource.permission do |permission_fields|
+          = f.fields_for :automation_server do |automation_server|
+            .form-group
+              = automation_server.label :token, class: 'col-sm-2 col-md-2 control-label'
+            .col-sm-10.col-md-10
+              = automation_server.text_field :token, autofocus: true
 
           .form-group
             .col-xs-8.col-sm-offset-2.col-sm-6.col-md-offset-2.col-md-6
               span.help-block
-                = link_to 'Log in', new_session_path(resource_name)
+                = link_to 'Log in', new_session_path(resource)
               span.help-block
-                = link_to 'Forgot your password?', new_password_path(resource_name)
+                = link_to 'Forgot your password?', new_password_path(resource)
             .col-xs-4.col-sm-4.col-md-4.submit
               = f.submit 'Sign up', class: 'btn btn-primary btn-lg'
 

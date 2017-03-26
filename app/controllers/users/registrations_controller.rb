@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -8,9 +8,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do |resource|
+      # debugger
+      # resource.build_automation_server(automation_server_params)
+      # debugger
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -36,12 +40,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    # debugger
+    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+      user_params.permit(:email, :password, :password_confirmation, [automation_server_attributes: [:token]])
+    end
+    # params.require(resource_name).permit([:email, :password, :password_confirmation, [automation_server_attributes: [:token]]])
+  end
+
+  def automation_server_params
+    params[resource_name].require(:automation_server_attributes).permit([:token])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
