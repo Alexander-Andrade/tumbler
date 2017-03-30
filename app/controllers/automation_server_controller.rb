@@ -5,10 +5,10 @@ class AutomationServerController < ApplicationController
     server = AutomationServer.find_by(token: params[:token])
 
     if server.nil?
-        render json: {msg: 'server not found'}, status: 404
+        render json: {msg: 'server not found', status: 404}, status: 404
     else
         server.update_attributes(server_params)
-        render json: {status: :ok}, status: :ok
+        render json: { status: :ok, time_stamp: Time.zone.now }, status: :ok
     end
   end
 
