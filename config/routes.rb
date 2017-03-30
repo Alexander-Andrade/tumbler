@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   post 'update_automation_server' => 'automation_server#update'
-  get 'get_automation_server' => 'automation_server#get'
+  get 'get_automation_server' => 'automation_server#get', defaults: {format: :json}
 
 
 

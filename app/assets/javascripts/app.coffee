@@ -30,19 +30,16 @@ app.config([ '$stateProvider','$urlRouterProvider',
         abstract: true
         views: {
           '': {
-            templateUrl: 'layout.html.slim'
+            templateUrl: 'layout.html'
             controller: 'mainCtrl'
           }
         }
         resolve: {
-          getAutomationServer: (automationServerService)->
-
+          automationServer: ($http) ->
+            $http({method: 'GET', url: '/get_automation_server'});
         }
-
-
-
-
     }).state('dashboard',{
+        parent: 'app'
         url: '/dashboard'
         templateUrl: "dashboard/index.html"
         controller: 'dashboardCtrl'
