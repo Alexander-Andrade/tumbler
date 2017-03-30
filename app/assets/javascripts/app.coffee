@@ -25,7 +25,24 @@ app.constant('_', window._)
 app.config([ '$stateProvider','$urlRouterProvider',
   ($stateProvider,$urlRouterProvider)->
     $stateProvider
-      .state('dashboard',{
+      .state('app',{
+        url: ''
+        abstract: true
+        views: {
+          '': {
+            templateUrl: 'layout.html.slim'
+            controller: 'mainCtrl'
+          }
+        }
+        resolve: {
+          getAutomationServer: (automationServerService)->
+
+        }
+
+
+
+
+    }).state('dashboard',{
         url: '/dashboard'
         templateUrl: "dashboard/index.html"
         controller: 'dashboardCtrl'
