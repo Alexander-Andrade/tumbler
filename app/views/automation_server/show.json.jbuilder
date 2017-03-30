@@ -1,0 +1,1 @@
+json.partial! 'automation_server', server: @server

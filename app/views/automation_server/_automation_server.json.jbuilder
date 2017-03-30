@@ -1,0 +1,1 @@
+json.(server, :url, :token)
