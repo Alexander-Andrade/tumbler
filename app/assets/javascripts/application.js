@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require bootstrap
 //= require patternfly
 //= require angular/angular
@@ -29,4 +28,7 @@
 //= require angular-spinner/dist/angular-spinner
 //= require angular-websocket/dist/angular-websocket
 //= require angular-devise/lib/devise
+//= require matchheight/dist/jquery.matchHeight
+//= require c3/c3
+//= require d3/d3
 //= require_tree .

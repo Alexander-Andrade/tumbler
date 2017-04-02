@@ -14,6 +14,8 @@
     "angularjs-slider": "latest",
     "lodash": "latest",
     "angular-spinner": "latest",
-    "angular-websocket": "latest"
+    "angular-websocket": "latest",
+    "matchheight": "latest",
+    "c3": "latest"
   }
 }

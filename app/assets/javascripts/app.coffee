@@ -29,23 +29,37 @@ app.config([ '$stateProvider','$urlRouterProvider',
         url: ''
         abstract: true
         views: {
-          '': {
-            templateUrl: 'layout.html'
-            controller: 'mainCtrl'
-          }
+          '': { templateUrl: 'layout.html' },
+          'vertical_nav': { templateUrl: 'vertical-nav.html' }
         }
+        controller: 'mainCtrl'
         resolve: {
-          automationServer: ($http) ->
-            $http({method: 'GET', url: '/get_automation_server'});
+          automationServer: automationServer
+          #automationSock: automationSock
         }
     }).state('dashboard',{
         parent: 'app'
         url: '/dashboard'
         templateUrl: "dashboard/index.html"
+#        views: {
+#          '': { templateUrl: "dashboard/index.html" }
+#        }
         controller: 'dashboardCtrl'
       })
     $urlRouterProvider.otherwise('/dashboard');
 ])
+
+automationServer = ($http) -> $http({method: 'GET', url: '/get_automation_server'})
+
+automationSock = ($websocket, automationServer) ->
+  stream = $websocket(automationServer.data.url)
+  stream.onMessage( (message) ->
+    console.log message.data
+    console.log 'here'
+  )
+
+
+
 
 angular.module('controllers',[])
 angular.module('services',[])

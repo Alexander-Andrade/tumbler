@@ -6,5 +6,5 @@ controller("dashboardCtrl", [ '$scope', '$state','$stateParams','$resource','Mod
       $scope.user = user
       console.log $scope.user
 
-    console.log automationServer.data
+    console.log automationServer
 ])
