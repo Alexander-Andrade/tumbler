@@ -18,6 +18,21 @@ $login-bg-color: #07082e;
 //$img-path: '';
 //$img-bg-login: "bg-login.jpg";
 
+//.nav-pf-vertical .menu-wrapper {
+//  overflow-y: auto;
+//  overflow-x: hidden;
+//  height: 100%;
+//}
+//
+//.nav-pf-vertical .list-group-fixed-bottom {
+//  position: fixed;
+//  left: 0;
+//  bottom: 0;
+//  background: #292e34;
+//  border-top: 1px solid #030303;
+//  border-bottom: 0;
+//}
+
 @import "patternfly-sprockets";
 @import "patternfly";
 @import "seiyria-bootstrap-slider/dist/css/bootstrap-slider";
