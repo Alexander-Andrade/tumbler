@@ -31,11 +31,12 @@ app.config([ '$stateProvider','$urlRouterProvider',
         views: {
           '': {
             templateUrl: 'layout.html'
+            controller: 'mainCtrl'
           },
-          'vertical_nav': {
-            templateUrl: 'vertical-nav.html'
-            controller: 'verticalNav'
-          }
+#          'vertical_nav': {
+#            templateUrl: 'vertical-nav.html'
+#            controller: 'verticalNav'
+#          }
         }
 
         resolve: {

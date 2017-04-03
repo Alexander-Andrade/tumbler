@@ -1,1 +1,79 @@
-div ui-view=""
+nav.navbar.navbar-pf-vertical
+  .navbar-header
+    button.navbar-toggle type="button" ng-click="toggleNavbar()"
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    a.navbar-brand ui-sref="dashboard"
+      = image_tag "cloud_logo.svg", size: "32x32", alt: "logo", class: "navbar-brand-icon"
+      .navbar-brand-name style='font-weight: 700'
+        | Cloud IoT Solution
+  nav.collapse.navbar-collapse
+    ul.nav.navbar-nav.navbar-right.navbar-iconic
+      li.dropdown
+        a#notifications.dropdown-toggle.nav-item-iconic aria-expanded="true" aria-haspopup="true" data-toggle="dropdown"
+          span.fa.pficon-flag title="Notifications"
+          span.badge 2
+        .dropdown-menu.infotip.bottom-right
+          .arrow
+          ul.list-group
+            li.list-group-item
+              span.i.pficon.pficon-info
+              | Modified Datasources ExampleDS
+            li.list-group-item
+              span.i.pficon.pficon-info
+              | Error: System Failure
+          .footer
+            a Clear Messages
+      li.dropdown
+        a#dropdownMenu1.dropdown-toggle.nav-item-iconic aria-expanded="true" aria-haspopup="true" data-toggle="dropdown"
+          span.fa.pficon-help title="Help"
+          span.caret
+        ul.dropdown-menu aria-labelledby="dropdownMenu1"
+          li
+            a href="#"  Help
+          li
+            a href="#"  About
+      li.dropdown
+        a#dropdownMenu2.dropdown-toggle.nav-item-iconic aria-expanded="true" aria-haspopup="true" data-toggle="dropdown"
+          span.fa.pficon-user title="Username"
+          span.caret
+        ul.dropdown-menu aria-labelledby="dropdownMenu2"
+          li
+            a href="#"  Preferences
+          li
+            a href="#"  Logout
+
+/! /.navbar
+.nav-pf-vertical.nav-pf-vertical-with-sub-menus ng-class="{ collapsed: navbarToggle }"
+  ul.list-group
+    li.list-group-item
+      a ui-sref="dashboard"
+        span.fa.fa-dashboard data-toggle="tooltip" title="Dashboard"
+        span.list-group-item-value Dashboard
+
+    li.list-group-item
+      a ui-sref="areas"
+        span.fa.fa-home data-toggle="tooltip" title="Areas"
+        span.list-group-item-value Area
+
+    li.list-group-item
+      a ui-sref="scripts"
+        span.fa.fa-pencil data-toggle="tooltip" title="Scripts"
+        span.list-group-item-value Scripts
+
+.container-fluid.container-cards-pf.container-pf-nav-pf-vertical ng-class="{ 'collapsed-nav': navbarToggle }"
+  div ui-view=""
+
+javascript:
+    $(document).ready(function () {
+        // matchHeight the contents of each .card-pf and then the .card-pf itself
+        $(".row-cards-pf > [class*='col'] > .card-pf .card-pf-title").matchHeight();
+        $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
+        $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-footer").matchHeight();
+        $(".row-cards-pf > [class*='col'] > .card-pf").matchHeight();
+
+        //Initialize the vertical navigation
+        $().setupVerticalNavigation(true);
+    });
