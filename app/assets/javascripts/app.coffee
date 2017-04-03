@@ -29,10 +29,15 @@ app.config([ '$stateProvider','$urlRouterProvider',
         url: ''
         abstract: true
         views: {
-          '': { templateUrl: 'layout.html' },
-          'vertical_nav': { templateUrl: 'vertical-nav.html' }
+          '': {
+            templateUrl: 'layout.html'
+          },
+          'vertical_nav': {
+            templateUrl: 'vertical-nav.html'
+            controller: 'verticalNav'
+          }
         }
-        controller: 'mainCtrl'
+
         resolve: {
           automationServer: automationServer
           automationSock: automationSock
@@ -41,11 +46,20 @@ app.config([ '$stateProvider','$urlRouterProvider',
         parent: 'app'
         url: '/dashboard'
         templateUrl: "dashboard/index.html"
-#        views: {
-#          '': { templateUrl: "dashboard/index.html" }
-#        }
         controller: 'dashboardCtrl'
-      })
+    }).state('scripts',{
+        parent: 'app'
+        url: '/scripts'
+        templateUrl: "scripts/index.html"
+        controller: 'scriptsCtrl'
+    }).state('areas',{
+        parent: 'app'
+        url: '/areas'
+        templateUrl: "areas/index.html"
+        controller: 'areasCtrl'
+    })
+
+
     $urlRouterProvider.otherwise('/dashboard');
 ])
 
