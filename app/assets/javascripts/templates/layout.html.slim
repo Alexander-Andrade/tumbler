@@ -43,7 +43,8 @@ nav.navbar.navbar-pf-vertical
           li
             a href="#"  Preferences
           li
-            a href="#"  Logout
+            /= link_to 'Logout', destroy_user_session_path
+            a data-method="delete" href="/users/sign_out" Logout
 
 /! /.navbar
 .nav-pf-vertical.nav-pf-vertical-with-sub-menus ng-class="{ collapsed: navbarToggle }"
