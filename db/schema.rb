@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325205238) do
+ActiveRecord::Schema.define(version: 20170406210855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "areas", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "default",    default: false
+  end
 
   create_table "automation_servers", force: :cascade do |t|
     t.string   "url"
@@ -22,6 +29,16 @@ ActiveRecord::Schema.define(version: 20170325205238) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_automation_servers_on_user_id", using: :btree
+  end
+
+  create_table "devices", force: :cascade do |t|
+    t.integer  "dev_id"
+    t.string   "name"
+    t.jsonb    "actions"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "area_id"
+    t.index ["area_id"], name: "index_devices_on_area_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -42,4 +59,5 @@ ActiveRecord::Schema.define(version: 20170325205238) do
   end
 
   add_foreign_key "automation_servers", "users"
+  add_foreign_key "devices", "areas"
 end

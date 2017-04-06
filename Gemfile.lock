@@ -275,7 +275,7 @@ DEPENDENCIES
   launchy
   listen (~> 3.0.5)
   patternfly-sass (~> 3.23.0)
-  pg (~> 0.18)
+  pg
   phantomjs
   puma (~> 3.0)
   rails (~> 5.0.2)
