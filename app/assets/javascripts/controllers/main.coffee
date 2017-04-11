@@ -5,4 +5,10 @@ controller("mainCtrl", [ '$scope', '$state','$stateParams','$resource','ModalSer
 
     $scope.toggleNavbar = ->
       $scope.navbarToggle = !$scope.navbarToggle
+
+    as = $http({method: 'GET', url: '/get_automation_server'})
+    console.log(as)
+    as.get().then((answer) ->
+      console.log answer
+    )
 ])
