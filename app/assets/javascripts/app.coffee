@@ -64,13 +64,13 @@ app.config([ '$stateProvider','$urlRouterProvider',
     $urlRouterProvider.otherwise('/dashboard');
 ])
 
-automationServer = ($http) ->
+automationServer = ['$http',($http) ->
   console.log 'here'
   serverPromise = $http({method: 'GET', url: '/get_automation_server'})
 #  obj = serverPromise.$promise
   console.log 'here'
   return serverPromise.$promise
-
+]
 #automationSock = ($websocket, automationServer) ->
 #  console.log "hello!"
 #  stream = $websocket(automationServer.data.url)
