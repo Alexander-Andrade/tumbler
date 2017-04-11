@@ -39,10 +39,10 @@ app.config([ '$stateProvider','$urlRouterProvider',
 #          }
         }
 
-#        resolve: {
-#          automationServer: automationServer
-##          automationSock: automationSock
-#        }
+        resolve: {
+          automationServer: automationServer
+          automationSock: automationSock
+        }
     }).state('dashboard',{
         parent: 'app'
         url: '/dashboard'
@@ -64,14 +64,14 @@ app.config([ '$stateProvider','$urlRouterProvider',
     $urlRouterProvider.otherwise('/dashboard');
 ])
 
-#automationServer = ($http) -> $http({method: 'GET', url: '/get_automation_server'})
+automationServer = ($http) -> $http({method: 'GET', url: '/get_automation_server'})
 
-#automationSock = ($websocket, automationServer) ->
-#  stream = $websocket(automationServer.data.url)
-#  stream.onMessage( (message) ->
-#    console.log message.data
-#    console.log 'here'
-#  )
+automationSock = ($websocket, automationServer) ->
+  stream = $websocket(automationServer.data.url)
+  stream.onMessage( (message) ->
+    console.log message.data
+    console.log 'here'
+  )
 
 
 angular.module('controllers',[])
