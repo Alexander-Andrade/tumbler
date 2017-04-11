@@ -65,6 +65,7 @@ app.config([ '$stateProvider','$urlRouterProvider',
 ])
 
 automationServer = ($http) ->
+  console.log 'here'
   serverPromise = $http({method: 'GET', url: '/get_automation_server'})
 #  obj = serverPromise.$promise
   console.log 'here'
