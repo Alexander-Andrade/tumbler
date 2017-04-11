@@ -39,10 +39,10 @@ app.config([ '$stateProvider','$urlRouterProvider',
 #          }
         }
 
-        resolve: {
-          automationServer: automationServer
-          automationSock: automationSock
-        }
+#        resolve: {
+#          automationServer: automationServer
+#          automationSock: automationSock
+#        }
     }).state('dashboard',{
         parent: 'app'
         url: '/dashboard'
