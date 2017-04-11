@@ -33,15 +33,11 @@ app.config([ '$stateProvider','$urlRouterProvider',
             templateUrl: 'layout.html'
             controller: 'mainCtrl'
           },
-#          'vertical_nav': {
-#            templateUrl: 'vertical-nav.html'
-#            controller: 'verticalNav'
-#          }
         }
 
         resolve: {
           automationServer: automationServer
-#          automationSock: automationSock
+          automationSock: automationSock
         }
     }).state('dashboard',{
         parent: 'app'
@@ -65,20 +61,14 @@ app.config([ '$stateProvider','$urlRouterProvider',
 ])
 
 automationServer = ['$http',($http) ->
-  console.log 'here'
   serverPromise = $http({method: 'GET', url: '/get_automation_server'})
-#  obj = serverPromise.$promise
-  console.log 'here'
-  return serverPromise.$promise
 ]
-#automationSock = ($websocket, automationServer) ->
-#  console.log "hello!"
-#  stream = $websocket(automationServer.data.url)
-#  stream.onMessage( (message) ->
-#    console.log message.data
-#    console.log 'here'
-#  )
-
+automationSock = ['$websocket','automationServer', ($websocket, automationServer) ->
+  stream = $websocket(automationServer.data.url)
+  stream.onMessage( (message) ->
+    console.log message.data
+  )
+]
 
 angular.module('controllers',[])
 angular.module('services',[])

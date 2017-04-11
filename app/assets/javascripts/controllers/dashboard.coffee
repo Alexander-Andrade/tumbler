@@ -1,5 +1,5 @@
 angular.module('controllers').
-controller("dashboardCtrl", [ '$scope', '$state','$stateParams','$resource','ModalService', 'Flash', '$websocket','Auth','automationServer'
+controller("dashboardCtrl", [ '$scope', '$state','$stateParams','$resource','ModalService', 'Flash', '$websocket','Auth','automationServer',
   ($scope, $state,$stateParams,$resource,ModalService, Flash, $websocket, Auth, automationServer)->
     $scope.user = null
     Auth.currentUser().then (user) ->
