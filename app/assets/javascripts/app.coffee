@@ -40,7 +40,7 @@ app.config([ '$stateProvider','$urlRouterProvider',
         }
 
         resolve: {
-#          automationServer: automationServer
+          automationServer: ()-> return 0
 #          automationSock: automationSock
         }
     }).state('dashboard',{
