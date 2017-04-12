@@ -61,7 +61,7 @@ app.config([ '$stateProvider','$urlRouterProvider',
 ])
 
 automationServer = ['$http',($http) ->
-  serverPromise = $http({method: 'GET', url: '/get_automation_server'})
+  $http({method: 'GET', url: '/get_automation_server'})
 ]
 automationSock = ['$websocket','automationServer', ($websocket, automationServer) ->
   stream = $websocket(automationServer.data.url)
@@ -76,6 +76,7 @@ angular.module('directives',[])
 
 
 $(document).ready ->
+  $('body').addClass 'cards-pf'
   $('html').addClass 'layout-pf layout-pf-fixed'
   # Initialize the vertical navigation
   $().setupVerticalNavigation true
