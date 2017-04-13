@@ -3,7 +3,7 @@ class CreateDevices < ActiveRecord::Migration[5.0]
     create_table :devices do |t|
       t.integer :dev_id
       t.string :name
-      t.jsonb :actions
+      t.jsonb :controls
 
       t.timestamps
     end

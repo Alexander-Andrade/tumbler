@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170411182734) do
+ActiveRecord::Schema.define(version: 20170413162325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,10 +36,11 @@ ActiveRecord::Schema.define(version: 20170411182734) do
   create_table "devices", force: :cascade do |t|
     t.integer  "dev_id"
     t.string   "name"
-    t.jsonb    "actions"
+    t.jsonb    "controls"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "area_id"
+    t.string   "label"
     t.index ["area_id"], name: "index_devices_on_area_id", using: :btree
   end
 

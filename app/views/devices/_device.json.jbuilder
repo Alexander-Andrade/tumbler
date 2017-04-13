@@ -1,0 +1,1 @@
+json.(device, :id, :dev_id, :name, :label, :controls, :area_id)
