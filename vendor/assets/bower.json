@@ -16,6 +16,8 @@
     "angular-spinner": "latest",
     "angular-websocket": "latest",
     "matchheight": "latest",
-    "c3": "latest"
+    "c3": "latest",
+    "restangular": "latest",
+    "moment": "latest"
   }
 }
