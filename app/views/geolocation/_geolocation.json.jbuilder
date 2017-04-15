@@ -1,0 +1,1 @@
+json.(geolocation, :country, :country_code, :timezone, :region, :region_name, :lat, :lon)

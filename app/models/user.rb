@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
 
 
-  # private
+  private
 
   def provide_default_area
     create_default_area(name: 'Area 0', default: true)

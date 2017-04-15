@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413201147) do
+ActiveRecord::Schema.define(version: 20170415194534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,20 @@ ActiveRecord::Schema.define(version: 20170413201147) do
     t.index ["user_id"], name: "index_devices_on_user_id", using: :btree
   end
 
+  create_table "geolocations", force: :cascade do |t|
+    t.string   "country"
+    t.string   "country_code"
+    t.string   "lat"
+    t.string   "lon"
+    t.string   "region"
+    t.string   "region_name"
+    t.string   "timezone"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "automation_server_id"
+    t.index ["automation_server_id"], name: "index_geolocations_on_automation_server_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -67,4 +81,5 @@ ActiveRecord::Schema.define(version: 20170413201147) do
   add_foreign_key "automation_servers", "users"
   add_foreign_key "devices", "areas"
   add_foreign_key "devices", "users"
+  add_foreign_key "geolocations", "automation_servers"
 end

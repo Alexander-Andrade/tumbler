@@ -1,1 +1,1 @@
-json.(server, :url, :token)
+json.(server, :url)
