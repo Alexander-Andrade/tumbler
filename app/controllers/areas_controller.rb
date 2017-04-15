@@ -1,10 +1,12 @@
 class AreasController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @areas = Area.all
   end
 
   def create
-    respond_with Area.new(area_params)
+    respond_with Area.create(area_params)
   end
 
   def update
