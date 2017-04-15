@@ -11,6 +11,7 @@ app = angular.module('app',[
   'mgo-angular-wizard',
   'rzModule',
   'angularSpinner',
+  'rails',
   'controllers',
   'services',
   'directives'
@@ -38,6 +39,7 @@ app.config([ '$stateProvider','$urlRouterProvider',
         resolve: {
           automationServer: automationServer
           automationSock: automationSock
+          areas: areas
         }
     }).state('dashboard',{
         parent: 'app'
@@ -69,6 +71,11 @@ automationSock = ['$websocket','automationServer', ($websocket, automationServer
     console.log message.data
   )
 ]
+
+areas = ['Area', (Area) ->
+  Area.query()
+]
+
 
 angular.module('controllers',[])
 angular.module('services',[])

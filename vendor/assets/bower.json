@@ -17,7 +17,7 @@
     "angular-websocket": "latest",
     "matchheight": "latest",
     "c3": "latest",
-    "restangular": "latest",
+    "angularjs-rails-resource": "latest",
     "moment": "latest"
   }
 }
