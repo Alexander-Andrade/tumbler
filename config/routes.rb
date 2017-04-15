@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post 'update_automation_server' => 'automation_server#update'
   get 'get_automation_server' => 'automation_server#get', defaults: {format: :json}
 
-  resources :areas, only: [:index], defaults: {format: :json}
-  resources :devices, only: [:index], defaults: {format: :json}
+  resources :areas, except: [:new], defaults: {format: :json}
+  resources :devices, except: [:new], defaults: {format: :json}
 
 end

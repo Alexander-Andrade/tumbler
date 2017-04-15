@@ -43,6 +43,7 @@ gem 'devise'
 gem 'bower-rails'
 gem 'angular-rails-templates'
 gem 'patternfly-sass', '~> 3.23.0'
+gem 'responders'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

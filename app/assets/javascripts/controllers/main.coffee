@@ -7,4 +7,10 @@ controller("mainCtrl", [ '$scope', '$state','$stateParams','$resource','ModalSer
       $scope.navbarToggle = !$scope.navbarToggle
 
     console.log areas
+    first_device = areas[0].devices[0]
+    f_area = areas[0]
+    f_area.name = "New name"
+    f_area.update()
+#    first_device.label = 'light'
+#    first_device.update()
 ])

@@ -6,6 +6,7 @@ factory('Area', ['railsResourceFactory', 'railsSerializer',
       name: 'area',
       serializer: railsSerializer(() ->
         this.resource('devices', 'Device');
+        this.exclude('devices');
       )
     })
 ])
