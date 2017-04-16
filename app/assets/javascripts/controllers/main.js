@@ -8,6 +8,7 @@ controller("mainCtrl", [ '$scope', 'automationServer', 'autoServSock', 'areas',
       };
 
       console.log(automationServer);
+      console.log('areas');
       console.log(areas);
       console.log(autoServSock);
 

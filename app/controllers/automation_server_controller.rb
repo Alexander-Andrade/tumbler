@@ -7,19 +7,20 @@ class AutomationServerController < ApplicationController
 
   def update
     @server = AutomationServer.find_by(token: params[:token])
-    @geolocation = @server.geolocation
-
-    if @geolocation.nil?
-      @server.create_geolocation
-    end
 
     if @server.nil?
       render json: {msg: 'server not found', status: 404}, status: 404
-    elsif !@server.update_attributes(automation_server_params)
-      render json: { errors: @server.errors,status: :unprocessable_entit, time_stamp: Time.zone.now }
-    elsif !@geolocation.update_attributes(geolocation_params)
-      render json: { errors: @geolocation.errors,status: :unprocessable_entit, time_stamp: Time.zone.now }
+      return
+    end
+    @geolocation = @server.geolocation || @server.build_geolocation
+
+    @server.assign_attributes(automation_server_params)
+    @geolocation.assign_attributes(geolocation_params)
+    if !@server.valid? || !@geolocation.valid?
+      render template: 'automation_server/update_errors', status: 406
     else
+      @geolocation.save!
+      @server.save!
       render json: { status: :ok, time_stamp: Time.zone.now }
     end
   end

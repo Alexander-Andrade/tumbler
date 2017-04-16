@@ -63,7 +63,7 @@ app.config([ '$stateProvider','$urlRouterProvider',
   }]);
 
 areas = ['Area', function(Area) {
-    Area.query()
+    return Area.query()
 }];
 
 angular.module('controllers',[]);
