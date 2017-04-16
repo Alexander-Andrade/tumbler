@@ -37,9 +37,9 @@ app.config([ '$stateProvider','$urlRouterProvider',
         }
 
         resolve: {
-          automationServer: automationServer
-          automationSock: automationSock
           areas: areas
+          automationServer: automationServer
+#          automationSock: automationSock
         }
     }).state('dashboard',{
         parent: 'app'
@@ -63,7 +63,7 @@ app.config([ '$stateProvider','$urlRouterProvider',
 ])
 
 automationServer = ['$http',($http) ->
-  $http({method: 'GET', url: '/get_automation_server'})
+  $http({method: 'GET', url: '/automation_server'})
 ]
 automationSock = ['$websocket','automationServer', ($websocket, automationServer) ->
   stream = $websocket(automationServer.data.url)

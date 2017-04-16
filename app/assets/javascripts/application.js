@@ -32,4 +32,6 @@
 //= require c3/c3
 //= require d3/d3
 //= require angularjs-rails-resource/angularjs-rails-resource
+//= require moment/moment
+//= require moment-timezone/moment-timezone
 //= require_tree .

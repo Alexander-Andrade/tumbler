@@ -1,9 +1,8 @@
 class AutomationServerController < ApplicationController
-  skip_before_filter :verify_authenticity_token, only: [:update]
+  skip_before_action :verify_authenticity_token, only: [:update]
 
-  def get
+  def show
     @server = current_user.automation_server
-    byebug
   end
 
   def update
