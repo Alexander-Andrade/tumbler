@@ -1,15 +1,9 @@
 class AutomationServer < ApplicationRecord
-  after_create :provide_geolocation
-
   belongs_to :user, inverse_of: :automation_server
   has_one :geolocation
 
-  validates :token, presence: true
+  validates :token, length: { minimum: 6 }, presence: true
+  VALID_URL_REGEX=/wss?:\/\/[\S]+/
+  validates :url, format: { with: VALID_URL_REGEX }, allow_blank: true
 
-
-  private
-
-  def provide_geolocation
-    create_geolocation
-  end
 end

@@ -9,6 +9,10 @@ class AutomationServerController < ApplicationController
     @server = AutomationServer.find_by(token: params[:token])
     @geolocation = @server.geolocation
 
+    if @geolocation.nil?
+      @server.create_geolocation
+    end
+
     if @server.nil?
       render json: {msg: 'server not found', status: 404}, status: 404
     elsif !@server.update_attributes(automation_server_params)
