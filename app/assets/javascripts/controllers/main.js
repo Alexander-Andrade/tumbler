@@ -1,21 +1,26 @@
-angular.module('controllers').
-controller("mainCtrl", [ '$scope', 'automationServer', 'autoServSock', 'areas',
-  function($scope, automationServer, autoServSock, areas) {
-      $scope.navbarToggle = false;
+(function() {
+    'use strict';
 
-      $scope.toggleNavbar = function () {
-          $scope.navbarToggle = !$scope.navbarToggle;
-      };
+    angular.module('controllers').
+    controller("mainCtrl", [ '$scope', 'automationServer', 'autoServSock', 'areas',
+      function($scope, automationServer, autoServSock, areas) {
+          $scope.navbarToggle = false;
 
-      console.log(automationServer);
-      console.log('areas');
-      console.log(areas);
-      console.log(autoServSock);
+          $scope.toggleNavbar = function () {
+              $scope.navbarToggle = !$scope.navbarToggle;
+          };
 
-      // first_device = areas[0].devices[0]
-      // f_area = areas[0]
-      // f_area.name = "New name"
-      // f_area.update()
-      // first_device.label = 'light'
-      // first_device.update()
-  }]);
+          console.log(automationServer);
+          console.log('areas');
+          console.log(areas);
+          console.log(autoServSock);
+
+          // first_device = areas[0].devices[0]
+          // f_area = areas[0]
+          // f_area.name = "New name"
+          // f_area.update()
+          // first_device.label = 'light'
+          // first_device.update()
+      }]);
+
+}());

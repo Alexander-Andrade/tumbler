@@ -23,6 +23,17 @@ app.constant('_', window._)
       $rootScope._ = window._
   }]);
 
+app.run(['$window','automationSocket', function ($window, automationSocket) {
+    // automationSocket.then(function (socket) {
+    //     $window.onbeforeunload = function () {
+    //         socket.close();
+    //         $window.alert(greeting);
+    //     };
+    // });
+}]);
+
+
+
 app.config([ '$stateProvider','$urlRouterProvider',
   function($stateProvider, $urlRouterProvider) {
       $stateProvider
