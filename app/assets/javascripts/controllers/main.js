@@ -10,6 +10,7 @@
               $scope.navbarToggle = !$scope.navbarToggle;
           };
 
+          $scope.areas = areas;
           // first_device = areas[0].devices[0]
           // f_area = areas[0]
           // f_area.name = "New name"

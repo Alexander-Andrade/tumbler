@@ -1,1 +1,1 @@
-json.(area, :id, :name)
+json.(area, :id, :name, :default)
