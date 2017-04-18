@@ -34,4 +34,5 @@
 //= require angularjs-rails-resource/angularjs-rails-resource
 //= require moment/moment
 //= require moment-timezone/moment-timezone
+//= require angular-bootstrap/ui-bootstrap
 //= require_tree .

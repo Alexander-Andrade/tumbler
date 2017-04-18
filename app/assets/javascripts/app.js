@@ -11,6 +11,7 @@ var app = angular.module('app',[
   'mgo-angular-wizard',
   'rzModule',
   'angularSpinner',
+  'ui.bootstrap',
   'rails',
   'controllers',
   'services',
@@ -44,7 +45,11 @@ app.config([ '$stateProvider','$urlRouterProvider',
                   '': {
                       templateUrl: 'layout.html',
                       controller: 'mainCtrl'
-                  }
+                  },
+                  // 'toolbar': {
+                  //     templateUrl: 'toolbar.html',
+                  //     controller: 'mainCtrl'
+                  // }
               },
 
               resolve: {
@@ -65,8 +70,18 @@ app.config([ '$stateProvider','$urlRouterProvider',
           }).state('areas', {
               parent: 'app',
               url: '/areas',
-              templateUrl: "areas/index.html",
-              controller: 'areasCtrl'
+              // templateUrl: "areas/index.html",
+              views:{
+                  '': {
+                      templateUrl: "areas/index.html",
+                      controller: 'areasCtrl'
+                  },
+                  'toolbar': {
+                      templateUrl: 'areas/toolbar.html',
+                      controller: 'areasCtrl'
+                  }
+              },
+              // controller: 'areasCtrl'
           });
 
 
