@@ -45,11 +45,7 @@ app.config([ '$stateProvider','$urlRouterProvider',
                   '': {
                       templateUrl: 'layout.html',
                       controller: 'mainCtrl'
-                  },
-                  // 'toolbar': {
-                  //     templateUrl: 'toolbar.html',
-                  //     controller: 'mainCtrl'
-                  // }
+                  }
               },
 
               resolve: {
@@ -70,7 +66,6 @@ app.config([ '$stateProvider','$urlRouterProvider',
           }).state('areas', {
               parent: 'app',
               url: '/areas',
-              // templateUrl: "areas/index.html",
               views:{
                   '': {
                       templateUrl: "areas/index.html",
@@ -81,7 +76,6 @@ app.config([ '$stateProvider','$urlRouterProvider',
                       controller: 'areasCtrl'
                   }
               },
-              // controller: 'areasCtrl'
           });
 
 

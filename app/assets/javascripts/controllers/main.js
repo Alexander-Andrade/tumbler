@@ -10,11 +10,6 @@
               $scope.navbarToggle = !$scope.navbarToggle;
           };
 
-          console.log(automationServer);
-          console.log('areas');
-          console.log(areas);
-          console.log(autoServSock);
-
           // first_device = areas[0].devices[0]
           // f_area = areas[0]
           // f_area.name = "New name"

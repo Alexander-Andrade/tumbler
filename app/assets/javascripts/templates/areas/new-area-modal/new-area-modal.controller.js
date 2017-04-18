@@ -2,10 +2,24 @@
     'use strict';
 
     angular.module('controllers').
-    controller("newAreaModalCtrl", [ '$scope','close',
-        function($scope, close) {
+    controller("newAreaModalCtrl", [ '$scope', 'areas','Area','close',
+        function($scope, areas,Area,close) {
+            $scope.newArea = {};
+            $scope.errors = {};
+
+
             $scope.close = function(result) {
-                close(result, 500); // close, but give 500ms for bootstrap to animate
+                if(result){
+                    new Area($scope.newArea).create().then(function (response) {
+                        console.log(response);
+                        areas.push(response);
+                        console.log(areas);
+                        close(result, 500);
+                    },function (response) {
+                        $scope.errors = response.data.errors;
+                        console.log(response);
+                    });
+                }
             };
     }]);
 

@@ -5,7 +5,7 @@
         '$websocket', 'automationServer','$window', function($websocket, automationServer, $window) {
             return automationServer.then(function(response) {
                 var stream = $websocket(response.url, {reconnectIfNotNormalClose: true, initialTimeout: 500 });
-                console.log("here!!!!!!!!!!");
+
                 if(stream){
                     // stream.onMessage(function(message) {
                     //     console.log(message.data);

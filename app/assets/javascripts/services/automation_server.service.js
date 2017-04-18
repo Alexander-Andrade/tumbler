@@ -5,7 +5,7 @@
         '$http', function($http) {
             this.server = null;
             var makeRequest = function() {
-                console.log('automationServer request !');
+
                 return $http({
                     method: 'GET',
                     url: '/automation_server'

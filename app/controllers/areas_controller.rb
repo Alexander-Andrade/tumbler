@@ -6,7 +6,7 @@ class AreasController < ApplicationController
   end
 
   def create
-    respond_with Area.create(area_params)
+    respond_with current_user.areas.create(area_params)
   end
 
   def update
