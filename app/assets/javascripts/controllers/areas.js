@@ -5,7 +5,7 @@
     controller("areasCtrl", [ '$scope','areas','Area','ModalService',
       function($scope, areas, Area,ModalService) {
           $scope.areas = areas;
-
+          console.log($scope.areas);
           $scope.addNewArea = function () {
               ModalService.showModal({
                   templateUrl: "areas/new-area-modal/new-area-modal.html",
@@ -25,12 +25,14 @@
           };
 
           $scope.destroyArea = function (area) {
-            var default_area = _.find($scope.areas, {default: true});
-              _.firEach(area.devices, function (device) {
-                  device.areaId = default_area.id;
+              var defaultArea = Area.defaultArea($scope.areas);
+              _.forEach(area.devices, function (device) {
+                  device.areaId = defaultArea.id;
+                  device.update();
               });
-              default_area.devices += area.devices;
-              area.destroy().then(function (response) {
+              defaultArea.devices = _.concat(defaultArea.devices,area.devices );
+              area.delete().then(function (response) {
+                  _.pull($scope.areas, area);
                   console.log(response);
               },function (response) {
                   console.log(response);

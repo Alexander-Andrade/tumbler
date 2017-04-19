@@ -4,8 +4,8 @@
     angular.module('services').factory('automationSocket', [
         '$websocket', 'automationServer','$window', function($websocket, automationServer, $window) {
             return automationServer.then(function(response) {
-                var stream = $websocket(response.url, {reconnectIfNotNormalClose: true, initialTimeout: 500 });
-
+                // var stream = $websocket(response.url, {reconnectIfNotNormalClose: true, initialTimeout: 500 });
+                var stream = $websocket(response.url);
                 if(stream){
                     // stream.onMessage(function(message) {
                     //     console.log(message.data);
@@ -20,18 +20,18 @@
                         stream.close(true);
                     };
 
-                    stream.onClose(function() {
-                        console.log(connectionStateName());
-                    });
-                    stream.onError(function () {
-                        console.log(connectionStateName());
-                    });
+                    // stream.onClose(function() {
+                    //     console.log(connectionStateName());
+                    // });
+                    // stream.onError(function () {
+                    //     console.log(connectionStateName());
+                    // });
 
                     var connectionStateName = function(stateValue) {
                         return _.findKey(stream._readyStateConstants, stream.readyState);
                     }
                 }
-                return stream;
+                // return stream;
             });
         }
     ]);

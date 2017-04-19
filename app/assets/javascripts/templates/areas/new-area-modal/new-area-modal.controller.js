@@ -13,7 +13,6 @@
                     new Area($scope.newArea).create().then(function (response) {
                         console.log(response);
                         areas.push(response);
-                        console.log(areas);
                         close(result, 500);
                     },function (response) {
                         $scope.errors = response.data.errors;
