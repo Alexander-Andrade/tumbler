@@ -17,7 +17,11 @@ class AreasController < ApplicationController
 
   def destroy
     @area = Area.find(params[:id])
-    respond_with @area.destroy
+    if current_user.default_area != @area
+      respond_with @area.destroy
+    else
+      render json: "can't destroy default area" , status: 403
+    end
   end
 
   private

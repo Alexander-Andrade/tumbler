@@ -2,11 +2,14 @@
     'use strict';
 
     angular.module('directives').
-    directive('areaCard', function () {
-        var areaCardCtrl = function($scope) {
-        };
-        areaCardCtrl.$inject = ['$scope'];
+    directive('areaCard',['$document', function ($document) {
 
+        var link = function (scope, element, attrs) {
+            if (scope.area.default) {
+                $document.find('.destroy-area').remove();
+            }
+        };
+        link.$inject = ['scope', 'element', 'attrs'];
 
 
         var directive = {
@@ -15,9 +18,10 @@
                 area: '=',
                 onDestroy: '&'
             },
-            controller: areaCardCtrl
+            link: link
         };
 
         return directive;
-    });
+    }
+    ]);
 }());
