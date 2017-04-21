@@ -2,7 +2,7 @@ class AreasController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @areas = Area.all
+    @areas = current_user.areas
   end
 
   def create

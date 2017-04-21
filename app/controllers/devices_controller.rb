@@ -2,7 +2,7 @@ class DevicesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @devices = Device.all
+    @devices = current_user.devices
   end
 
   def create
