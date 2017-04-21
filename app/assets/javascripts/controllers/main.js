@@ -2,12 +2,18 @@
     'use strict';
 
     angular.module('controllers').
-    controller("mainCtrl", [ '$scope', 'automationServer', 'autoServSock', 'areas',
-      function($scope, automationServer, autoServSock, areas) {
+    controller("mainCtrl", [ '$scope','$window', 'Auth','automationServer', 'autoServSock', 'areas',
+      function($scope, $window, Auth, automationServer, autoServSock, areas) {
           $scope.navbarToggle = false;
 
           $scope.toggleNavbar = function () {
               $scope.navbarToggle = !$scope.navbarToggle;
+          };
+
+          $scope.logout = function () {
+              Auth.logout().then(function () {
+                  $window.location.reload();
+              });
           };
 
           $scope.areas = areas;
