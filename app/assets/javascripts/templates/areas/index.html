@@ -1,7 +1,7 @@
 <div ui-view="toolbar"></div>
 
 <div ng-repeat="area in areas">
-    <area-card area="area" on-destroy="destroyArea(area)">
+    <area-card area="area" on-destroy="destroyArea(area)" on-edit="editArea(area)">
     Hello
     </area-card>
 </div>

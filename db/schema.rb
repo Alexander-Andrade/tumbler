@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170415194534) do
+ActiveRecord::Schema.define(version: 20170421181325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 20170415194534) do
     t.index ["automation_server_id"], name: "index_geolocations_on_automation_server_id", using: :btree
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string   "type"
+    t.string   "details"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -82,4 +91,5 @@ ActiveRecord::Schema.define(version: 20170415194534) do
   add_foreign_key "devices", "areas"
   add_foreign_key "devices", "users"
   add_foreign_key "geolocations", "automation_servers"
+  add_foreign_key "notifications", "users"
 end
