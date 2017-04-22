@@ -94,13 +94,3 @@ notifications = ['Notification', function (Notification) {
 angular.module('controllers',[]);
 angular.module('services',[]);
 angular.module('directives',[]);
-
-
-$(document).ready(function () {
-    $('body').addClass('cards-pf');
-    $('html').addClass('layout-pf layout-pf-fixed');
-  // Initialize the vertical navigation
-    $().setupVerticalNavigation(true);
-  // fix scrollbar positioning
-  //   $('.nav-pf-vertical').css('padding-bottom', $('.list-group-fixed-bottom').children().outerHeight());
-});
