@@ -8,8 +8,10 @@
             replace: true,
             scope: {
                 title: '@',
+                collapseId: '@',
                 notifications: '=',
-                onMarkRead: '&'
+                onMarkRead: '&',
+                onDeleteAll: '&'
             },
         };
 

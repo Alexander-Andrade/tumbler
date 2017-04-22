@@ -5,7 +5,7 @@
     directive('notificationItem', function () {
 
         var directive =  {
-            templateUrl: 'directives/notification-item/notification-item.html',
+            templateUrl: 'directives/notification-drawer/notification-item/notification-item.html',
             replace: true,
             scope: {
                 notification: '='

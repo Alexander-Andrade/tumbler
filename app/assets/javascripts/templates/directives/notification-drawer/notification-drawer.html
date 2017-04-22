@@ -4,8 +4,12 @@
         <h3 class="text-center">Notifications Drawer</h3>
     </div>
     <div class="panel-group" id="notification-drawer-accordion">
-        <notification-accordion notifications="notifs_from_autoserver" noMarkRead="markAllRead(group)" title="Automation Server Notifications"></notification-accordion>
-        <notification-accordion notifications="notifs_from_user" noMarkRead="markAllRead(group)" title="User Notifications"></notification-accordion>
+        <notification-accordion notifications="notifs_from_autoserver" noMarkRead="markAllRead(group)" onDeleteAll="deleteAll(group)"
+                                title="Automation Server Notifications" collapse-id="11">
+        </notification-accordion>
+        <notification-accordion notifications="notifs_from_user" noMarkRead="markAllRead(group)" onDeleteAll="deleteAll(group)"
+                                title="User Notifications" collapse-id="22">
+        </notification-accordion>
         <div class="drawer-pf-action">
             <button  ng-click="markAllRead('all')" class="btn btn-link btn-block">Mark All Read</button>
         </div>

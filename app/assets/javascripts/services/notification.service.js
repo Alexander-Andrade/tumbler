@@ -8,12 +8,14 @@
                 name: 'notifications'
             });
 
-            resource.deleteByOrigin = function (origin) {
-                return resource.$delete('/delete_notifications_by_group', {group: origin});
+            resource.deleteByGroup = function (notifications, group) {
+                return resource.$delete('/delete_notifications_by_group', {group: group}).then(function () {
+                    notifications.length = 0;
+                });
             };
 
-            resource.deleteAll = function () {
-                return resource.$delete('/delete_notifications_by_group', {group: 'all'});
+            resource.deleteAll = function (notifications) {
+                return resource.deleteByGroup(notifications, 'all');
             };
 
             resource.success = function (notifications, details) {

@@ -1,13 +1,13 @@
 <div class="panel panel-default">
     <div class="panel-heading" data-component="collapse-heading">
         <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#notification-drawer-accordion" href="#fixedCollapseOne">
+            <a data-toggle="collapse" data-parent="#notification-drawer-accordion" href="#{{collapseId}}">
                 {{title}}
             </a>
         </h4>
         <span class="panel-counter">{{notifications.length}} New Events</span>
     </div>
-    <div id="fixedCollapseOne" class="panel-collapse collapse in">
+    <div id="{{collapseId}}" class="panel-collapse collapse in">
         <div class="panel-body">
             <div ng-repeat="notif in notifications">
                 <notification-item notification="notif"></notification-item>

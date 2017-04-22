@@ -10,8 +10,11 @@
             $scope.notifs_from_autoserver = Notification.filterByOrigin($scope.notifications, 'automation_server');
             
             $scope.markAllRead = function (group) {
-                var promises = Notification.markReadByGroup(group);
-                // not create new notification on actions with notifications
+                var promises = Notification.markReadByGroup($scope.notifications, group);
+            };
+
+            $scope.deleteAll = function (group) {
+                var promises = Notification.markReadByGroup($scope.notifications, group);
             };
         }];
 
