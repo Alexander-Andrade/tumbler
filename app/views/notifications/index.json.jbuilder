@@ -1,3 +1,3 @@
-json.notifications @notifications do |notification|
-  json.partial! 'notifications/notification', notification: notification
+json.notifications do |json|
+  json.array! @notifications
 end

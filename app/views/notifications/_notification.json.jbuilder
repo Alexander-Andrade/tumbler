@@ -1,1 +1,0 @@
-json.(notification, :id, :category, :details, :origin, :read, :created_at)
