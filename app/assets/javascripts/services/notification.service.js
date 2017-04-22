@@ -16,22 +16,37 @@
                 return resource.$delete('/delete_notifications_by_group', {group: 'all'});
             };
 
-            resource.success = function (details) {
+            resource.success = function (notifications, details) {
                 return new resource({
                     category: 'success',
                     details: details,
                     origin: 'user',
                     read: false
-                }).create()
+                }).create().then(function (response) {
+                    notifications.unshift(response);
+                });
             };
 
-            resource.error = function (details) {
+            resource.error = function (notifications, details) {
                 return new resource({
                     category: 'error',
                     details: details,
                     origin: 'user',
                     read: false
-                }).create()
+                }).create().then(function (response) {
+                    notifications.unshift(response);
+                });
+            };
+
+            resource.info = function (notifications, details) {
+                return new resource({
+                    category: 'info',
+                    details: details,
+                    origin: 'user',
+                    read: false
+                }).create().then(function (response) {
+                    notifications.unshift(response);
+                });
             };
 
             resource.areRead = function (notifications) {

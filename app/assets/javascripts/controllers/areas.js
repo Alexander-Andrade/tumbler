@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('controllers').
-    controller("areasCtrl", [ '$scope','areas','Area','ModalService',
-      function($scope, areas, Area,ModalService) {
+    controller("areasCtrl", [ '$scope','areas','Area','ModalService','Notification','notifications',
+      function($scope, areas, Area,ModalService, Notification, notifications) {
           $scope.areas = areas;
           console.log($scope.areas);
 
@@ -22,7 +22,8 @@
                           new Area(area).create().then(function (response) {
                               console.log(response);
                               areas.push(response);
-                          },function (response) {
+                              Notification.info(notifications, 'New area created: '+response.name)
+                          }).catch(function (response) {
                               console.log(response);
                           });
                       }
@@ -41,9 +42,9 @@
                   area.delete().then(function (response) {
                       _.pull($scope.areas, area);
                       console.log(response);
-                  }, function (response) {
+                  }).catch(function (response) {
                       console.log(response);
-                  })
+                  });
               }
           };
 
