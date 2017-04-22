@@ -8,7 +8,8 @@
             templateUrl: 'directives/notification-drawer/notification-item/notification-item.html',
             replace: true,
             scope: {
-                notification: '='
+                notification: '=',
+                onDelete: '&'
             }
         };
 

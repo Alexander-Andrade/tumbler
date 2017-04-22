@@ -5,7 +5,7 @@
         'railsResourceFactory', function(railsResourceFactory) {
             var resource = railsResourceFactory({
                 url: '/notifications',
-                name: 'notifications'
+                name: 'notification'
             });
 
             resource.deleteByGroup = function (notifications, group) {

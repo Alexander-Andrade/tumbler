@@ -4,7 +4,6 @@ class NotificationsController < ApplicationController
   end
 
   def create
-    byebug
     respond_with current_user.notifications.create(notification_params)
   end
 
