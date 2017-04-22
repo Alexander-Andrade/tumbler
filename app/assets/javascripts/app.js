@@ -51,7 +51,8 @@ app.config([ '$stateProvider','$urlRouterProvider',
               resolve: {
                   areas: areas,
                   automationServer: 'automationServer',
-                  autoServSock: 'automationSocket'
+                  autoServSock: 'automationSocket',
+                  notifications: notifications
               }
           }).state('dashboard', {
               parent: 'app',
@@ -75,7 +76,7 @@ app.config([ '$stateProvider','$urlRouterProvider',
                       templateUrl: 'areas/toolbar.html',
                       controller: 'areasCtrl'
                   }
-              },
+              }
           });
 
 
@@ -83,7 +84,11 @@ app.config([ '$stateProvider','$urlRouterProvider',
   }]);
 
 areas = ['Area', function(Area) {
-    return Area.query()
+    return Area.query();
+}];
+
+notifications = ['Notification', function (Notification) {
+    return Notification.query();
 }];
 
 angular.module('controllers',[]);

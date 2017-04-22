@@ -12,7 +12,10 @@ nav.navbar.navbar-pf-vertical
         | Cloud IoT Solution
   nav.collapse.navbar-collapse
     ul.nav.navbar-nav.navbar-right.navbar-iconic
-      li.dropdown
+      li.drawer-pf-trigger.dropdown
+        a.nav-item-iconic.drawer-pf-trigger-icon
+          span.fa.fa-bell ng-class="{'fa fa-bell':!allNotifAreRead, 'fa-bell-o': allNotifAreRead}" title="Notifications"
+      /li.dropdown
         a#notifications.dropdown-toggle.nav-item-iconic aria-expanded="true" aria-haspopup="true" data-toggle="dropdown"
           span.fa.pficon-flag title="Notifications"
           span.badge 2
@@ -46,6 +49,8 @@ nav.navbar.navbar-pf-vertical
           li
             /= link_to 'Logout', destroy_user_session_path
             a href="" ng-click="logout()" Logout
+  notification-drawer notifications="notifications"
+
 
 /! /.navbar
 .nav-pf-vertical.nav-pf-vertical-with-sub-menus ng-class="{ collapsed: navbarToggle }"
@@ -84,4 +89,50 @@ javascript:
 
         //Initialize the vertical navigation
         $().setupVerticalNavigation(true);
+    });
+
+    $(document).ready(function () {
+        // Show/Hide Notifications Drawer
+        $('.drawer-pf-trigger').click(function () {
+            var $drawer = $('.drawer-pf');
+
+            $(this).toggleClass('open');
+            if ($drawer.hasClass('hide')) {
+                $drawer.removeClass('hide');
+                setTimeout(function () {
+                    if (window.dispatchEvent) {
+                        window.dispatchEvent(new Event('resize'));
+                    }
+                    // Special case for IE
+                    if ($(document).fireEvent) {
+                        $(document).fireEvent('onresize');
+                    }
+                }, 100);
+            } else {
+                $drawer.addClass('hide');
+            }
+        });
+        $('.drawer-pf-toggle-expand').click(function () {
+            var $drawer = $('.drawer-pf');
+            var $drawerNotifications = $drawer.find('.drawer-pf-notification');
+
+            if ($drawer.hasClass('drawer-pf-expanded')) {
+                $drawer.removeClass('drawer-pf-expanded');
+                $drawerNotifications.removeClass('expanded-notification');
+            } else {
+                $drawer.addClass('drawer-pf-expanded');
+                $drawerNotifications.addClass('expanded-notification');
+            }
+        });
+
+        // Mark All Read
+        $('.panel-collapse').each(function (index, panel) {
+            var $panel = $(panel);
+            $panel.on('click', '.drawer-pf-action .btn', function () {
+                $panel.find('.unread').removeClass('unread');
+                $(panel.parentElement).find('.panel-counter').text('0 New Events');
+            });
+        });
+
+        $('#notification-drawer-accordion').initCollapseHeights('.panel-body');
     });

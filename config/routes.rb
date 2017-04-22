@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 
   resources :areas, except: [:new], defaults: {format: :json}
   resources :devices, except: [:new], defaults: {format: :json}
+  resources :notifications, only: [:index, :create, :destroy], defaults: {format: :json}
+  delete 'delete_notifications_by_group', to: 'notifications#destroy'
 
 end
