@@ -13,7 +13,7 @@
 
 
         var directive = {
-            templateUrl: 'directives/area-card/area-card.html',
+            templateUrl: 'directives/area/area-card/area-card.html',
             scope: {
                 area: '=',
                 onEdit: '&',

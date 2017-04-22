@@ -7,6 +7,12 @@ class NotificationsController < ApplicationController
     respond_with current_user.notifications.create(notification_params)
   end
 
+  def update
+    @notif = Notification.find(params[:id])
+    @notif.update_attributes(notification_params)
+    respond_with @notif
+  end
+
   def destroy
     if !params[:group].nil?
       @notifications = notifications_by_group(params[:group])

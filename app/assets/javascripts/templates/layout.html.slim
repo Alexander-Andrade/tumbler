@@ -15,21 +15,6 @@ nav.navbar.navbar-pf-vertical
       li.drawer-pf-trigger.dropdown
         a.nav-item-iconic.drawer-pf-trigger-icon
           span.fa.fa-bell ng-class="{'fa fa-bell':!allNotifAreRead, 'fa-bell-o': allNotifAreRead}" title="Notifications"
-      /li.dropdown
-        a#notifications.dropdown-toggle.nav-item-iconic aria-expanded="true" aria-haspopup="true" data-toggle="dropdown"
-          span.fa.pficon-flag title="Notifications"
-          span.badge 2
-        .dropdown-menu.infotip.bottom-right
-          .arrow
-          ul.list-group
-            li.list-group-item
-              span.i.pficon.pficon-info
-              | Modified Datasources ExampleDS
-            li.list-group-item
-              span.i.pficon.pficon-info
-              | Error: System Failure
-          .footer
-            a Clear Messages
       li.dropdown
         a#dropdownMenu1.dropdown-toggle.nav-item-iconic aria-expanded="true" aria-haspopup="true" data-toggle="dropdown"
           span.fa.pficon-help title="Help"
@@ -53,7 +38,7 @@ nav.navbar.navbar-pf-vertical
 
 
 /! /.navbar
-.nav-pf-vertical.nav-pf-vertical-with-sub-menus ng-class="{ collapsed: navbarToggle }"
+.nav-pf-vertical.nav-pf-vertical-with-sub-menus
   ul.list-group
     li.list-group-item
       a ui-sref="dashboard"
@@ -73,7 +58,7 @@ nav.navbar.navbar-pf-vertical
         span.list-group-item-value Scripts
 
 
-.container-fluid.container-cards-pf.container-pf-nav-pf-vertical ng-class="{ 'collapsed-nav': navbarToggle }"
+.container-fluid.container-cards-pf.container-pf-nav-pf-vertical
   div ui-view="toolbar"
   div ui-view="" style="margin-top: 20px"
 

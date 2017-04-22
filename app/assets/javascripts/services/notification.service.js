@@ -18,17 +18,19 @@
 
             resource.success = function (details) {
                 return new resource({
-                    type: 'success',
+                    category: 'success',
                     details: details,
-                    origin: 'user'
+                    origin: 'user',
+                    read: false
                 }).create()
             };
 
             resource.error = function (details) {
                 return new resource({
-                    type: 'error',
+                    category: 'error',
                     details: details,
-                    origin: 'user'
+                    origin: 'user',
+                    read: false
                 }).create()
             };
 
@@ -36,6 +38,24 @@
                 return _.every(notifications, function (notification) {
                     return notification.read;
                 });
+            };
+
+            resource.filterByOrigin = function (notifications, origin) {
+                return _.filter(notifications, {origin: origin})
+            };
+
+            resource.markReadByGroup = function (notifications, group) {
+                var filteredNotifs = [];
+                if(group != 'all') {
+                    filteredNotifs = resource.filterByOrigin(notifications, origin);
+                }else{
+                    filteredNotifs = notifications;
+                }
+                var promises = _.map(filteredNotifs, function (notif) {
+                    notif.read = true;
+                    return notif.update();
+                });
+                return promises;
             };
 
             return resource;
