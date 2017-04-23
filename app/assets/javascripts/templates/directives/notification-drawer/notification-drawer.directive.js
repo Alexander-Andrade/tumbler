@@ -4,11 +4,7 @@
     angular.module('directives').
     directive('notificationDrawer', function () {
 
-        var notificationCtrl = ['$scope','Notification', function ($scope, Notification) {
-            console.log($scope.notifications);
-            $scope.notifs_from_user = Notification.filterByOrigin($scope.notifications, 'user');
-            $scope.notifs_from_autoserver = Notification.filterByOrigin($scope.notifications, 'automation_server');
-            
+        var ctrl = ['$scope','Notification', function ($scope, Notification) {
             $scope.markAllRead = function (group) {
                 var promises = Notification.markReadByGroup($scope.notifications, group);
             };
@@ -25,7 +21,7 @@
             scope: {
                 notifications: '='
             },
-            controller: notificationCtrl
+            controller: ctrl
         };
 
         return directive;

@@ -1,20 +1,20 @@
 <div class="panel panel-default">
     <div class="panel-heading" data-component="collapse-heading">
         <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#notification-drawer-accordion" href="#{{collapseId}}">
+            <a data-toggle="collapse" data-parent="#notification-drawer-accordion" data-target="#{{collapseId}}">
                 {{title}}
             </a>
         </h4>
-        <span class="panel-counter">{{notifications.length}} New Events</span>
+        <span class="panel-counter">{{notifs.length}} New Events</span>
     </div>
     <div id="{{collapseId}}" class="panel-collapse collapse in">
         <div class="panel-body">
-            <div ng-repeat="notif in notifications">
+            <div ng-repeat="notif in notifs">
                 <notification-item notification="notif" onDelete="onDelete(notification)"></notification-item>
             </div>
         </div>
         <div class="drawer-pf-action">
-            <button ng-click="onMarkRead({group:notification[0].origin})" class="btn btn-link btn-block">Mark All Read</button>
+            <button ng-click="onMarkRead({origin})" class="btn btn-link btn-block">Delete {{origin}} notifications only</button>
         </div>
     </div>
 </div>

@@ -15,7 +15,8 @@ var app = angular.module('app',[
   'rails',
   'controllers',
   'services',
-  'directives'
+  'directives',
+  'filters'
 ]);
 
 // lodash
