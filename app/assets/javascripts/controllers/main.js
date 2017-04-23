@@ -14,9 +14,11 @@
           $scope.areas = areas;
           $scope.notifications = notifications;
 
-          $scope.allNotifAreRead = function () {
-              return Notification.areRead(notifications);
-          }
+          $scope.areNewNotifications = false;
+          $scope.$watch('notifications.length', function (newLength) {
+              $scope.areNewNotifications = (newLength != 0);
+          });
+
       }]);
 
 }());

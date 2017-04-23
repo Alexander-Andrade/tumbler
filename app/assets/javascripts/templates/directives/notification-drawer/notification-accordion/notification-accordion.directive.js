@@ -8,7 +8,6 @@
             $scope.notifs = $filter('notificationsByOrigin')($scope.notifications, $scope.origin);
 
             $scope.$watch('notifications.length', function (notifications) {
-                console.log('notifs changes!!!');
                 $scope.notifs = $filter('notificationsByOrigin')($scope.notifications, $scope.origin);
             });
 

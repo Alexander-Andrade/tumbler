@@ -14,7 +14,7 @@ nav.navbar.navbar-pf-vertical
     ul.nav.navbar-nav.navbar-right.navbar-iconic
       li.drawer-pf-trigger.dropdown
         a.nav-item-iconic.drawer-pf-trigger-icon
-          span.fa.fa-bell ng-class="{'fa fa-bell':!allNotifAreRead, 'fa-bell-o': allNotifAreRead}" title="Notifications"
+          span ng-class="{'fa fa-bell': areNewNotifications, 'fa fa-bell-o': !areNewNotifications}" title="Notifications"
       li.dropdown
         a#dropdownMenu1.dropdown-toggle.nav-item-iconic aria-expanded="true" aria-haspopup="true" data-toggle="dropdown"
           span.fa.pficon-help title="Help"

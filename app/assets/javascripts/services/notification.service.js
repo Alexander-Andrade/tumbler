@@ -54,9 +54,7 @@
             };
 
             resource.areRead = function (notifications) {
-                return _.every(notifications, function (notification) {
-                    return notification.read;
-                });
+                return _.every(notifications, { read: true });
             };
 
             resource.filterByOrigin = function (notifications, origin) {
