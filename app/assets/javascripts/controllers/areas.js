@@ -21,7 +21,7 @@
                           new Area(area).create().then(function (response) {
                               console.log(response);
                               areas.push(response);
-                              Notification.info(notifications, 'New area created: '+response.name)
+                              Notification.info(notifications, 'Area created: '+response.name)
                           }).catch(function (response) {
                               console.log(response);
                           });
@@ -41,6 +41,7 @@
                   area.delete().then(function (response) {
                       _.pull($scope.areas, area);
                       console.log(response);
+                      Notification.info(notifications, 'Area deleted: '+response.name)
                   }).catch(function (response) {
                       console.log(response);
                   });
