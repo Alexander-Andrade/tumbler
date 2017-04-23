@@ -5,9 +5,11 @@
     directive('notificationDrawer', function () {
 
         var ctrl = ['$scope','Notification', function ($scope, Notification) {
-            $scope.deleteAll = function (group) {
-                var promises = Notification.markReadByGroup($scope.notifications, group);
+
+            $scope.deleteAll = function () {
+                var promises = Notification.deleteAll($scope.notifications);
             };
+
         }];
 
 

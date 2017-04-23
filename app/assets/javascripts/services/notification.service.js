@@ -8,14 +8,16 @@
                 name: 'notification'
             });
 
-            resource.deleteByGroup = function (notifications, group) {
-                return resource.$delete('/delete_notifications_by_group', {group: group}).then(function () {
-                    notifications.length = 0;
-                });
-            };
-
-            resource.deleteAll = function (notifications) {
-                return resource.deleteByGroup(notifications, 'all');
+            resource.deleteAll = function (notifications, origin) {
+                if(origin){
+                    return resource.$delete('/delete_notifications_by_group', {group: origin}).then(function () {
+                        _.remove(notifications, {origin: origin});
+                    });
+                }else{
+                    return resource.$delete('/delete_notifications_by_group', {group: 'all'}).then(function () {
+                        notifications.length = 0;
+                    });
+                }
             };
 
             resource.success = function (notifications, details) {
