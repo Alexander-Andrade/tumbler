@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('controllers').
-    controller("areasCtrl", [ '$scope','areas','Area','ModalService','Notif','notifs',
-      function($scope, areas, Area,ModalService, Notif, notifs) {
+    controller("areasCtrl", [ '$scope','areas','Area','ModalService','Notif','notifs','Notification',
+      function($scope, areas, Area,ModalService, Notif, notifs, Notification) {
           $scope.areas = areas;
 
           $scope.addNewArea = function () {
@@ -19,12 +19,13 @@
                   modal.close.then(function(area) {
                       if(!_.isEmpty(area)){
                           new Area(area).create().then(function (response) {
-                              console.log(response);
                               areas.push(response);
-                              var message = 'Area created: '+response.name;
-                              Notif.info(notifs, message);
+                              Notif.info(notifs, 'Area created: '+response.name);
+                              Notification.info({message: response.name, title: 'Area created', closeOnClick: true});
                           }).catch(function (response) {
-                              console.log(response);
+                              var reason = area.name+' '+response.data.errors.name;
+                              Notif.error(notifs, 'Fail to create area: '+reason);
+                              Notification.error({message: reason, title: 'Fail to create area', closeOnClick: true});
                           });
                       }
                   });
@@ -44,6 +45,7 @@
                       console.log(response);
                       var message = 'Area created: '+response.name;
                       Notif.info(notifs, message);
+                      Notification.info({message: message, title: 'Primary notification'});
                   }).catch(function (response) {
                       console.log(response);
                   });
@@ -65,9 +67,12 @@
                             updatedArea.update().then(function (response) {
                                 _.assign(area, updatedArea);
 
-                                console.log(response);
+                                Notif.info(notifs, 'Area updated: '+response.name);
+                                Notification.info({message: response.name, title: 'Area updated', closeOnClick: true});
                           },function (response) {
-                              console.log(response);
+                                var reason = area.name+' '+response.data.errors.name;
+                                Notif.error(notifs, 'Fail to update area: '+reason);
+                                Notification.error({message: reason, title: 'Fail to update area', closeOnClick: true});
                           });
                       }
                   });
