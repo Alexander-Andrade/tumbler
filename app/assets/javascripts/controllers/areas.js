@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('controllers').
-    controller("areasCtrl", [ '$scope','areas','Area','ModalService','Notif','notifs','Notification',
-      function($scope, areas, Area,ModalService, Notif, notifs, Notification) {
+    controller("areasCtrl", [ '$scope','areas','Area','ModalService','notifier','notifs',
+      function($scope, areas, Area,ModalService, notifier, notifs) {
           $scope.areas = areas;
 
           $scope.addNewArea = function () {
@@ -20,12 +20,9 @@
                       if(!_.isEmpty(area)){
                           new Area(area).create().then(function (response) {
                               areas.push(response);
-                              Notif.info(notifs, 'Area created: '+response.name);
-                              Notification.info({message: response.name, title: 'Area created', closeOnClick: true});
+                              notifier.info('Area created', response.name, notifs);
                           }).catch(function (response) {
-                              var reason = area.name+' '+response.data.errors.name;
-                              Notif.error(notifs, 'Fail to create area: '+reason);
-                              Notification.error({message: reason, title: 'Fail to create area', closeOnClick: true});
+                              notifier.error('Fail to create area', area.name, response.data.errors.name, notifs);
                           });
                       }
                   });
@@ -42,12 +39,10 @@
                   defaultArea.devices = _.concat(defaultArea.devices, area.devices);
                   area.delete().then(function (response) {
                       _.pull($scope.areas, area);
-                      console.log(response);
-                      var message = 'Area created: '+response.name;
-                      Notif.info(notifs, message);
-                      Notification.info({message: message, title: 'Primary notification'});
+
+                      notifier.info('Area deleted', response.name, notifs);
                   }).catch(function (response) {
-                      console.log(response);
+                      notifier.error('Fail to delete area', area.name, response.data.errors.name, notifs);
                   });
               }
           };
@@ -67,12 +62,9 @@
                             updatedArea.update().then(function (response) {
                                 _.assign(area, updatedArea);
 
-                                Notif.info(notifs, 'Area updated: '+response.name);
-                                Notification.info({message: response.name, title: 'Area updated', closeOnClick: true});
+                                notifier.info('Area updated', response.name, notifs);
                           },function (response) {
-                                var reason = area.name+' '+response.data.errors.name;
-                                Notif.error(notifs, 'Fail to update area: '+reason);
-                                Notification.error({message: reason, title: 'Fail to update area', closeOnClick: true});
+                                notifier.error('Fail to update area', area.name, response.data.errors.name, notifs);
                           });
                       }
                   });
