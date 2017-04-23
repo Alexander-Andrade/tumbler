@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('controllers').
-    controller("areasCtrl", [ '$scope','areas','Area','ModalService','Notification','notifications',
-      function($scope, areas, Area,ModalService, Notification, notifications) {
+    controller("areasCtrl", [ '$scope','areas','Area','ModalService','Notif','notifs',
+      function($scope, areas, Area,ModalService, Notif, notifs) {
           $scope.areas = areas;
 
           $scope.addNewArea = function () {
@@ -21,7 +21,8 @@
                           new Area(area).create().then(function (response) {
                               console.log(response);
                               areas.push(response);
-                              Notification.info(notifications, 'Area created: '+response.name)
+                              var message = 'Area created: '+response.name;
+                              Notif.info(notifs, message);
                           }).catch(function (response) {
                               console.log(response);
                           });
@@ -41,7 +42,8 @@
                   area.delete().then(function (response) {
                       _.pull($scope.areas, area);
                       console.log(response);
-                      Notification.info(notifications, 'Area deleted: '+response.name)
+                      var message = 'Area created: '+response.name;
+                      Notif.info(notifs, message);
                   }).catch(function (response) {
                       console.log(response);
                   });

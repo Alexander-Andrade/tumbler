@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('services').factory('Notification', [
+    angular.module('services').factory('Notif', [
         'railsResourceFactory', function(railsResourceFactory) {
             var resource = railsResourceFactory({
                 url: '/notifications',

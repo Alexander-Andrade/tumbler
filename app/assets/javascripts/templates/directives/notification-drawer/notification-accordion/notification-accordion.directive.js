@@ -4,15 +4,15 @@
     angular.module('directives').
     directive('notificationAccordion', function () {
 
-        var ctrl = ['$scope','$filter','Notification', function ($scope, $filter, Notification) {
-            $scope.notifs = $filter('notificationsByOrigin')($scope.notifications, $scope.origin);
+        var ctrl = ['$scope','$filter','Notif', function ($scope, $filter, Notif) {
+            $scope.notifications = $filter('notificationsByOrigin')($scope.notifs, $scope.origin);
 
-            $scope.$watch('notifications.length', function (notifications) {
-                $scope.notifs = $filter('notificationsByOrigin')($scope.notifications, $scope.origin);
+            $scope.$watch('notifs.length', function (len) {
+                $scope.notifications = $filter('notificationsByOrigin')($scope.notifs, $scope.origin);
             });
 
             $scope.deleteAll = function () {
-                var promises = Notification.deleteAll($scope.notifications, $scope.origin);
+                var promises = Notif.deleteAll($scope.notifs, $scope.origin);
             };
 
             $scope.formatDeleteText = function (text) {
@@ -26,7 +26,7 @@
             scope: {
                 title: '@',
                 collapseId: '@',
-                notifications: '=',
+                notifs: '=',
                 origin: '@',
                 onMarkRead: '&',
                 onDeleteAll: '&'

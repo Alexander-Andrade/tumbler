@@ -35,4 +35,5 @@
 //= require moment/moment
 //= require moment-timezone/moment-timezone
 //= require angular-bootstrap/ui-bootstrap
+//= require angular-ui-notification/dist/angular-ui-notification
 //= require_tree .

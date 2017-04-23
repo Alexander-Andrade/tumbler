@@ -1,19 +1,19 @@
 <div class="drawer-pf-notification unread">
 
     <div class="dropdown pull-right dropdown-kebab-pf">
-        <button ng-click="onDelete({notification:notification})" type="button" class="close" data-dismiss="alert" aria-hidden="true">
+        <button ng-click="onDelete({notif:notif})" type="button" class="close" data-dismiss="alert" aria-hidden="true">
             <span class="pficon pficon-close"></span>
         </button>
     </div>
 
     <span class="pficon pull-left"
-          ng-class="{'pficon-info': notification.category=='info',
-                     'pficon-warning-triangle-o': notification.category=='warning',
-                     'pficon-error-circle-o': notification.category=='error'}">
+          ng-class="{'pficon-info': notif.category=='info',
+                     'pficon-warning-triangle-o': notif.category=='warning',
+                     'pficon-error-circle-o': notif.category=='error'}">
     </span>
-    <span class="drawer-pf-notification-message">{{notification.details}}</span>
+    <span class="drawer-pf-notification-message">{{notif.details}}</span>
     <div class="drawer-pf-notification-info">
-        <span class="date">{{notification.createdAt| date: 'fullDate'}}</span>
-        <span class="time">{{notification.createdAt| date: 'mediumTime'}}</span>
+        <span class="date">{{notif.createdAt| date: 'fullDate'}}</span>
+        <span class="time">{{notif.createdAt| date: 'mediumTime'}}</span>
     </div>
 </div>

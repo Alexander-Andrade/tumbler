@@ -1,0 +1,15 @@
+<div ng-repeat="toast in toasts">
+    <div class="toast-pf alert alert-dismissable" ng-class="{'alert-success': toast.category=='success',
+                                                             'alert-info': toast.category=='info',
+                                                             'alert-error': toast.category=='error'}">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+            <span class="pficon pficon-close"></span>
+        </button>
+        <span class="pficon" ng-class="{'pficon-ok': toast.category=='success',
+                                        'pficon-info': toast.category=='info',
+                                        'pficon-error-circle-o': toast.category=='error'}">
+
+        </span>
+        {{toast.details}}
+    </div>
+</div>

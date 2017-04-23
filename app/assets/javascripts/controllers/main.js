@@ -2,21 +2,19 @@
     'use strict';
 
     angular.module('controllers').
-    controller("mainCtrl", [ '$scope','$window', 'Auth','automationServer', 'autoServSock', 'areas','notifications','Notification',
-      function($scope, $window, Auth, automationServer, autoServSock, areas, notifications, Notification) {
+    controller("mainCtrl", [ '$scope','$window', 'Auth','automationServer', 'autoServSock', 'areas','notifs','Notif',
+      function($scope, $window, Auth, automationServer, autoServSock, areas, notifs, Notif) {
           $scope.logout = function () {
-              console.log(notifications);
-              console.log($scope.notifications);
               Auth.logout().then(function () {
                   $window.location.reload();
               });
           };
           $scope.areas = areas;
-          $scope.notifications = notifications;
+          $scope.notifs = notifs;
 
-          $scope.areNewNotifications = false;
-          $scope.$watch('notifications.length', function (newLength) {
-              $scope.areNewNotifications = (newLength != 0);
+          $scope.areNewNotifs = false;
+          $scope.$watch('notifs.length', function (newLength) {
+              $scope.areNewNotifs = (newLength != 0);
           });
 
       }]);

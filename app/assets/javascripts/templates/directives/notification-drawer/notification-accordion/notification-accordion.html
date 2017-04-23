@@ -5,12 +5,12 @@
                 {{title}}
             </a>
         </h4>
-        <span class="panel-counter">{{notifs.length}} New Events</span>
+        <span class="panel-counter">{{notifications.length}} New Events</span>
     </div>
     <div id="{{collapseId}}" class="panel-collapse collapse in">
         <div class="panel-body">
-            <div ng-repeat="notif in notifs">
-                <notification-item notification="notif" onDelete="onDelete(notification)"></notification-item>
+            <div ng-repeat="notif in notifications">
+                <notification-item notif="notif" onDelete="onDelete(notification)"></notification-item>
             </div>
         </div>
         <div class="drawer-pf-action">

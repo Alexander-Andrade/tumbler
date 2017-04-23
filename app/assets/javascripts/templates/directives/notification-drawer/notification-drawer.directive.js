@@ -4,10 +4,10 @@
     angular.module('directives').
     directive('notificationDrawer', function () {
 
-        var ctrl = ['$scope','Notification', function ($scope, Notification) {
+        var ctrl = ['$scope','Notif', function ($scope, Notif) {
 
             $scope.deleteAll = function () {
-                var promises = Notification.deleteAll($scope.notifications);
+                var promises = Notif.deleteAll($scope.notifs);
             };
 
         }];
@@ -17,7 +17,7 @@
             templateUrl: 'directives/notification-drawer/notification-drawer.html',
             replace: true,
             scope: {
-                notifications: '='
+                notifs: '='
             },
             controller: ctrl
         };

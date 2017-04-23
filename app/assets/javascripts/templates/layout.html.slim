@@ -10,11 +10,12 @@ nav.navbar.navbar-pf-vertical
       .fa.fa-diamond.navbar-brand-icon
       .navbar-brand-name style='font-weight: 700'
         | Cloud IoT Solution
+  /toaster=""
   nav.collapse.navbar-collapse
     ul.nav.navbar-nav.navbar-right.navbar-iconic
       li.drawer-pf-trigger.dropdown
         a.nav-item-iconic.drawer-pf-trigger-icon
-          span ng-class="{'fa fa-bell': areNewNotifications, 'fa fa-bell-o': !areNewNotifications}" title="Notifications"
+          span ng-class="{'fa fa-bell': areNewNotifs, 'fa fa-bell-o': !areNewNotifs}" title="Notifications"
       li.dropdown
         a#dropdownMenu1.dropdown-toggle.nav-item-iconic aria-expanded="true" aria-haspopup="true" data-toggle="dropdown"
           span.fa.pficon-help title="Help"
@@ -34,7 +35,7 @@ nav.navbar.navbar-pf-vertical
           li
             /= link_to 'Logout', destroy_user_session_path
             a href="" ng-click="logout()" Logout
-  notification-drawer notifications="notifications"
+  notification-drawer notifs="notifs"
 
 
 /! /.navbar

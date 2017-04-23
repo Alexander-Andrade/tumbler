@@ -20,6 +20,7 @@
     "c3": "latest",
     "angularjs-rails-resource": "latest",
     "moment": "latest",
-    "moment-timezone": "latest"
+    "moment-timezone": "latest",
+    "angular-ui-notification": "latest"
   }
 }

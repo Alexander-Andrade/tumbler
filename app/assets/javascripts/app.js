@@ -13,6 +13,7 @@ var app = angular.module('app',[
   'angularSpinner',
   'ui.bootstrap',
   'rails',
+  'ui-notification',
   'controllers',
   'services',
   'directives',
@@ -53,7 +54,7 @@ app.config([ '$stateProvider','$urlRouterProvider',
                   areas: areas,
                   automationServer: 'automationServer',
                   autoServSock: 'automationSocket',
-                  notifications: notifications
+                  notifs: notifs
               }
           }).state('dashboard', {
               parent: 'app',
@@ -88,8 +89,8 @@ areas = ['Area', function(Area) {
     return Area.query();
 }];
 
-notifications = ['Notification', function (Notification) {
-    return Notification.query();
+notifs = ['Notif', function (Notif) {
+    return Notif.query();
 }];
 
 angular.module('controllers',[]);
