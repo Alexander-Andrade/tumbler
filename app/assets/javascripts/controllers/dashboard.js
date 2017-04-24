@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('controllers').
-    controller("dashboardCtrl", [ '$scope', '$state','$stateParams','$resource','ModalService', 'Flash', '$websocket','Auth','automationServer',
-      function($scope, $state,$stateParams,$resource,ModalService, Flash, $websocket, Auth, automationServer) {
-          $scope.count = 5;
+    controller("dashboardCtrl", [ '$scope', 'automationServer','autoServSock',
+      function($scope, automationServer, autoServSock) {
+        $scope.automationServer = automationServer;
+        $scope.autoServSock = autoServSock;
       }]);
-
 }());

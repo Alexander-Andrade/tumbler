@@ -1,0 +1,26 @@
+<div class="card-pf card-pf-view card-pf-view-select card-pf-view-single-select">
+    <div class="card-pf-body">
+        <div class="card-pf-top-element">
+            <span class="pficon-server card-pf-icon-circle"></span>
+        </div>
+        <h2 class="card-pf-title text-center">
+            Automation Server
+        </h2>
+        <div class="card-pf-items text-center">
+            <div class="card-pf-item">
+                <span class="card-pf-item-text">connection status</span>
+            </div>
+            <div class="card-pf-item">
+                <span class="card-pf-item-text">{{connection}}</span>
+                <i ng-class="{'pficon-ok': connection == 'open',
+                                 'pficon-error-circle-o': connection == 'closed',
+                                 'fa fa-spinner fa-spin': connection == 'connecting'
+                }"></i>
+            </div>
+        </div>
+        <p class="card-pf-info text-center"><strong>Created On</strong> 2015-03-01 02:00 AM <br/> Never Expires</p>
+    </div>
+    <div class="card-pf-view-checkbox">
+        <input type="checkbox">
+    </div>
+</div>

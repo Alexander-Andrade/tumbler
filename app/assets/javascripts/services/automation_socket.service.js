@@ -7,31 +7,24 @@
                 // var stream = $websocket(response.url, {reconnectIfNotNormalClose: true, initialTimeout: 500 });
                 var stream = $websocket(response.url);
                 if(stream){
-                    // stream.onMessage(function(message) {
-                    //     console.log(message.data);
-                    // });
+                    stream.onMessage(function(message) {
+                        console.log(message.data);
+                    });
 
-                    // stream.onMessage(function(message) {
-                    //     console.log(message.data);
-                    // });
 
-                    $window.onbeforeunload = function () {
-                        stream.reconnectIfNotNormalClose = false;
-                        stream.close(true);
-                    };
-
-                    // stream.onClose(function() {
-                    //     console.log(connectionStateName());
-                    // });
-                    // stream.onError(function () {
-                    //     console.log(connectionStateName());
-                    // });
-
-                    var connectionStateName = function(stateValue) {
-                        return _.findKey(stream._readyStateConstants, stream.readyState);
-                    }
+                    // $window.onbeforeunload = function () {
+                    //     stream.reconnectIfNotNormalClose = false;
+                    //     stream.close(true);
+                    // };
                 }
-                // return stream;
+
+                stream.state = function () {
+                    return _.findKey(stream._readyStateConstants, function (stateConst) {
+                        return stateConst == stream.readyState;
+                    });
+                };
+
+                return stream;
             });
         }
     ]);

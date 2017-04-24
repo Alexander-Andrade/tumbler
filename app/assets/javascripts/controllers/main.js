@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('controllers').
-    controller("mainCtrl", [ '$scope','$window', 'Auth','automationServer', 'autoServSock', 'areas','notifs','Notif',
-      function($scope, $window, Auth, automationServer, autoServSock, areas, notifs, Notif) {
+    controller("mainCtrl", [ '$scope','$window', 'Auth', 'areas','notifs','Notif',
+      function($scope, $window, Auth, areas, notifs, Notif) {
           $scope.logout = function () {
               Auth.logout().then(function () {
                   $window.location.reload();
