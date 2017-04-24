@@ -7,9 +7,9 @@
                 var stream = $websocket(response.url, {reconnectIfNotNormalClose: true, initialTimeout: 500 });
                 // var stream = $websocket(response.url);
                 if(stream){
-                    stream.onMessage(function(message) {
-                        console.log(message.data);
-                    });
+                    // stream.onMessage(function(message) {
+                    //     console.log(message.data);
+                    // });
 
 
                     // $window.onbeforeunload = function () {

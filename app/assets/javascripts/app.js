@@ -14,6 +14,7 @@ var app = angular.module('app',[
   'ui.bootstrap',
   'rails',
   'ui-notification',
+  'angularMoment',
   'controllers',
   'services',
   'directives',
@@ -26,13 +27,14 @@ app.constant('_', window._)
       $rootScope._ = window._
   }]);
 
+
 app.run(['$window','automationSocket', function ($window, automationSocket) {
-    // automationSocket.then(function (socket) {
-    //     $window.onbeforeunload = function () {
-    //         socket.close();
-    //         $window.alert(greeting);
-    //     };
-    // });
+// automationSocket.then(function (socket) {
+//     $window.onbeforeunload = function () {
+//         socket.close();
+//         $window.alert(greeting);
+//     };
+// });
 }]);
 
 

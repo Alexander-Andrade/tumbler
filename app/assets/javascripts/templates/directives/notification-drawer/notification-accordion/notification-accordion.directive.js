@@ -5,8 +5,6 @@
     directive('notificationAccordion', function () {
 
         var ctrl = ['$scope','$filter','Notif', function ($scope, $filter, Notif) {
-            $scope.notifications = $filter('notificationsByOrigin')($scope.notifs, $scope.origin);
-
             $scope.$watch('notifs.length', function (len) {
                 $scope.notifications = $filter('notificationsByOrigin')($scope.notifs, $scope.origin);
             });

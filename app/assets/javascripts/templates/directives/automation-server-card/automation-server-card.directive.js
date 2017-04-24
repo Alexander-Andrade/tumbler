@@ -4,16 +4,20 @@
     angular.module('directives').
     directive('automationServerCard', function () {
 
-        var ctrl = ['$scope', function ($scope) {
+        var ctrl = ['$scope','moment', '$interval', function ($scope, moment, $interval) {
             var geoloc = $scope.automationServer.geolocation;
+            console.log($scope.automationServer);
             $scope.country = geoloc.country;
             $scope.regionName = geoloc.region_name;
             $scope.timezone = geoloc.timezone;
             $scope.url = $scope.automationServer.url;
             $scope.$watch('autoServSock.readyState', function (stateNum) {
                 $scope.connection = _.lowerCase($scope.autoServSock.state());
-                console.log($scope.connection);
             });
+
+            $interval(function () {
+                $scope.time = moment().format('MMMM Do YYYY, h:mm:ss a');
+            }, 1000);
         }];
 
         var directive =  {
