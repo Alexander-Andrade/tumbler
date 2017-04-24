@@ -10,8 +10,10 @@
             $scope.regionName = geoloc.region_name;
             $scope.timezone = geoloc.timezone;
             $scope.url = $scope.automationServer.url;
-            $scope.connection = _.lowerCase($scope.autoServSock.state());
-            console.log($scope.connection);
+            $scope.$watch('autoServSock.readyState', function (stateNum) {
+                $scope.connection = _.lowerCase($scope.autoServSock.state());
+                console.log($scope.connection);
+            });
         }];
 
         var directive =  {

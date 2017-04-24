@@ -4,8 +4,8 @@
     angular.module('services').factory('automationSocket', [
         '$websocket', 'automationServer','$window', function($websocket, automationServer, $window) {
             return automationServer.then(function(response) {
-                // var stream = $websocket(response.url, {reconnectIfNotNormalClose: true, initialTimeout: 500 });
-                var stream = $websocket(response.url);
+                var stream = $websocket(response.url, {reconnectIfNotNormalClose: true, initialTimeout: 500 });
+                // var stream = $websocket(response.url);
                 if(stream){
                     stream.onMessage(function(message) {
                         console.log(message.data);
