@@ -42,8 +42,13 @@ gem 'devise'
 # gem 'babel-schmooze-sprockets'
 gem 'bower-rails'
 gem 'angular-rails-templates'
-gem 'patternfly-sass', '~> 3.23.0'
+gem 'patternfly-sass', '~> 3.23.2'
 gem 'responders'
+
+# icons
+
+gem 'rails-assets-ionicons', source: 'https://rails-assets.org'
+gem 'rails-assets-devicons', source: 'https://rails-assets.org'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

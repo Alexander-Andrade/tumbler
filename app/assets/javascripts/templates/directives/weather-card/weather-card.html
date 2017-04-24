@@ -1,7 +1,7 @@
 <div class="card-pf card-pf-view card-pf-view-select card-pf-view-single-select">
     <div class="card-pf-body">
         <div class="card-pf-top-element">
-            <span class="pficon-server card-pf-icon-circle"></span>
+            <span class="icon ion-thermometer card-pf-icon-circle"></span>
         </div>
         <h2 class="card-pf-title text-center">
             Weather in {{data.name}}
@@ -11,10 +11,15 @@
                 <span class="card-pf-item-text">{{weather.description}}</span>
             </div>
             <div class="card-pf-item">
+                <i class="icon-heart"></i>
+            </div>
+            <div class="card-pf-item">
                 <img ng-src="http://openweathermap.org/img/w/{{weather.icon}}.png"  width="64" height="64">
             </div>
         </div>
-        <!--<p class="card-pf-info text-center"><strong>Location</strong>{{regionName}}</p>-->
+        <p class="card-pf-info text-center"><strong>Temp</strong>{{degrees}} &#8451;</p>
+        <p class="card-pf-info text-center"><strong>Humidity</strong>{{data.main.humidity}} %</p>
+        <p class="card-pf-info text-center"><strong>Pressure</strong>{{data.main.pressure}} hPa</p>
         <!--<p class="card-pf-info text-center"><strong>Timezone</strong>{{timezone}}</p>-->
         <!--<p class="card-pf-info text-center"><strong>Time</strong>{{time}}</p>-->
     </div>

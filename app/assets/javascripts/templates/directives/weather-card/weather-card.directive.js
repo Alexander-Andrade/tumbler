@@ -9,7 +9,8 @@
             weatherMap.cityWeather(geoloc.region_name).then(function (data) {
                 $scope.data = data;
                 $scope.weather = data.weather[0];
-                console.log($scope.data);
+                $scope.degrees = weatherMap.convertToCelsius($scope.data.main.temp);
+                console.log(data);
             }).catch(function (response) {
                 console.log(response);
             });

@@ -10,6 +10,11 @@
                     return response.data;
                 });
             };
+
+            resource.convertToCelsius = function(degK){
+                return Math.round(degK - 273.15);
+            };
+
             return resource;
         }
     ]);

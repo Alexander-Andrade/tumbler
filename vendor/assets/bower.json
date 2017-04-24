@@ -22,7 +22,6 @@
     "moment": "latest",
     "moment-timezone": "latest",
     "angular-ui-notification": "latest",
-    "angular-moment": "latest",
-    "weather-icons": "latest"
+    "angular-moment": "latest"
   }
 }
