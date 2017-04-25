@@ -37,4 +37,5 @@
 //= require moment-timezone/moment-timezone
 //= require angular-bootstrap/ui-bootstrap
 //= require angular-ui-notification/dist/angular-ui-notification
+//= require angular-vertilize/angular-vertilize
 //= require_tree .

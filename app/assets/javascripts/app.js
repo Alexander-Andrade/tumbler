@@ -15,6 +15,7 @@ var app = angular.module('app',[
   'rails',
   'ui-notification',
   'angularMoment',
+  'angular.vertilize',
   'controllers',
   'services',
   'directives',
@@ -28,14 +29,8 @@ app.constant('_', window._)
   }]);
 
 
-app.run(['$window','automationSocket', function ($window, automationSocket) {
-// automationSocket.then(function (socket) {
-//     $window.onbeforeunload = function () {
-//         socket.close();
-//         $window.alert(greeting);
-//     };
-// });
-}]);
+// app.run(['$rootScope', function ($rootScope) {
+// }]);
 
 
 
