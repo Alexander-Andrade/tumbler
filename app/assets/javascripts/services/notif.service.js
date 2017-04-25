@@ -20,33 +20,33 @@
                 }
             };
 
-            resource.success = function (notifications, details) {
+            resource.success = function (notifications, details, origin) {
                 return new resource({
                     category: 'success',
                     details: details,
-                    origin: 'user',
+                    origin: origin,
                     read: false
                 }).create().then(function (response) {
                     notifications.unshift(response);
                 });
             };
 
-            resource.error = function (notifications, details) {
+            resource.error = function (notifications, details, origin) {
                 return new resource({
                     category: 'error',
                     details: details,
-                    origin: 'user',
+                    origin: origin,
                     read: false
                 }).create().then(function (response) {
                     notifications.unshift(response);
                 });
             };
 
-            resource.info = function (notifications, details) {
+            resource.info = function (notifications, details, origin) {
                 return new resource({
                     category: 'info',
                     details: details,
-                    origin: 'user',
+                    origin: origin,
                     read: false
                 }).create().then(function (response) {
                     notifications.unshift(response);

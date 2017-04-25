@@ -6,7 +6,11 @@ class DevicesController < ApplicationController
   end
 
   def create
-    respond_with Device.create(device_params)
+    @device = Device.new(device_params)
+    @device.user = current_user
+    @device.area = current_user.default_area
+    @device.save
+    respond_with @device
   end
 
   def update
@@ -23,6 +27,6 @@ class DevicesController < ApplicationController
   private
 
   def device_params
-    params.require(:device).permit(:dev_id, :name, :label, :controls, :area_id)
+    params.require(:device).permit(:dev_id, :name, :label, :area_id, controls: [:name, :ctrl_id, :type])
   end
 end

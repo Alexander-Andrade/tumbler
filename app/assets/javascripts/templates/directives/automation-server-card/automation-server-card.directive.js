@@ -6,7 +6,6 @@
 
         var ctrl = ['$scope','moment', '$interval', function ($scope, moment, $interval) {
             var geoloc = $scope.automationServer.geolocation;
-            console.log($scope.automationServer);
             $scope.country = geoloc.country;
             $scope.regionName = geoloc.region_name;
             $scope.timezone = geoloc.timezone;

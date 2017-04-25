@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170422110959) do
   end
 
   create_table "devices", force: :cascade do |t|
-    t.integer  "dev_id"
+    t.string   "dev_id"
     t.string   "name"
     t.jsonb    "controls"
     t.datetime "created_at", null: false
