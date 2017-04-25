@@ -2,16 +2,16 @@
     'use strict';
 
     angular.module('directives').
-    directive('device', function () {
+    directive('areaDeviceItem', function () {
 
-        var ctrl = ['', function(){
+        var ctrl = ['$scope', function($scope){
 
         }];
 
         var directive = {
-            templateUrl: 'directives/device/device.html',
+            templateUrl: 'directives/area-device-item/area-device-item.html',
             scope: {
-
+                device: "="
             },
             controller: ctrl
         };
