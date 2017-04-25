@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('services').factory('deviceInfo', ['', function() {
+    angular.module('services').factory('deviceInfo', function() {
         var info = {
             device: {
                 lamp: {
@@ -61,6 +61,6 @@
         };
 
         return info;
-    }]);
+    });
 
 }());
