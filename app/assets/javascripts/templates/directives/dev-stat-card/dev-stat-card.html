@@ -8,15 +8,14 @@
         </h2>
         <div class="card-pf-items text-center">
             <div class="card-pf-item">
-                <span class="card-pf-item-text">Areas {{areas.length}}</span>
+                <span class="card-pf-item-text"><span class="fa fa-home"></span> Areas {{areas.length}}</span>
             </div>
             <div class="card-pf-item">
-                <span class="card-pf-item-text">Devices {{devices.length}}</span>
+                <span class="card-pf-item-text"><span class="fa fa-mobile"></span> Devices {{devices.length}}</span>
             </div>
         </div>
-        <!--<p class="card-pf-info text-center"><strong>Temp</strong>{{degrees}} &#8451;</p>-->
-        <!--<p class="card-pf-info text-center"><strong><span class="ion-waterdrop"></span> Humidity</strong>{{data.main.humidity}} %</p>-->
-        <!--<p class="card-pf-info text-center"><strong>Pressure</strong>{{data.main.pressure}} hPa</p>-->
+        <p class="card-pf-info text-center"><strong>Devices types number: </strong>{{labels.length}}</p>
+        <p ng-repeat="label in labels" class="card-pf-info text-center"><span class="{{devIcon(label)}}"></span><strong> {{label}}:</strong>{{devNumberByLabel[label]}}</p>
     </div>
     <div class="card-pf-view-checkbox">
         <input type="checkbox">

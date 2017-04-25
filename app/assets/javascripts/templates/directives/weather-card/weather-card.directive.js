@@ -10,7 +10,6 @@
                 $scope.data = data;
                 $scope.weather = data.weather[0];
                 $scope.degrees = weatherMap.convertToCelsius($scope.data.main.temp);
-                console.log(data);
             }).catch(function (response) {
                 console.log(response);
             });
