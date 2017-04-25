@@ -32,7 +32,7 @@
                       notifier.error({ title: 'New device',
                           subject: pack.name,
                           notifs: notifs,
-                          errors: response,
+                          errors: response.errors,
                           origin: 'automation_server'
                       });
                   });

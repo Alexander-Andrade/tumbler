@@ -5,8 +5,10 @@
         var notifier = {};
 
         notifier.error = function (params) {
-            var concatErrors = params.errors;
-            var reason = params.subject + ' ' + '';
+            var allErrors = _.join(_.flatMap(params.errors, function (err_array) {
+                return err_array;
+            }),'; ');
+            var reason = params.subject + ' ' + allErrors;
             Notif.error(params.notifs, params.title + ': '+ reason, params.origin);
             Notification.error({message: reason, title: params.title, closeOnClick: true});
         };

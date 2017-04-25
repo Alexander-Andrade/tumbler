@@ -19,7 +19,7 @@
 
                     return new Device(pack).create().then(function (response) {
                         var defaultArea = Area.defaultArea(areas);
-                        defaultArea.push(response);
+                        defaultArea.devices.push(response);
                     })
                 };
 
