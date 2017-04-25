@@ -17,13 +17,9 @@
     <div class="card-pf-body">
 
         <div class="list-group list-view-pf list-view-pf-view">
-            <div ng-repeat="device in area.devices" class="list-group-item">
-                <area-device-item device="device"></area-device-item>
+            <div ng-repeat="device in area.devices">
+                <div area-device-item device="device" class="list-group-item"></div>
             </div>
-        </div>
     </div>
 </div>
-
-<script>
-
-</script>
+</div>

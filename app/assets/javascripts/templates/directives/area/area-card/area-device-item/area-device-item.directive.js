@@ -4,12 +4,12 @@
     angular.module('directives').
     directive('areaDeviceItem', function () {
 
-        var ctrl = ['$scope', function($scope){
-
+        var ctrl = ['$scope','deviceInfo', function($scope, deviceInfo){
+            $scope.info = deviceInfo.infoByLabel($scope.device.label);
         }];
 
         var directive = {
-            templateUrl: 'directives/area-device-item/area-device-item.html',
+            templateUrl: 'directives/area/area-card/area-device-item/area-device-item.html',
             scope: {
                 device: "="
             },

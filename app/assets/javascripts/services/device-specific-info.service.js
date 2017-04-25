@@ -38,10 +38,10 @@
                     icon: 'fa fa-bomb'
                 },
                 motion_or_sound_sensor: {
-                    icon: 'ion-ios-volume-high'
+                    icon: 'fa fa-volume-up'
                 },
                 unknown_device: {
-                    icon: 'ion-help',
+                    icon: 'fa fa-question',
                     control: {
                         toggle: {
                             onn: 'ion-toggle-filled',
