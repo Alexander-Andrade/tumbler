@@ -17,10 +17,10 @@
                     icon: 'ion-thermometer'
                 },
                 light_sensor: {
-                    icon: 'ion-android-sunny'
+                    icon: 'fa fa-lightbulb-o'
                 },
                 door_sensor: {
-                    icon: 'ion-key',
+                    icon: 'fa fa-key',
                     control: {
                         toggle: {
                             onn: 'ion-ios-unlocked',
@@ -29,10 +29,10 @@
                     }
                 },
                 smoke_detector: {
-                    icon: 'ion-no-smoking'
+                    icon: 'fa fa-fire-extinguisher'
                 },
                 water_leakage_sensor: {
-                    icon: 'ion-waterdrop'
+                    icon: 'fa fa-tint'
                 },
                 gas_sensor: {
                     icon: 'fa fa-bomb'

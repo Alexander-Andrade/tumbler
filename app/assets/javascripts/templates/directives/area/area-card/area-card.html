@@ -16,10 +16,10 @@
     </div>
     <div class="card-pf-body">
 
-        <div class="list-group list-view-pf list-view-pf-view">
-            <div ng-repeat="device in area.devices">
-                <div area-device-item device="device" class="list-group-item"></div>
-            </div>
+    <div class="list-group list-view-pf list-view-pf-view">
+        <div ng-repeat="device in area.devices">
+            <div area-device-item areas="areas" notifs="notifs" device="device" class="list-group-item"></div>
+        </div>
     </div>
 </div>
 </div>

@@ -20,9 +20,21 @@
                       if(!_.isEmpty(area)){
                           new Area(area).create().then(function (response) {
                               areas.push(response);
-                              notifier.info('Area created', response.name, notifs);
+                              notifier.info({
+                                  title:'Area created',
+                                  subject: response.name,
+                                  notifs: notifs,
+                                  origin: 'user'
+                              });
                           }).catch(function (response) {
-                              notifier.error('Fail to create area', area.name, response.data.errors.name, notifs);
+                              notifier.error({
+                                  title:'Fail to create area',
+                                  subject: area.name,
+                                  errors: response.data.errors,
+                                  notifs: notifs,
+                                  origin: 'user'
+                              });
+
                           });
                       }
                   });
@@ -62,9 +74,20 @@
                             updatedArea.update().then(function (response) {
                                 _.assign(area, updatedArea);
 
-                                notifier.info('Area updated', response.name, notifs);
+                                notifier.info({
+                                    title:'Area created',
+                                    subject: response.name,
+                                    notifs: notifs,
+                                    origin: 'user'
+                                });
                           },function (response) {
-                                notifier.error('Fail to update area', area.name, response.data.errors.name, notifs);
+                                notifier.error({
+                                    title:'Fail to update area',
+                                    subject: area.name,
+                                    errors: response.data.errors,
+                                    notifs: notifs,
+                                    origin: 'user'
+                                });
                           });
                       }
                   });

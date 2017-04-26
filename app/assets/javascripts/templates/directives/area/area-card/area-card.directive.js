@@ -15,6 +15,8 @@
         var directive = {
             templateUrl: 'directives/area/area-card/area-card.html',
             scope: {
+                areas: '=',
+                notifs: '=',
                 area: '=',
                 onEdit: '&',
                 onDestroy: '&'

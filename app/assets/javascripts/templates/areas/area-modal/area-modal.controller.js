@@ -7,10 +7,12 @@
             $scope.title = title;
             $scope.area = _.cloneDeep(area);
 
-            $scope.close = function(result) {
-                if(result){
-                    close($scope.area, 500);
+            $scope.close = function(ok) {
+                var result = {};
+                if(ok){
+                    result =  $scope.area;
                 }
+                close(result, 500);
             };
     }]);
 
