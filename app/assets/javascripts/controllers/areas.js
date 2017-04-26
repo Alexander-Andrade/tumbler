@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('controllers').
-    controller("areasCtrl", [ '$scope','areas','Area','ModalService','notifier','notifs',
-      function($scope, areas, Area,ModalService, notifier, notifs) {
+    controller("areasCtrl", [ '$scope','areas','Area','ModalService','notifier','notifs', 'greedHelper',
+      function($scope, areas, Area,ModalService, notifier, notifs, greedHelper) {
           $scope.areas = areas;
 
           $scope.addNewArea = function () {
@@ -75,7 +75,7 @@
                                 _.assign(area, updatedArea);
 
                                 notifier.info({
-                                    title:'Area created',
+                                    title:'Area updated',
                                     subject: response.name,
                                     notifs: notifs,
                                     origin: 'user'
@@ -92,7 +92,9 @@
                       }
                   });
               });
-          }
+          };
+
+          $scope.range = greedHelper.range;
       }
     ]);
 

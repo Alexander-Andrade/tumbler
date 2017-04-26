@@ -1,9 +1,8 @@
 <div ui-view="toolbar"></div>
 
-<div ng-repeat="area in areas" ng-class="{'row row-cards-pf': $odd}">
+<div ng-repeat="area in areas">
     <div class="col-md-6">
-        <area-card areas="areas" notifs="notifs" area="area" on-destroy="destroyArea(area)" on-edit="editArea(area)">
-        </area-card>
+        <area-card areas="areas" notifs="notifs" area="area" on-destroy="destroyArea(area)" on-edit="editArea(area)"></area-card>
     </div>
 </div>
 
