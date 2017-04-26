@@ -1,5 +1,5 @@
 <div class="list-group-item-header">
-    <div class="list-view-pf-expand">
+    <div ng-click="toggleControlsAppearance()" class="list-view-pf-expand">
         <span class="fa fa-angle-right"></span>
     </div>
 
@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="list-view-pf-main-info">
+    <div ng-click="toggleControlsAppearance()" class="list-view-pf-main-info">
         <div class="list-view-pf-left">
             <span class="{{info.icon}} list-view-pf-icon-sm"></span>
         </div>
@@ -31,7 +31,7 @@
         </div>
     </div>
 </div>
-<div class="list-group-item-container container-fluid hidden">
+<div ng-show="show" class="list-group-item-container container-fluid">
     <div class="close">
         <span class="pficon pficon-close"></span>
     </div>

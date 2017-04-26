@@ -21,9 +21,8 @@
                         $scope.device.areaId = selectedArea.id;
                         $scope.device.update().then(function (response) {
                             var oldArea = _.find($scope.areas, { id: oldAreaId });
-                            var newArea = _.find($scope.areas, { id: selectedArea.id });
                             _.remove(oldArea.devices, {id: $scope.device.id});
-                            newArea.devices.unshift($scope.device);
+                            selectedArea.devices.unshift($scope.device);
 
                             notifier.info({
                                 title: 'Device has been moved to '+selectedArea.name,
@@ -44,6 +43,12 @@
                         });
                     });
                 });
+            };
+
+            $scope.show = false;
+
+            $scope.toggleControlsAppearance = function () {
+                $scope.show = !$scope.show;
             };
         }];
 

@@ -19,6 +19,7 @@
                   modal.close.then(function(area) {
                       if(!_.isEmpty(area)){
                           new Area(area).create().then(function (response) {
+                              response.devices = [];
                               areas.push(response);
                               notifier.info({
                                   title:'Area created',
