@@ -42,21 +42,45 @@
               });
           };
 
+          var removeAreaOnly = function(area){
+              area.delete().then(function (response) {
+                  _.remove($scope.areas, { id: area.id });
+
+                  notifier.info({
+                      title:'Area deleted',
+                      subject: response.name,
+                      notifs:notifs
+                  });
+              }).catch(function (response) {
+                  notifier.error({
+                      title:'Fail to delete area',
+                      subject: area.name,
+                      error: response.data.errors.name,
+                      notifs: notifs
+                  });
+              });
+          };
+
           $scope.destroyArea = function (area) {
               var defaultArea = Area.defaultArea($scope.areas);
               if (area.id != defaultArea.id) {
-                  _.forEach(area.devices, function (device) {
-                      device.areaId = defaultArea.id;
-                      device.update();
-                  });
-                  defaultArea.devices = _.concat(defaultArea.devices, area.devices);
-                  area.delete().then(function (response) {
-                      _.pull($scope.areas, area);
+                  var nDevices = area.devices.length;
+                  var nUpdated = 0;
+                  if(nDevices) {
+                      _.forEach(area.devices, function (device) {
+                          device.areaId = defaultArea.id;
+                          device.update().then(function () {
+                              defaultArea.devices.unshift(device);
+                              nUpdated += 1;
 
-                      notifier.info('Area deleted', response.name, notifs);
-                  }).catch(function (response) {
-                      notifier.error('Fail to delete area', area.name, response.data.errors.name, notifs);
-                  });
+                              if (nUpdated == nDevices) {
+                                  removeAreaOnly(area);
+                              }
+                          });
+                      });
+                  }else{
+                      removeAreaOnly(area);
+                  }
               }
           };
 

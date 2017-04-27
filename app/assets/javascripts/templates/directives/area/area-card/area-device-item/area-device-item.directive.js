@@ -47,6 +47,40 @@
                 });
             };
 
+            $scope.editModal = function () {
+                ModalService.showModal({
+                    templateUrl: "areas/device-edit-modal/device-edit-modal.html",
+                    controller: "deviceEditModalCtrl",
+                    inputs:{
+                        device: $scope.device
+                    }
+                }).then(function(modal) {
+                    modal.element.modal();
+                    modal.close.then(function(updatedDevice) {
+                        if(!_.isEmpty(updatedDevice)){
+                            updatedDevice.update().then(function (response) {
+                                _.assign($scope.device, updatedDevice);
+
+                                notifier.info({
+                                    title:'Device updated',
+                                    subject: $scope.device.name,
+                                    notifs: notifs,
+                                    origin: 'user'
+                                });
+                            },function (response) {
+                                notifier.error({
+                                    title:'Fail to update device',
+                                    subject: $scope.device.name,
+                                    errors: response.data.errors,
+                                    notifs: notifs,
+                                    origin: 'user'
+                                });
+                            });
+                        }
+                    });
+                });
+            };
+
             $scope.show = false;
 
             $scope.toggleControlsAppearance = function () {

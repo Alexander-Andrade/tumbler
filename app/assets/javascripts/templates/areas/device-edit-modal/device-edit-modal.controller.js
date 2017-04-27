@@ -1,21 +1,18 @@
 (function() {
     'use strict';
 
-    angular.module('directives').
-    directive('deviceEditModal', function () {
+    angular.module('controllers').
+    controller("deviceEditModalCtrl", [ '$scope','device','close',
+        function($scope, device, close) {
+            $scope.device = _.cloneDeep(device);
 
-        var ctrl = ['$scope','deviceInfo', function($scope, deviceInfo){
-            $scope.info = deviceInfo.infoByLabel($scope.device.label);
-        }];
+            $scope.close = function(ok) {
+                var result = {};
+                if(ok){
+                    result =  $scope.device;
+                }
+                close(result, 500);
+            };
+        }]);
 
-        var directive = {
-            templateUrl: 'directives/area/area-card/area-device-item/area-device-item.html',
-            scope: {
-                device: "="
-            },
-            controller: ctrl
-        };
-
-        return directive;
-    });
 }());
