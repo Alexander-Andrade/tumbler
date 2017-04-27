@@ -76,6 +76,13 @@
                               if (nUpdated == nDevices) {
                                   removeAreaOnly(area);
                               }
+
+                              notifier.info({
+                                  title: 'Device has been moved to '+defaultArea.name,
+                                  subject: device.name,
+                                  notifs: $scope.notifs,
+                                  origin: 'user'
+                              });
                           });
                       });
                   }else{
