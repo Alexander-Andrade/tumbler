@@ -6,8 +6,10 @@
             var directive = {
                 templateUrl: 'directives/area/area-list-item/area-list-item.html',
                 scope: {
-                    area: '='
-                }
+                    area: '=',
+                    selected: '&'
+                },
+                replace: true
             };
 
             return directive;

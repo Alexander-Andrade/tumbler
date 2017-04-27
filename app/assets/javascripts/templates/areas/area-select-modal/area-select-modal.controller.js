@@ -14,7 +14,11 @@
 
             $scope.select = function (area) {
                 $scope.selectedArea = area;
-            }
+            };
+
+            $scope.selected = function (area) {
+                return (!_.isEmpty($scope.selectedArea)) ? $scope.selectedArea.id == area.id : false;
+            };
         }]);
 
 }());
