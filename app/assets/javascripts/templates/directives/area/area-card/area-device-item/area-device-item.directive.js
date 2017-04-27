@@ -17,30 +17,32 @@
                 }).then(function(modal) {
                     modal.element.modal();
                     modal.close.then(function(selectedArea) {
-                        var oldAreaId = $scope.device.areaId;
-                        $scope.device.areaId = selectedArea.id;
-                        $scope.device.update().then(function (response) {
-                            var oldArea = _.find($scope.areas, { id: oldAreaId });
-                            _.remove(oldArea.devices, {id: $scope.device.id});
-                            selectedArea.devices.unshift($scope.device);
+                        if(!_.isEmpty(selectedArea)){
+                            var oldAreaId = $scope.device.areaId;
+                            $scope.device.areaId = selectedArea.id;
+                            $scope.device.update().then(function (response) {
+                                var oldArea = _.find($scope.areas, { id: oldAreaId });
+                                _.remove(oldArea.devices, {id: $scope.device.id});
+                                selectedArea.devices.unshift($scope.device);
 
-                            notifier.info({
-                                title: 'Device has been moved to '+selectedArea.name,
-                                subject: $scope.device.name,
-                                notifs: $scope.notifs,
-                                origin: 'user'
-                            });
-                        }).catch(function (response) {
-                            $scope.device.areaId = oldAreaId;
+                                notifier.info({
+                                    title: 'Device has been moved to '+selectedArea.name,
+                                    subject: $scope.device.name,
+                                    notifs: $scope.notifs,
+                                    origin: 'user'
+                                });
+                            }).catch(function (response) {
+                                $scope.device.areaId = oldAreaId;
 
-                            notifier.error({
-                                title: "Can't move device to "+selectedArea.name,
-                                subject: $scope.device.name,
-                                errors: response.errors,
-                                notifs: $scope.notifs,
-                                origin: 'user'
+                                notifier.error({
+                                    title: "Can't move device to "+selectedArea.name,
+                                    subject: $scope.device.name,
+                                    errors: response.errors,
+                                    notifs: $scope.notifs,
+                                    origin: 'user'
+                                });
                             });
-                        });
+                        }
                     });
                 });
             };
