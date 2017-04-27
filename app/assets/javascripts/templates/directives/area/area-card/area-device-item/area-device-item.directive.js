@@ -59,6 +59,7 @@
                 notifs: '=',
                 device: "="
             },
+            replace: true,
             controller: ctrl
         };
 
