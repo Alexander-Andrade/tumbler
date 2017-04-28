@@ -82,10 +82,9 @@
             };
 
             $scope.oldName = '';
-            $scope.changeName = function (newName) {
+            $scope.updateName = function (newName) {
                 $scope.oldName = $scope.device.name;
                 $scope.device.name = newName;
-                $scope.editableName = false;
                 return $scope.device.update();
             };
 
