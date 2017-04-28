@@ -18,8 +18,8 @@
                     modal.element.modal();
                     modal.close.then(function(selectedArea) {
                         if(!_.isEmpty(selectedArea)){
-                            var oldAreaId = $scope.device.areaId;
-                            $scope.device.areaId = selectedArea.id;
+                            var oldAreaId = $scope.device.area_id;
+                            $scope.device.area_id = selectedArea.id;
                             $scope.device.update().then(function (response) {
                                 var oldArea = _.find($scope.areas, { id: oldAreaId });
                                 _.remove(oldArea.devices, {id: $scope.device.id});
@@ -32,7 +32,7 @@
                                     origin: 'user'
                                 });
                             }).catch(function (response) {
-                                $scope.device.areaId = oldAreaId;
+                                $scope.device.area_id = oldAreaId;
 
                                 notifier.error({
                                     title: "Can't move device to "+selectedArea.name,
@@ -85,7 +85,9 @@
             $scope.updateName = function (newName) {
                 $scope.oldName = $scope.device.name;
                 $scope.device.name = newName;
-                return $scope.device.update();
+                return $scope.device.update().then(function(){}).catch(function () {
+                    $scope.device.name = $scope.oldName;
+                });
             };
 
             $scope.show = false;

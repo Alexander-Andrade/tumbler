@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('controllers').
-    controller("areasCtrl", [ '$scope','areas','Area','ModalService','notifier','notifs', 'greedHelper',
-      function($scope, areas, Area,ModalService, notifier, notifs, greedHelper) {
+    controller("areasCtrl", [ '$scope','areas','Area','ModalService','notifier','notifs',
+      function($scope, areas, Area,ModalService, notifier, notifs) {
           $scope.areas = areas;
 
           $scope.addNewArea = function () {
@@ -68,7 +68,7 @@
                   var nUpdated = 0;
                   if(nDevices) {
                       _.forEach(area.devices, function (device) {
-                          device.areaId = defaultArea.id;
+                          device.area_id = defaultArea.id;
                           device.update().then(function () {
                               defaultArea.devices.unshift(device);
                               nUpdated += 1;
@@ -125,8 +125,6 @@
                   });
               });
           };
-
-          $scope.range = greedHelper.range;
       }
     ]);
 

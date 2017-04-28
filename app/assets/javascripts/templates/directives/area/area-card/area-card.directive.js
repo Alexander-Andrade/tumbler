@@ -10,7 +10,9 @@
             $scope.updateName = function (newName) {
                 $scope.oldName = $scope.area.name;
                 $scope.area.name = newName;
-                return $scope.area.update();
+                return $scope.area.update().then(function (response) {}).catch(function (response) {
+                    $scope.area.name = $scope.oldName;
+                });
             };
         }];
 

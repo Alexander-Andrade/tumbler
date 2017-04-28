@@ -24,7 +24,7 @@
                 <div class="list-view-pf-description">
                     <div class="list-group-item-heading">
                         <!--{{device.name}}-->
-                        <a href editable-text="device.name" ng-dblclick="nameForm.$show()" e-form="nameForm" onbeforesave="updateName($data)">{{ device.name || oldName }}</a>
+                        <a href ng-click="$event.stopPropagation()" editable-text="device.name" ng-dblclick="nameForm.$show()" e-form="nameForm" onbeforesave="updateName($data)">{{ device.name || oldName }}</a>
                     </div>
                 </div>
             </div>

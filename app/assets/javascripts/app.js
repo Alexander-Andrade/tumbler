@@ -37,8 +37,8 @@ app.run(['editableOptions','editableThemes', function (editableOptions, editable
 }]);
 
 
-app.config([ '$stateProvider','$urlRouterProvider',
-  function($stateProvider, $urlRouterProvider) {
+app.config([ '$stateProvider','$urlRouterProvider', 'railsSerializerProvider',
+  function($stateProvider, $urlRouterProvider, railsSerializerProvider) {
       $stateProvider
           .state('app', {
               url: '',
@@ -80,9 +80,9 @@ app.config([ '$stateProvider','$urlRouterProvider',
                   }
               }
           });
-
-
       $urlRouterProvider.otherwise('/dashboard');
+
+      railsSerializerProvider.underscore(angular.identity).camelize(angular.identity);
   }]);
 
 areas = ['Area', function(Area) {
