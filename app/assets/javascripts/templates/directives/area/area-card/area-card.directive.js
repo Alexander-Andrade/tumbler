@@ -5,8 +5,10 @@
     directive('areaCard', function () {
 
         var ctrl = ['$scope','Area', function ($scope, Area) {
+
+            $scope.oldName = '';
             $scope.updateName = function (newName) {
-                //var oldName = $scope.area.name;
+                $scope.oldName = $scope.area.name;
                 $scope.area.name = newName;
                 return $scope.area.update();
             };
