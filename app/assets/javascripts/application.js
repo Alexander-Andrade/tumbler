@@ -38,4 +38,5 @@
 //= require angular-bootstrap/ui-bootstrap
 //= require angular-ui-notification/dist/angular-ui-notification
 //= require angular-vertilize/angular-vertilize
+//= require angular-xeditable/dist/js/xeditable
 //= require_tree .

@@ -23,6 +23,7 @@
     "moment-timezone": "latest",
     "angular-ui-notification": "latest",
     "angular-moment": "latest",
-    "angular-vertilize": "latest"
+    "angular-vertilize": "latest",
+    "angular-xeditable": "latest"
   }
 }

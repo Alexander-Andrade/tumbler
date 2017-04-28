@@ -4,6 +4,14 @@
     angular.module('directives').
     directive('areaCard', function () {
 
+        var ctrl = ['$scope','Area', function ($scope, Area) {
+            $scope.updateName = function (newName) {
+                //var oldName = $scope.area.name;
+                $scope.area.name = newName;
+                return $scope.area.update();
+            };
+        }];
+
         var link = function (scope, element, attrs) {
             if (scope.area.default) {
                 element.find('.destroy-area').remove();
@@ -19,9 +27,10 @@
                 notifs: '=',
                 area: '=',
                 onEdit: '&',
-                onDestroy: '&'
+                onDestroy: '&',
             },
-            link: link
+            link: link,
+            controller: ctrl
         };
 
         return directive;

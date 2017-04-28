@@ -11,7 +11,8 @@
             </ul>
         </div>
         <h2 class="card-pf-title">
-            {{area.name}}
+            <a href editable-text="area.name" onbeforesave="updateName($data)"  e-label="Area Name">{{ area.name || 'empty' }}</a>
+            <!--{{area.name}}-->
         </h2>
     </div>
     <div class="card-pf-body">

@@ -16,6 +16,7 @@ var app = angular.module('app',[
   'ui-notification',
   'angularMoment',
   'angular.vertilize',
+  'xeditable',
   'controllers',
   'services',
   'directives',
@@ -29,9 +30,11 @@ app.constant('_', window._)
   }]);
 
 
-// app.run(['$rootScope', function ($rootScope) {
-// }]);
-
+app.run(['editableOptions','editableThemes', function (editableOptions, editableThemes) {
+    editableThemes.bs3.inputClass = 'input-lg';
+    editableThemes.bs3.buttonsClass = 'btn-lg';
+    editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+}]);
 
 
 app.config([ '$stateProvider','$urlRouterProvider',
