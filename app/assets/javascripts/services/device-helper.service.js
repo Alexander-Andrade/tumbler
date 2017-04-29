@@ -1,9 +1,8 @@
 (function() {
     'use strict';
 
-    angular.module('services').factory('deviceHelper',[ 'Device','Area', function(Device, Area) {
+    angular.module('services').factory('deviceHelper',[ 'Device','Area', 'automationSocket', 'moment', 'controlsInfo', function(Device, Area, automationSocket, moment, controlsInfo) {
         var helper = {};
-
 
         helper.buildDeviceFromPack = function(pack) {
             var device = _.cloneDeep(pack);
@@ -30,11 +29,22 @@
             });
         };
 
+        helper.checkStateUpdate = function (dev_ctrl, changes_ctrl) {
+            return controlsInfo.hasOwnProperty(dev_ctrl.type.name) ?
+                controlsInfo[dev_ctrl.type.name].validate(changes_ctrl.state) : false;
+
+        };
+
         helper.setControlsValues = function (device, changes_pack) {
             _.forEach(changes_pack.controls, function (changes_control) {
                 var dev_control = _.find(device.controls, {ctrl_id: changes_control.ctrl_id});
                 if(!_.isUndefined(dev_control)) {
-                    dev_control.model = changes_control.state;
+                    var valid = helper.checkStateUpdate(dev_control, changes_control);
+                    if(valid){
+                        dev_control.state = changes_control.state;
+                    }else{
+                        console.log('wrong state value: '+dev_control.type.name + " " + changes_control.state);
+                    }
                 }
             });
         };
@@ -57,6 +67,26 @@
                 helper.setControlsValues(device, changes_pack);
             }
         };
+
+
+        helper.buildChangePackFromDevice = function (control, device) {
+          var changes_pack = {
+              type: "dev_changes",
+              dev_id: device.dev_id,
+              controls: [{ctrl_id: control.ctrl_id, state: control.state}],
+              time_stamp: moment().format()
+          };
+           return changes_pack;
+        };
+
+        helper.sendDeviceChange = function (control, device) {
+            automationSocket.then(function (sock) {
+                var changes_pack = helper.buildChangePackFromDevice(control, device);
+                sock.send(changes_pack);
+            });
+        };
+
+
 
         return helper;
     }]);

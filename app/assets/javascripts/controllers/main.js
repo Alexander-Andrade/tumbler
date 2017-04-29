@@ -19,6 +19,7 @@
 
           autoServSock.onMessage(function(message){
               var pack = JSON.parse(message.data);
+              console.log(message.data);
 
               if(pack.type == 'dev_hello'){
                   deviceHelper.createDevice(pack, areas).then(function (response) {

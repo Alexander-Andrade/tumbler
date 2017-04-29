@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('directives').
-    directive('toggleControl', function () {
+    directive('dimmerControl', function () {
 
         var ctrl = ['$scope', 'deviceHelper','deviceInfo', function($scope, deviceHelper, deviceInfo){
             $scope.info = deviceInfo.infoByLabel($scope.device.label);

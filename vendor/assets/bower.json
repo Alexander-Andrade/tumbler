@@ -24,6 +24,7 @@
     "angular-ui-notification": "latest",
     "angular-moment": "latest",
     "angular-vertilize": "latest",
-    "angular-xeditable": "latest"
+    "angular-xeditable": "latest",
+    "angular-bootstrap-toggle-switch": "latest"
   }
 }

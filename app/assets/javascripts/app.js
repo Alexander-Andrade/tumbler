@@ -17,6 +17,7 @@ var app = angular.module('app',[
   'angularMoment',
   'angular.vertilize',
   'xeditable',
+  'toggle-switch',
   'controllers',
   'services',
   'directives',

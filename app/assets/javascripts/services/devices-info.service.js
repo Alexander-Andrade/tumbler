@@ -59,7 +59,6 @@
             }
             return dev;
         };
-
         return info;
     });
 
