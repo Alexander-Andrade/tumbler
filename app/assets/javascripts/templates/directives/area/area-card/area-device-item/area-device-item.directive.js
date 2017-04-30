@@ -95,6 +95,11 @@
             $scope.toggleControlsAppearance = function () {
                 $scope.show = !$scope.show;
             };
+
+            $scope.updateControlName = function (newName, control, device) {
+                control.name = newName;
+                return $scope.device.update()
+            };
         }];
 
         var directive = {

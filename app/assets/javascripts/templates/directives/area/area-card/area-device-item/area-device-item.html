@@ -31,11 +31,12 @@
         </div>
     </div>
     <div ng-show="show" class="list-group-item-container container-fluid">
-        <div class="close">
-            <span class="pficon pficon-close"></span>
-        </div>
         <div ng-repeat="control in device.controls">
             <div toggle-control ng-if="control.type.name=='toggle'" device="device" control="control"></div>
+            <div dimmer-control ng-if="control.type.name=='dimmer'" device="device" control="control" update-name="updateControlName(newName, control, device)"></div>
+            <div sym-value-control ng-if="control.type.name=='sym_value'" device="device" control="control"></div>
+            <div num-value-control ng-if="control.type.name=='num_value'" device="device" control="control"></div>
+            <div switch-state-control ng-if="control.type.name=='switch_state'" device="device" control="control"></div>
         </div>
     </div>
 </div>

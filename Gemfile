@@ -46,7 +46,6 @@ gem 'patternfly-sass', '~> 3.23.2'
 gem 'responders'
 
 # icons
-
 gem 'rails-assets-ionicons', source: 'https://rails-assets.org'
 gem 'rails-assets-devicons', source: 'https://rails-assets.org'
 

@@ -25,6 +25,7 @@
     "angular-moment": "latest",
     "angular-vertilize": "latest",
     "angular-xeditable": "latest",
-    "angular-bootstrap-toggle-switch": "latest"
+    "angular-bootstrap-toggle-switch": "latest",
+    "font-awesome": "latest"
   }
 }

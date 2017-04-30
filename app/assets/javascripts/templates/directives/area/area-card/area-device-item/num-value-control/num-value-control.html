@@ -1,0 +1,16 @@
+<div class="row vertical-align">
+    <div class="col-md-9 col-xs-9">
+        <!--<span class="pull-right" style="margin-top: 30px"><b>{{control.name}}</b></span>-->
+        <a href editable-text="control.name" ng-dblclick="ctrlNameForm.$show()" e-form="ctrlNameForm" onbeforesave="updateName({newName:$data, control: control, device: device})"><b>{{ control.name }}</b></a>
+    </div>
+    <div class="col-md-3 col-xs-3">
+        <div class="well text-center pull-right" style="margin-top: 20px"><h3><b>{{control.state}}</b></h3></div>
+        <!--<h1><span class="label label-info text-center">{{control.state}}</span></h1>-->
+    </div>
+</div>
+
+
+
+
+
+

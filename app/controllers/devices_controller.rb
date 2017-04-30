@@ -28,10 +28,11 @@ class DevicesController < ApplicationController
 
   def device_params
     params.require(:device).permit(:dev_id, :name, :label, :area_id,
-                                   controls: [:name, :ctrl_id,
-                                              type:[:name,
-                                                    optional:[:min, :max]
-                                              ]
-                                   ])
+                                     controls: [:name, :ctrl_id,
+                                                type:[:name,
+                                                      optional:[:min, :max, names:[]]
+                                                ]
+                                     ]
+                                  )
   end
 end

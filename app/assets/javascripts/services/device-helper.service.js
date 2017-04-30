@@ -29,9 +29,16 @@
             });
         };
 
+        helper.convertStateFromStr = function (dev_control, changes_control) {
+            var ctrlInfo = controlsInfo[dev_control.type.name];
+            if(ctrlInfo.hasOwnProperty('convertFromStr')){
+                changes_control.state = ctrlInfo.convertFromStr(changes_control.state);
+            }
+        };
+
         helper.checkStateUpdate = function (dev_ctrl, changes_ctrl) {
             return controlsInfo.hasOwnProperty(dev_ctrl.type.name) ?
-                controlsInfo[dev_ctrl.type.name].validate(changes_ctrl.state) : false;
+                controlsInfo[dev_ctrl.type.name].validate(changes_ctrl.state, dev_ctrl) : false;
 
         };
 
@@ -39,11 +46,13 @@
             _.forEach(changes_pack.controls, function (changes_control) {
                 var dev_control = _.find(device.controls, {ctrl_id: changes_control.ctrl_id});
                 if(!_.isUndefined(dev_control)) {
+                    helper.convertStateFromStr(dev_control, changes_control);
                     var valid = helper.checkStateUpdate(dev_control, changes_control);
                     if(valid){
+
                         dev_control.state = changes_control.state;
                     }else{
-                        console.log('wrong state value: '+dev_control.type.name + " " + changes_control.state);
+                        console.log('wrong state value: '+"id: "+ dev_control.ctrl_id +"name: "+dev_control.type.name + "state: " + changes_control.state);
                     }
                 }
             });
@@ -82,6 +91,7 @@
         helper.sendDeviceChange = function (control, device) {
             automationSocket.then(function (sock) {
                 var changes_pack = helper.buildChangePackFromDevice(control, device);
+                console.log(changes_pack);
                 sock.send(changes_pack);
             });
         };

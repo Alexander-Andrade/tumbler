@@ -1,14 +1,10 @@
-<div class="row">
-    <form class="">
-        <div class="form-group">
-            <div class="col-md-4 col-xs-4">
-                <toggle-switch ng-model="control.state" class="switch-large"></toggle-switch>
-            </div>
-            <div class="col-md-8 col-xs-8">
-                <b>{{control.name}}</b>
-            </div>
-        </div>
-    </form>
+<div class="row vertical-align">
+    <div class="col-md-8 col-xs-8">
+        <b>{{control.name}}</b>
+    </div>
+    <div class="col-md-4 col-xs-4">
+        <toggle-switch ng-model="control.state" class="switch-large pull-right"></toggle-switch>
+    </div>
 </div>
 
 
