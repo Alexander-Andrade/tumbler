@@ -36,6 +36,7 @@
 //= require angular-moment/angular-moment
 //= require moment-timezone/moment-timezone
 //= require angular-bootstrap/ui-bootstrap
+//= require angular-bootstrap/ui-bootstrap-tpls.min
 //= require angular-ui-notification/dist/angular-ui-notification
 //= require angular-vertilize/angular-vertilize
 //= require angular-xeditable/dist/js/xeditable

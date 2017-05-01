@@ -1,22 +1,6 @@
-.vcenter {
-  display: inline-block;
-  vertical-align: middle;
-  float: none;
-}
-
 .vertical-align {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-}
-
-.sym-value{
-  width: 30px;
-  height: 60px;
-}
-
-.num-value{
-  width: 30px;
-  height: 60px;
 }

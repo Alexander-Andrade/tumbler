@@ -55,7 +55,8 @@ app.config([ '$stateProvider','$urlRouterProvider', 'railsSerializerProvider',
                   areas: areas,
                   automationServer: 'automationServer',
                   autoServSock: 'automationSocket',
-                  notifs: notifs
+                  notifs: notifs,
+                  scripts: scripts
               }
           }).state('dashboard', {
               parent: 'app',
@@ -65,8 +66,16 @@ app.config([ '$stateProvider','$urlRouterProvider', 'railsSerializerProvider',
           }).state('scripts', {
               parent: 'app',
               url: '/scripts',
-              templateUrl: "scripts/index.html",
-              controller: 'scriptsCtrl'
+              views:{
+                  '': {
+                      templateUrl: "scripts/index.html",
+                      controller: 'scriptsCtrl'
+                  },
+                  'toolbar': {
+                      templateUrl: 'scripts/toolbar.html',
+                      controller: 'scriptsCtrl'
+                  }
+              },
           }).state('areas', {
               parent: 'app',
               url: '/areas',
@@ -93,6 +102,11 @@ areas = ['Area', function(Area) {
 notifs = ['Notif', function (Notif) {
     return Notif.query();
 }];
+
+scripts = ['Script', function (Script) {
+    return Script.query();
+}];
+
 
 angular.module('controllers',[]);
 angular.module('services',[]);

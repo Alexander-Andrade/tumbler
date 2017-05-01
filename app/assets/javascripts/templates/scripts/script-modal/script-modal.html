@@ -1,0 +1,35 @@
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Script Wizard</h4>
+            </div>
+            <div class="modal-body">
+
+                <wizard on-finish="close(true)">
+                    <wz-step wz-title="Starting">
+                        <h1>This is the first step</h1>
+                        <p>Here you can use whatever you want. You can use other directives, binding, etc.</p>
+                        <input type="submit" wz-next value="Continue" />
+                    </wz-step>
+                    <wz-step wz-title="Continuing">
+                        <h1>Continuing</h1>
+                        <p>You have continued here!</p>
+                        <input type="submit" wz-next value="Go on" />
+                    </wz-step>
+                    <wz-step wz-title="More steps">
+                        <p>Even more steps!!</p>
+                        <input type="submit" wz-next value="Finish now" data-dismiss="modal"/>
+                    </wz-step>
+                </wizard>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="close(true)" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                <button type="button" ng-click="close(false)" class="btn btn-default" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>

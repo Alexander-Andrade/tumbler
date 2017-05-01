@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: { sessions: 'users/sessions' , registrations: 'users/registrations'}
   root 'home#index'
 
@@ -9,5 +10,6 @@ Rails.application.routes.draw do
   resources :devices, except: [:new], defaults: {format: :json}
   resources :notifications, only: [:index, :create, :update, :destroy], defaults: {format: :json}
   delete 'delete_notifications_by_group', to: 'notifications#destroy'
+  resources :scripts, except: [:new, :update], defaults: {format: :json}
 
 end

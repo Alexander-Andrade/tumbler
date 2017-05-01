@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('controllers').
-    controller("mainCtrl", [ '$scope','$window', 'Auth', 'areas','notifs','notifier','autoServSock','deviceHelper',
-      function($scope, $window, Auth, areas, notifs, notifier, autoServSock, deviceHelper) {
+    controller("mainCtrl", [ '$scope','$window', 'Auth', 'areas','notifs','notifier','autoServSock','deviceHelper','scripts',
+      function($scope, $window, Auth, areas, notifs, notifier, autoServSock, deviceHelper, scripts) {
           $scope.logout = function () {
               Auth.logout().then(function () {
                   $window.location.reload();
@@ -11,6 +11,7 @@
           };
           $scope.areas = areas;
           $scope.notifs = notifs;
+          $scope.scripts = scripts;
 
           $scope.areNewNotifs = false;
           $scope.$watch('notifs.length', function (newLength) {
