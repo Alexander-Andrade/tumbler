@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422110959) do
+ActiveRecord::Schema.define(version: 20170501143638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,18 @@ ActiveRecord::Schema.define(version: 20170422110959) do
     t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
   end
 
+  create_table "scripts", force: :cascade do |t|
+    t.string   "name"
+    t.text     "code"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "started_at"
+    t.string   "status",      default: "stoped"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["user_id"], name: "index_scripts_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -94,4 +106,5 @@ ActiveRecord::Schema.define(version: 20170422110959) do
   add_foreign_key "devices", "users"
   add_foreign_key "geolocations", "automation_servers"
   add_foreign_key "notifications", "users"
+  add_foreign_key "scripts", "users"
 end

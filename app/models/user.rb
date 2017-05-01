@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :devices, through: :areas, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_one :default_area, -> { where(default:true) }, class_name: 'Area'
+  has_many :scripts, dependent: :destroy
+
 
   validates :automation_server, presence: true
   # Include default devise modules. Others available are:
