@@ -18,6 +18,7 @@ var app = angular.module('app',[
   'angular.vertilize',
   'xeditable',
   'toggle-switch',
+  'nya.bootstrap.select',
   'controllers',
   'services',
   'directives',

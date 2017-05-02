@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('controllers').
-    controller("scriptsCtrl", [ '$scope','scripts','Script','ModalService','notifier','notifs',
-      function($scope, scripts, Script, ModalService, notifier, notifs){
+    controller("scriptsCtrl", [ '$scope','scripts','Script','ModalService','notifier','notifs', 'areas','WizardHandler',
+      function($scope, scripts, Script, ModalService, notifier, notifs, areas, WizardHandler){
         $scope.scripts = scripts;
 
           $scope.addNewScript = function () {
@@ -11,15 +11,15 @@
                   templateUrl: "scripts/script-modal/script-modal.html",
                   controller: "scriptModalCtrl",
                   inputs:{
+                      areas: areas
                   }
               }).then(function(modal) {
                   modal.element.modal();
                   modal.close.then(function(script) {
-                    console.log(script);
+                    // console.log(script);
                   });
               });
           };
-
     }]);
 
 }());

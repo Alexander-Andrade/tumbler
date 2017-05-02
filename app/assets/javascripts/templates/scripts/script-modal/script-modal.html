@@ -7,21 +7,33 @@
             </div>
             <div class="modal-body">
 
-                <wizard on-finish="close(true)">
+                <wizard name="scripts_wizard" on-finish="close(true)">
+
                     <wz-step wz-title="Starting">
-                        <h1>This is the first step</h1>
-                        <p>Here you can use whatever you want. You can use other directives, binding, etc.</p>
-                        <input type="submit" wz-next value="Continue" />
+                        {{selectedArea}}
+                        <ol class="nya-bs-select" ng-model="selectedArea">
+                            <li nya-bs-option="area in areas">
+                                <a>
+                                    {{area.name}}
+                                </a>
+                            </li>
+                        </ol>
+
+
+                        <input type="submit" wz-next="showWizard()" value="Continue" class="btn btn-default" />
                     </wz-step>
+
                     <wz-step wz-title="Continuing">
                         <h1>Continuing</h1>
                         <p>You have continued here!</p>
                         <input type="submit" wz-next value="Go on" />
                     </wz-step>
+
                     <wz-step wz-title="More steps">
                         <p>Even more steps!!</p>
                         <input type="submit" wz-next value="Finish now" data-dismiss="modal"/>
                     </wz-step>
+
                 </wizard>
 
 

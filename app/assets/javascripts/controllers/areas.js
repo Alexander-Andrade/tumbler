@@ -5,7 +5,7 @@
     controller("areasCtrl", [ '$scope','areas','Area','ModalService','notifier','notifs',
       function($scope, areas, Area,ModalService, notifier, notifs) {
           $scope.areas = areas;
-
+          console.log("areas ctrl");
           $scope.addNewArea = function () {
               ModalService.showModal({
                   templateUrl: "areas/area-modal/area-modal.html",

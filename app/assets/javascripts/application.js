@@ -41,4 +41,5 @@
 //= require angular-vertilize/angular-vertilize
 //= require angular-xeditable/dist/js/xeditable
 //= require angular-bootstrap-toggle-switch/angular-toggle-switch
+//= require nya-bootstrap-select/dist/js/nya-bs-select
 //= require_tree .

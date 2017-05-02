@@ -29,12 +29,15 @@
         };
 
         info.dimmer = {
-            validate: validDimmerState
+            validate: validDimmerState,
+            ops: ['!=', '=', '>', '<']
         };
 
         info.toggle = {
             validate: validToggleState,
+            states: ['on', 'off'],
             convertFromStr: convertToggleStateFromStr,
+            ops: ['!=', '=']
         };
 
         info.num_value = {

@@ -1,16 +1,16 @@
 angular.module('mgo-angular-wizard').factory('WizardHandler', function() {
    var service = {};
-   
-   var wizards = {};
+
+   service.wizards = {};
    
    service.defaultName = "defaultWizard";
    
    service.addWizard = function(name, wizard) {
-       wizards[name] = wizard;
+       service.wizards[name] = wizard;
    };
    
    service.removeWizard = function(name) {
-       delete wizards[name];
+       delete service.wizards[name];
    };
    
    service.wizard = function(name) {
@@ -19,7 +19,7 @@ angular.module('mgo-angular-wizard').factory('WizardHandler', function() {
            nameToUse = service.defaultName;
        }
        
-       return wizards[nameToUse];
+       return service.wizards[nameToUse];
    };
    
    return service;

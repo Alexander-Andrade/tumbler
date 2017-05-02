@@ -4,6 +4,7 @@
     angular.module('services').factory('scriptHelper',[ 'Script', 'automationSocket', function(Script, automationSocket) {
         var helper = {};
 
+        // helper.
 
         return helper;
     }]);
