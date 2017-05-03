@@ -9,16 +9,16 @@
 
                 <wizard name="scripts_wizard" on-finish="close(true)">
 
-                    <wz-step wz-title="Starting">
-                        <form class="form-inline">
-                            <ol class="nya-bs-select" ng-model="model.model">
-                                <li nya-bs-option="area in areas" data-value="area">
-                                    <a>
-                                        {{area.name}}
-                                    </a>
-                                </li>
-                            </ol>
-                        </form>
+                    <wz-step wz-title="subj_for_cond">
+
+                        <ol class="nya-bs-select" ng-model="current()">
+                            <li nya-bs-option="area in areas" data-value="area">
+                                <a>
+                                    {{area.name}}
+                                </a>
+                            </li>
+                        </ol>
+
 
                         <input type="submit" ng-click="showWizard()" value="Click me" class="btn btn-default" />
                         <input type="submit" wz-next="showWizard()" value="Continue" class="btn btn-default" />

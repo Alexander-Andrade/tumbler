@@ -2,30 +2,29 @@
     'use strict';
 
     angular.module('controllers').
-    controller("scriptModalCtrl", [ '$scope','Script','areas','close','WizardHandler',
-        function($scope, Script, areas, close, WizardHandler) {
+    controller("scriptModalCtrl", [ '$scope', 'Script', 'areas', 'close', 'WizardHandler', 'scriptHelper',
+        function($scope, Script, areas, close, WizardHandler, scriptHelper) {
         $scope.areas = areas;
 
         $scope.wizard = {
-            model: areas[0]
-        };
-        $scope.showWizard = function () {
-            console.log($scope.model);
-        };
-        $scope.script = {
-                name: '',
-                code: '',
-                description: '',
-                started_at: ''
+            models: [new scriptHelper.DevControl(areas)],
+            item: 0,
+
+            current: function () {
+                return this.models[this.item]
+            }
         };
 
-            $scope.close = function(ok) {
-                var result = {};
-                if(ok){
-                    result =  $scope.script;
-                }
-                close(result, 500);
-            };
+        $scope.wizard = function () {
+            return WizardHandler.wizard('scripts_wizard');
+        };
+
+        $scope.close = function(ok) {
+            var result = {};
+            // if(ok){
+            // }
+            close(result, 500);
+        };
     }]);
 
 }());
