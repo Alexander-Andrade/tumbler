@@ -3,6 +3,7 @@
 
     angular.module('services').factory('controlsInfo', function() {
         var info = {};
+        var compList = ['=', '!=','<', '>'];
 
         var validDimmerState = function (state, ctrl) {
             return (state >= 0) && (state <= 100);
@@ -30,26 +31,28 @@
 
         info.dimmer = {
             validate: validDimmerState,
-            ops: ['!=', '=', '>', '<']
+            comp: compList,
         };
 
         info.toggle = {
             validate: validToggleState,
-            states: ['on', 'off'],
             convertFromStr: convertToggleStateFromStr,
-            ops: ['!=', '=']
+            comp: _.without(compList, '<', '>'),
         };
 
         info.num_value = {
-            validate: validNumValueState
+            validate: validNumValueState,
+            comp: compList
         };
 
         info.sym_value = {
-            validate: validSymValueState
+            validate: validSymValueState,
+            comp: _.without(compList, '<', '>')
         };
 
         info.switch_state = {
-            validate: validSwitchState
+            validate: validSwitchState,
+            comp: _.without(compList, '<', '>')
         };
 
         return info;

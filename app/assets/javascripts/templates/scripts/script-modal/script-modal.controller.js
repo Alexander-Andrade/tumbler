@@ -6,11 +6,11 @@
         function($scope, Script, areas, close, WizardHandler) {
         $scope.areas = areas;
 
-        $scope.selectedArea = {};
-
+        $scope.wizard = {
+            model: areas[0]
+        };
         $scope.showWizard = function () {
-            console.log($scope.selectedArea);
-            console.log(WizardHandler.wizard('scripts_wizard'));
+            console.log($scope.model);
         };
         $scope.script = {
                 name: '',
