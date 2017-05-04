@@ -9,26 +9,82 @@
 
                 <wizard name="scripts_wizard" on-finish="close(true)">
 
-                    <wz-step wz-title="subj_for_cond">
-
-                        <ol class="nya-bs-select" ng-model="current()">
-                            <li nya-bs-option="area in areas" data-value="area">
-                                <a>
-                                    {{area.name}}
-                                </a>
-                            </li>
-                        </ol>
-
-
-                        <input type="submit" ng-click="showWizard()" value="Click me" class="btn btn-default" />
-                        <input type="submit" wz-next="showWizard()" value="Continue" class="btn btn-default" />
+                    <wz-step wz-title="Select Subject">
+                        <form class="">
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="area">Area</label>
+                                    <div class="col-sm-10">
+                                        <ol class="nya-bs-select control-select form-control"  id="area" ng-model="subject.area" data-size="10">
+                                            <li nya-bs-option="area in areas" data-value="area">
+                                                <a>
+                                                    {{area.name}}
+                                                </a>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="device">Device</label>
+                                    <div class="col-sm-10">
+                                        <ol class="nya-bs-select control-select" id="device" ng-model="subject.device" data-size="10">
+                                            <li nya-bs-option="device in subject.area.devices" data-value="device">
+                                                <a>
+                                                    {{device.name}}
+                                                </a>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="control">Control</label>
+                                    <div class="col-sm-10">
+                                        <ol class="nya-bs-select control-select" id="control" ng-model="subject.control" data-size="10">
+                                            <li nya-bs-option="control in subject.device.controls" data-value="control">
+                                                <a>
+                                                    {{control.name}}
+                                                </a>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <!--<input type="submit" class="pull-right wizard-nav" wz-next="writeSubject()" value="Continue" class="btn btn-primary" />-->
+                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="beforeCompare()"></button>
+                                <!--<ul class="pager">-->
+                                    <!--<li class="previous">-->
+                                        <!--<a href="#">-->
+                                            <!--<span class="i fa fa-angle-left"></span>-->
+                                            <!--Previous-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                    <!--<li class="next">-->
+                                        <!--<a href="#">-->
+                                            <!--Next-->
+                                            <!--<span class="i fa fa-angle-right"></span>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            </div>
+                        </div>
                     </wz-step>
 
-                    <wz-step wz-title="Continuing">
-                        <h1>Continuing</h1>
-                        <p>You have continued here!</p>
-                        <input type="submit" wz-next value="Go on" />
+
+
+                    <wz-step wz-title="Compare">
+                        <div class="btn-group">
+                            <button ng-repeat="comp in compareList" type="button" class="btn btn-default" >{{comp}}</button>
+                        </div>
                     </wz-step>
+
+
 
                     <wz-step wz-title="More steps">
                         <p>Even more steps!!</p>
@@ -39,10 +95,10 @@
 
 
             </div>
-            <div class="modal-footer">
-                <button type="button" ng-click="close(true)" class="btn btn-primary" data-dismiss="modal">Yes</button>
-                <button type="button" ng-click="close(false)" class="btn btn-default" data-dismiss="modal">No</button>
-            </div>
+            <!--<div class="modal-footer">-->
+                <!--<button type="button" ng-click="close(true)" class="btn btn-primary" data-dismiss="modal">Yes</button>-->
+                <!--<button type="button" ng-click="close(false)" class="btn btn-default" data-dismiss="modal">No</button>-->
+            <!--</div>-->
         </div>
     </div>
 </div>
