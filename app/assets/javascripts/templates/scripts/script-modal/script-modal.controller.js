@@ -2,45 +2,55 @@
     'use strict';
 
     angular.module('controllers').
-    controller("scriptModalCtrl", [ '$scope', 'Script', 'areas', 'close', 'WizardHandler', 'scriptHelper','controlsInfo'
+    controller("scriptModalCtrl", [ '$scope', 'Script', 'areas', 'close', 'WizardHandler', 'scriptHelper','controlsInfo',
         function($scope, Script, areas, close, WizardHandler, scriptHelper, controlsInfo) {
         $scope.areas = areas;
-
-        $scope.tplt = scriptHelper.template();
-        // initial first condition
-        $scope.tplt.addCondition();
 
         $scope.wizard = function () {
             return WizardHandler.wizard('scripts_wizard');
         };
 
-        $scope.subject = {
-          area: areas[0],
-          device: null,
-          control: null
+        $scope.wlist = [
+            {
+                template: "if {"
+            },
+            {
+                area: null,
+                device: null,
+                control: null,
+                template: "{{area.id}}#{{device.dev_id}}#{{control.ctrl_id}}"
+            }
+        ];
+
+        $scope.wlist.get = function (i) {
+            if(i < 0){
+                return this[this.length+i];
+            }
+            return this[i];
         };
 
-        $scope.compareList = [];
-
-        $scope.$watch('subject.area', function (area) {
-            $scope.subject.device = area.devices[0];
-        });
-
-        $scope.$watch('subject.device', function (device) {
-            $scope.subject.control = device.controls[0];
-        });
 
         $scope.beforeCompare = function () {
-            $scope.tplt.condDevControl($scope.subject);
-            var ctrlType = $scope.subject.control.type.name;
-            $scope.tplt.condComp();
-            $scope.compareList = controlsInfo[ctrlType].comp;
+            var ctrlBundle = $scope.wlist.get(-1);
+            var ctrlType = ctrlBundle.control.type.name;
+
+            $scope.wlist.push({
+                compList: controlsInfo[ctrlType].comp,
+                comp: null,
+                template: "{{comp}}"
+            });
         };
 
-        $scope.pressCompareButton = function () {
-            $scope.tplt
+        $scope.selectInput = function () {
+            var ctrlBundle = $scope.wlist.get(-2);
+            var ctrlType = ctrlBundle.control.type.name;
+            $scope.showInput = true;
         };
 
+        $scope.selectControl = function () {
+            var ctrlBundle = $scope.wlist.get(-2);
+            $scope.showControl = true;
+        };
 
 
         $scope.close = function(ok) {

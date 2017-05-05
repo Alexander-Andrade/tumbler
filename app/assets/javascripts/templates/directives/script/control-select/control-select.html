@@ -1,0 +1,44 @@
+<form class="">
+    <div class="col-xs-4">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="area">Area</label>
+            <div class="col-sm-10">
+                <ol class="nya-bs-select control-select form-control"  id="area" ng-model="area" data-size="10">
+                    <li nya-bs-option="a in areas" data-value="a">
+                        <a>
+                            {{a.name}}
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="device">Device</label>
+            <div class="col-sm-10">
+                <ol class="nya-bs-select control-select" id="device" ng-model="device" data-size="10">
+                    <li nya-bs-option="d in area.devices" data-value="d">
+                        <a>
+                            {{d.name}}
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="control">Control</label>
+            <div class="col-sm-10">
+                <ol class="nya-bs-select control-select" id="control" ng-model="control" data-size="10">
+                    <li nya-bs-option="c in device.controls" data-value="control">
+                        <a>
+                            {{c.name}}
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</form>

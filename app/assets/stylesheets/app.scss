@@ -9,8 +9,29 @@
   width: 120px !important;
 }
 
+.wizard-content {
+  margin-top: 30px;
+}
+
 .wizard-nav {
   margin-top: 40px;
+}
+
+.center {
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+}
+
+.btn-group-wrap {
+  text-align: center;
+}
+
+div.btn-group {
+  margin: 0 auto;
+  text-align: center;
+  width: inherit;
+  display: inline-block;
 }
 
 //.modal-content{
