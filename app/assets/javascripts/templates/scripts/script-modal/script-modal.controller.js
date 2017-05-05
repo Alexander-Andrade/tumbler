@@ -42,14 +42,16 @@
         };
 
         $scope.selectInput = function () {
-            var ctrlBundle = $scope.wlist.get(-2);
-            var ctrlType = ctrlBundle.control.type.name;
-            $scope.showInput = true;
+            console.log('input');
+            // var ctrlBundle = $scope.wlist.get(-2);
+            // var ctrlType = ctrlBundle.control.type.name;
+            // $scope.showInput = true;
         };
 
         $scope.selectControl = function () {
-            var ctrlBundle = $scope.wlist.get(-2);
-            $scope.showControl = true;
+            console.log('control');
+            // var ctrlBundle = $scope.wlist.get(-2);
+            // $scope.showControl = true;
         };
 
 

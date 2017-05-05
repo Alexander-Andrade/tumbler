@@ -14,6 +14,9 @@
                 if($scope.disapear){
                     $scope.show = false;
                 }
+                if(!_.isUndefined($scope.onClickList) && !_.isEmpty($scope.onClickList)){
+                    $scope.onClickList[index]();
+                }
             };
         }];
 
@@ -22,7 +25,8 @@
             scope: {
                 list: '=',
                 model: '=',
-                disapear: '='
+                disapear: '=',
+                onClickList: '='
             },
             controller: ctrl
         };

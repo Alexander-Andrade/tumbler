@@ -52,8 +52,11 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div ng-init="input_btn='value from input'; dev_ctrl_btn='value from device control'"></div>
-                                <div class="center" btn-group list="[input_btn, dev_ctrl_btn]" model="mod" disapear="true"></div>
+                                <div class="center" btn-group list="[input_btn, dev_ctrl_btn]" model="input_from" on-click-list="[selectInput, selectControl]" disapear="true"></div>
                                 {{mod}}
+                                <div></div>
+
+
                             </div>
                         </div>
                         <div class="row">
