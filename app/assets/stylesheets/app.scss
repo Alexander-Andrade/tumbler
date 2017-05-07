@@ -21,6 +21,14 @@
   margin-top: 20px;
 }
 
+.text-ellipsis{
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  width:100%;
+  display:block;
+}
+
 
 //.center {
 //  margin: auto;
