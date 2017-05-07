@@ -34,8 +34,8 @@
         <div ng-repeat="control in device.controls">
             <div toggle-control ng-if="control.type.name=='toggle'" device="device" control="control" class="dev-control"></div>
             <div dimmer-control ng-if="control.type.name=='dimmer'" device="device" control="control" update-name="updateControlName(newName, control, device)" class="dev-control"></div>
-            <div sym-value-control ng-if="control.type.name=='sym_value'" device="device" control="control" class="dev-control"></div>
-            <div num-value-control ng-if="control.type.name=='num_value'" device="device" control="control" class="dev-control"></div>
+            <div sym-value-control ng-if="control.type.name=='sym_value'" device="device" control="control" class=""></div>
+            <div num-value-control ng-if="control.type.name=='num_value'" device="device" control="control" class=""></div>
             <div switch-state-control ng-if="control.type.name=='switch_state'" device="device" control="control" class="dev-control"></div>
         </div>
     </div>

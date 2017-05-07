@@ -9,7 +9,7 @@
 
                 <wizard name="scripts_wizard" on-finish="close(true)">
 
-                    <wz-step wz-title="Select Subject" class="wizard-content">
+                    <wz-step wz-title="Select Control" class="wizard-content">
 
                         <div class="row">
                             <div class="col-xs-12">
@@ -48,7 +48,7 @@
                         </div>
                     </wz-step>
 
-                    <wz-step wz-title="Compare to" class="wizard-content">
+                    <wz-step wz-title="To" class="wizard-content">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="center" btn-group list="wlist.get(-1).inputTypesList" selected-index="wlist.get(-1).selectedIndex"></div>
@@ -67,11 +67,10 @@
                             <div class="col-xs-12">
                                 <!--value from input-->
                                 <div ng-if="wlist.get(-2).selectedIndex==0">
-                                    {{wlist.get(-4).control.name}} {{wlist.get(-4).control.type}}
-                                    <div           ng-if="wlist.get(-4).control.type.name=='num_value'" touch-spin ng-model="wlist.get(-1).model"></div>
-                                    <input         ng-if="wlist.get(-4).control.type.name=='sym_value' || wlist.get(-4).control.type.name=='switch_state'" type="text" ng-model="wlist.get(-1).model">
-                                    <div           ng-if="wlist.get(-4).control.type.name=='dimmer'"   range-slider min="0" max="100" model-max="wlist.get(-1).model" pin-handle="min"></div>
-                                    <toggle-switch ng-if="wlist.get(-4).control.type.name=='toggle'"   ng-model="wlist.get(-1).model" class="switch-large pull-right"></toggle-switch>
+                                    <div           ng-if="wlist.get(-1).ctrlTypeName=='num_value'" touch-spin ng-model="wlist.get(-1).model"></div>
+                                    <input         ng-if="wlist.get(-1).ctrlTypeName=='sym_value' || wlist.get(-1).ctrlTypeName=='switch_state'" type="text" ng-model="wlist.get(-1).model">
+                                    <div           ng-if="wlist.get(-1).ctrlTypeName=='dimmer'"   range-slider min="0" max="100" model-max="wlist.get(-1).model" pin-handle="min"></div>
+                                    <toggle-switch ng-if="wlist.get(-1).ctrlTypeName=='toggle'"   ng-model="wlist.get(-1).model" class="switch-large pull-right"></toggle-switch>
                                 </div>
                                 <!--value from control select-->
                                 <div ng-if="wlist.get(-2).selectedIndex==1">
@@ -86,7 +85,7 @@
                         </div>
                     </wz-step>
 
-                    <wz-step wz-title="Add one more condition or add action" class="wizard-content">
+                    <wz-step wz-title="Go To" class="wizard-content">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div btn-group list="wlist.get(-1).keyWords" model="wlist.get(-1).keyWord" selected-index="index"></div>
@@ -100,10 +99,39 @@
                     </wz-step>
 
 
-                    <wz-step wz-title="More steps" class="wizard-content">
-                        <p>Even more steps!!</p>
-                        <input type="submit" wz-next value="Finish now" data-dismiss="modal"/>
+                    <wz-step wz-title="Assign To" class="wizard-content">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <control-select areas="areas" area="wlist.get(-1).area" device="wlist.get(-1).device" control="wlist.get(-1).control"></control-select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step7()"></button>
+                            </div>
+                        </div>
                     </wz-step>
+
+                    <wz-step wz-title="Value" class="wizard-content">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div           ng-if="wlist.get(-1).ctrlTypeName=='num_value'" touch-spin ng-model="wlist.get(-1).model"></div>
+                                <input         ng-if="wlist.get(-1).ctrlTypeName=='sym_value' || wlist.get(-1).ctrlTypeName=='switch_state'" type="text" ng-model="wlist.get(-1).model">
+                                <div           ng-if="wlist.get(-1).ctrlTypeName=='dimmer'"   range-slider min="0" max="100" model-max="wlist.get(-1).model" pin-handle="min"></div>
+                                <toggle-switch ng-if="wlist.get(-1).ctrlTypeName=='toggle'"   ng-model="wlist.get(-1).model" class="switch-large pull-right"></toggle-switch>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step8()"></button>
+                            </div>
+                        </div>
+                    </wz-step>
+
+                    <!--<wz-step wz-title="More steps" class="wizard-content">-->
+                        <!--<p>Even more steps!!</p>-->
+                        <!--<input type="submit" wz-next value="Finish now" data-dismiss="modal"/>-->
+                    <!--</wz-step>-->
 
                 </wizard>
 
