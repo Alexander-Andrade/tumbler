@@ -10,14 +10,9 @@
             $scope.switch = function (newState) {
                 if($scope.control.state != newState){
                     $scope.control.state = newState;
-                }
-            };
-
-            $scope.$watch('control.state', function (newValue, oldValue) {
-                if(!_.isUndefined(oldValue)) {
                     deviceHelper.sendDeviceChange($scope.control, $scope.device);
                 }
-            });
+            };
         }];
 
         var directive = {

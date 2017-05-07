@@ -7,11 +7,9 @@
         var ctrl = ['$scope', 'deviceHelper','deviceInfo', function($scope, deviceHelper, deviceInfo){
             $scope.info = deviceInfo.infoByLabel($scope.device.label);
 
-            $scope.$watch('control.state', function (newValue, oldValue) {
-                if(!_.isUndefined(oldValue)) {
-                    deviceHelper.sendDeviceChange($scope.control, $scope.device);
-                }
-            });
+            $scope.onChange = function () {
+                deviceHelper.sendDeviceChange($scope.control, $scope.device);
+            };
         }];
 
         var directive = {
