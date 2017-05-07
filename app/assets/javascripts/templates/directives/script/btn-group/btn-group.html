@@ -1,7 +1,7 @@
 <div ng-if="show" class="text-center">
     <div class="btn-group">
-        <button ng-repeat="item in list track by $index" ng-click="select(item, $index)" type="button" class="btn btn-lg" ng-class="{'btn-primary': $index==selected,
-                                                                                                                      'btn-default': $index!=selected}">{{item}}
+        <button ng-repeat="item in list track by $index" ng-click="select(item, $index)" type="button" class="btn btn-lg" ng-class="{'btn-primary': $index==selectedIndex,
+                                                                                                                      'btn-default': $index!=selectedIndex}">{{item}}
         </button>
     </div>
 </div>

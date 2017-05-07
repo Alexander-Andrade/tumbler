@@ -15,7 +15,7 @@
                             <div class="col-xs-12">
                                 <control-select areas="areas" area="wlist.get(-1).area" device="wlist.get(-1).device" control="wlist.get(-1).control"></control-select>
                                 <!--<input type="submit" class="pull-right wizard-nav" wz-next="writeSubject()" value="Continue" class="btn btn-primary" />-->
-                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="beforeCompare()"></button>
+                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step2()"></button>
                                 <!--<ul class="pager">-->
                                     <!--<li class="previous">-->
                                         <!--<a href="#">-->
@@ -38,12 +38,12 @@
                     <wz-step wz-title="Compare" class="wizard-content">
                         <div class="row">
                             <div class="col-xs-12">
-                                <div btn-group list="wlist.get(-1).compList" model="wlist.get(-1).comp"></div>
+                                <div btn-group list="wlist.get(-1).compList" model="wlist.get(-1).comp" selected-index="index"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next></button>
+                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step3()"></button>
                             </div>
                         </div>
                     </wz-step>
@@ -51,17 +51,12 @@
                     <wz-step wz-title="Value compare to" class="wizard-content">
                         <div class="row">
                             <div class="col-xs-12">
-                                <div ng-init="input_btn='value from input'; dev_ctrl_btn='value from device control'"></div>
-                                <div class="center" btn-group list="[input_btn, dev_ctrl_btn]" model="input_from" on-click-list="[selectInput, selectControl]" disapear="true"></div>
-                                {{mod}}
-                                <div></div>
-
-
+                                <div class="center" btn-group list="wlist.get(-1).inputTypesList" selected-index="wlist.get(-1).selectedIndex"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next></button>
+                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step4()"></button>
                             </div>
                         </div>
                     </wz-step>

@@ -5,17 +5,17 @@
     directive('btnGroup', function () {
 
         var ctrl = ['$scope', function ($scope) {
-            $scope.selected = null;
+            $scope.selectedIndex = null;
             $scope.show = true;
 
             $scope.select = function (item, index) {
-                $scope.model = item;
-                $scope.selected = index;
-                if($scope.disapear){
-                    $scope.show = false;
-                }
                 if(!_.isUndefined($scope.onClickList) && !_.isEmpty($scope.onClickList)){
                     $scope.onClickList[index]();
+                }
+                $scope.model = item;
+                $scope.selectedIndex = index;
+                if($scope.disapear){
+                    $scope.show = false;
                 }
             };
         }];
@@ -25,6 +25,7 @@
             scope: {
                 list: '=',
                 model: '=',
+                selectedIndex: '=',
                 disapear: '=',
                 onClickList: '='
             },

@@ -1,11 +1,11 @@
-<div class="row vertical-align">
+<div class="row vertical-align" >
     <div class="col-md-4 col-xs-4">
         <b>{{control.name}}</b>
     </div>
     <div class="col-md-8 col-xs-8">
-        <div class="btn-group">
+        <div class="btn-group pull-right">
             <button ng-repeat="name in control.type.optional.names track by $index"  ng-click="switch($index)" type="button" ng-class="{'btn-primary': $index==control.state,
-                                                                                                             'btn-default': $index!=control.state}" class="btn pull-right">{{name}}</button>
+                                                                                                               'btn-default': $index!=control.state}" class="btn pull-right">{{name}}</button>
         </div>
     </div>
 </div>

@@ -10,18 +10,7 @@
             return WizardHandler.wizard('scripts_wizard');
         };
 
-        $scope.wlist = [
-            {
-                template: "if {"
-            },
-            {
-                area: null,
-                device: null,
-                control: null,
-                template: "{{area.id}}#{{device.dev_id}}#{{control.ctrl_id}}"
-            }
-        ];
-
+        $scope.wlist = [];
         $scope.wlist.get = function (i) {
             if(i < 0){
                 return this[this.length+i];
@@ -29,8 +18,22 @@
             return this[i];
         };
 
+        $scope.step1 = function () {
+            $scope.wlist.push({
+                template: "if {"
+            });
 
-        $scope.beforeCompare = function () {
+            $scope.wlist.push({
+                area: null,
+                device: null,
+                control: null,
+                template: "{{area.id}}#{{device.dev_id}}#{{control.ctrl_id}}"
+            });
+        };
+
+        $scope.step1();
+
+        $scope.step2 = function () {
             var ctrlBundle = $scope.wlist.get(-1);
             var ctrlType = ctrlBundle.control.type.name;
 
@@ -41,19 +44,25 @@
             });
         };
 
-        $scope.selectInput = function () {
-            console.log('input');
-            // var ctrlBundle = $scope.wlist.get(-2);
-            // var ctrlType = ctrlBundle.control.type.name;
-            // $scope.showInput = true;
+        $scope.step3 = function () {
+            $scope.wlist.push({
+                inputTypesList: ['value from input', 'value from device control'],
+                selectedIndex: null
+            });
         };
-
-        $scope.selectControl = function () {
-            console.log('control');
-            // var ctrlBundle = $scope.wlist.get(-2);
-            // $scope.showControl = true;
+        
+        $scope.step4 = function () {
+            var choice = $scope.wlist.get(-1);
+            switch (choice.selectedIndex){
+                case 0:
+                    var ctrlBundle = $scope.wlist.get(-3);
+                    var ctrlType = ctrlBundle.control.type.name;
+                    break;
+                case 1:
+                    var ctrlBundle = $scope.wlist.get(-3);
+                    break;
+            }
         };
-
 
         $scope.close = function(ok) {
             var result = {};
