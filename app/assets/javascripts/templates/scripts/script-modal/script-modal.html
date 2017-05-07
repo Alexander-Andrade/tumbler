@@ -48,7 +48,7 @@
                         </div>
                     </wz-step>
 
-                    <wz-step wz-title="Value compare to" class="wizard-content">
+                    <wz-step wz-title="Compare to" class="wizard-content">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="center" btn-group list="wlist.get(-1).inputTypesList" selected-index="wlist.get(-1).selectedIndex"></div>
@@ -61,6 +61,43 @@
                         </div>
                     </wz-step>
 
+
+                    <wz-step wz-title="Value" class="wizard-content">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <!--value from input-->
+                                <div ng-if="wlist.get(-2).selectedIndex==0">
+                                    {{wlist.get(-4).control.name}} {{wlist.get(-4).control.type}}
+                                    <div           ng-if="wlist.get(-4).control.type.name=='num_value'" touch-spin ng-model="wlist.get(-1).model"></div>
+                                    <input         ng-if="wlist.get(-4).control.type.name=='sym_value' || wlist.get(-4).control.type.name=='switch_state'" type="text" ng-model="wlist.get(-1).model">
+                                    <div           ng-if="wlist.get(-4).control.type.name=='dimmer'"   range-slider min="0" max="100" model-max="wlist.get(-1).model" pin-handle="min"></div>
+                                    <toggle-switch ng-if="wlist.get(-4).control.type.name=='toggle'"   ng-model="wlist.get(-1).model" class="switch-large pull-right"></toggle-switch>
+                                </div>
+                                <!--value from control select-->
+                                <div ng-if="wlist.get(-2).selectedIndex==1">
+                                    <control-select areas="areas" area="wlist.get(-1).area" device="wlist.get(-1).device" control="wlist.get(-1).control"></control-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step5()"></button>
+                            </div>
+                        </div>
+                    </wz-step>
+
+                    <wz-step wz-title="Add one more condition or add action" class="wizard-content">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div btn-group list="wlist.get(-1).keyWords" model="wlist.get(-1).keyWord" selected-index="index"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step6()"></button>
+                            </div>
+                        </div>
+                    </wz-step>
 
 
                     <wz-step wz-title="More steps" class="wizard-content">

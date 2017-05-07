@@ -43,4 +43,5 @@
 //= require angular-bootstrap-toggle-switch/angular-toggle-switch
 //= require nya-bootstrap-select/dist/js/nya-bs-select
 //= require mustache/mustache
+//= require angular-touchspin/dist/angular-touchspin
 //= require_tree .

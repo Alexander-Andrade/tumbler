@@ -27,6 +27,7 @@
     "angular-xeditable": "latest",
     "angular-bootstrap-toggle-switch": "latest",
     "nya-bootstrap-select": "latest",
-    "mustache": "latest"
+    "mustache": "latest",
+    "angular-touchspin": "latest"
   }
 }

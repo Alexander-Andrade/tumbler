@@ -53,14 +53,40 @@
         
         $scope.step4 = function () {
             var choice = $scope.wlist.get(-1);
+            var ctrlBundle = $scope.wlist.get(-3);
+            var ctrlType = ctrlBundle.control.type.name;
             switch (choice.selectedIndex){
                 case 0:
-                    var ctrlBundle = $scope.wlist.get(-3);
-                    var ctrlType = ctrlBundle.control.type.name;
+                    $scope.wlist.push({
+                        ctrlType: ctrlType,
+                        value: null,
+                        template: "{{value}}"
+                    });
                     break;
                 case 1:
-                    var ctrlBundle = $scope.wlist.get(-3);
+                    $scope.wlist.push({
+                        area: null,
+                        device: null,
+                        control: null,
+                        template: "{{area.id}}#{{device.dev_id}}#{{control.ctrl_id}}"
+                    });
                     break;
+            }
+        };
+
+        $scope.step5 = function () {
+            $scope.wlist.push({
+                keyWords: ['and', 'or', 'then'],
+                keyWord: null,
+                template: "{{keyWord}}"
+            });
+        };
+
+        $scope.step6 = function () {
+            var choice = $scope.wlist.get(-1);
+            var wizard = $scope.wizard();
+            if(_.includes(['and', 'or'], choice.keyWord)) {
+                wizard.goTo(0);
             }
         };
 

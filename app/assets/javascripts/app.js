@@ -19,6 +19,7 @@ var app = angular.module('app',[
   'xeditable',
   'toggle-switch',
   'nya.bootstrap.select',
+  'nk.touchspin',
   'controllers',
   'services',
   'directives',
