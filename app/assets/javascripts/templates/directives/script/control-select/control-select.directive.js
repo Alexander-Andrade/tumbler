@@ -6,7 +6,7 @@
 
         var ctrl = ['$scope', function ($scope) {
             $scope.area = $scope.areas[0];
-            console.log("control select !!!");
+
             $scope.$watch('area', function (area) {
                 if(!_.isUndefined(area)) {
                     $scope.device = area.devices[0];

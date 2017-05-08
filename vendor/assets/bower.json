@@ -28,6 +28,7 @@
     "angular-bootstrap-toggle-switch": "latest",
     "nya-bootstrap-select": "latest",
     "mustache": "latest",
-    "angular-touchspin": "latest"
+    "angular-touchspin": "latest",
+    "angular-ui-codemirror": "latest"
   }
 }

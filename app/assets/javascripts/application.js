@@ -44,4 +44,6 @@
 //= require nya-bootstrap-select/dist/js/nya-bs-select
 //= require mustache/mustache
 //= require angular-touchspin/dist/angular-touchspin
+//= require codemirror/lib/codemirror
+//= require angular-ui-codemirror/ui-codemirror
 //= require_tree .

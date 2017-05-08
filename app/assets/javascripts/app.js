@@ -20,6 +20,7 @@ var app = angular.module('app',[
   'toggle-switch',
   'nya.bootstrap.select',
   'nk.touchspin',
+  'ui.codemirror',
   'controllers',
   'services',
   'directives',
