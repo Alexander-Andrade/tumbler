@@ -67,9 +67,8 @@
                                 </div>
                             </div>
                             <div class="row wizard-content">
-                                <div class="col-xs-12">
-                                    <control-input ng-if="isCurrentStep(4)" type="wlist.get(-1).ctrlTypeName" model="wlist.get(-1).model"></control-input>
-                                    {{wlist.get(-1).model}}
+                                <div class="col-xs-12 center-outer">
+                                    <control-input ng-if="isCurrentStep(4)" type="wlist.get(-1).ctrlTypeName" model="wlist.get(-1).model" class="center-inner"></control-input>
                                 </div>
                             </div>
                         </div>
@@ -135,8 +134,8 @@
                             </div>
                         </div>
                         <div class="row wizard-content">
-                            <div class="col-xs-12">
-                                <control-input ng-if="isCurrentStep(7)" type="wlist.get(-1).ctrlTypeName" model="wlist.get(-1).model"></control-input>
+                            <div class="col-xs-12 center-outer">
+                                <control-input ng-if="isCurrentStep(7)" type="wlist.get(-1).ctrlTypeName" model="wlist.get(-1).model" class="center-inner"></control-input>
                             </div>
                         </div>
                         <wizard-nav prev="stepBack()" next="step8()"></wizard-nav>

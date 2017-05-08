@@ -29,6 +29,19 @@
   display:block;
 }
 
+.center-outer {
+  width: 100%;
+  text-align: center;
+}
+
+.center-inner {
+  display: inline-block;
+}
+
+.centered{
+  display: table;
+  margin: 0 auto;
+}
 
 //.center {
 //  margin: auto;

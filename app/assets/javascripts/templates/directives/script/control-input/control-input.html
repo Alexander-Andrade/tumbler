@@ -1,4 +1,4 @@
 <div           ng-if="type=='num_value'" touch-spin ng-model="data.value"></div>
 <input         ng-if="type=='sym_value' || ctrlType =='switch_state'" type="text" ng-model="data.value">
-<div           ng-if="type=='dimmer'"   range-slider min="0" max="100" model-max="data.value" pin-handle="min"></div>
+<div           ng-if="type=='dimmer'"   range-slider min="0" max="100" model-max="data.value" pin-handle="min" style="min-width: 300px"></div>
 <toggle-switch ng-if="type=='toggle'"   ng-model="data.value" class="switch-large"></toggle-switch>

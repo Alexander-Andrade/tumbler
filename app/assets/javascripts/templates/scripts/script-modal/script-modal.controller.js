@@ -91,7 +91,7 @@
                         return ") {{keyWord}} (";
                     }
                     if(this.keyWord == 'then'){
-                        return ") } then begin ";
+                        return ") } \nthen\nbegin\n";
                     }
                 }
             });
@@ -133,7 +133,7 @@
                 ctrlTypeName: ctrlTypeName,
                 model: null,
                 template: function() {
-                    return "{{&model}};  end";
+                    return "{{&model}}; \nend";
                 }
             });
         };
