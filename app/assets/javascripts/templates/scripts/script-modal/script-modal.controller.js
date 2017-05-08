@@ -9,7 +9,9 @@
         $scope.wizard = function () {
             return WizardHandler.wizard('scripts_wizard');
         };
-        $scope.script = "";
+        $scope.script = {
+            code: ""
+        };
         $scope.wlist = [];
         $scope.wlist.get = function (i) {
             if(i < 0){
@@ -137,7 +139,7 @@
         };
 
         $scope.step8 = function () {
-            $scope.script = _.reduce($scope.wlist, function (result, elem) {
+            $scope.script.code = _.reduce($scope.wlist, function (result, elem) {
                 if(_.has(elem, 'template') && _.isFunction(elem.template)){
                     result += Mustache.render(elem.template(), elem);
                 }
@@ -154,7 +156,7 @@
         };
 
         $scope.finish = function () {
-            close($scope.script, 500);
+            close($scope.script.code, 500);
         };
 
         $scope.stepBack = function () {
