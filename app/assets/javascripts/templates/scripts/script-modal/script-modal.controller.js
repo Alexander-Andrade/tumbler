@@ -20,14 +20,18 @@
 
         $scope.step1 = function () {
             $scope.wlist.push({
-                template: "if {"
+                template: function () {
+                    return "if { ";
+                }
             });
 
             $scope.wlist.push({
                 area: null,
                 device: null,
                 control: null,
-                template: "{{area.id}}#{{device.dev_id}}#{{control.ctrl_id}}"
+                template:  function(){
+                    return "( {{device.dev_id}}#{{control.ctrl_id}}";
+                }
             });
         };
 
@@ -40,7 +44,7 @@
             $scope.wlist.push({
                 compList: controlsInfo[ctrlType].comp,
                 comp: null,
-                template: "{{comp}}"
+                template: function() { return this.comp }
             });
         };
 
@@ -59,8 +63,8 @@
                 case 0:
                     $scope.wlist.push({
                         ctrlTypeName: ctrlTypeName,
-                        value: null,
-                        template: "{{value}}"
+                        model: null,
+                        template: function(){ return "{{&model}}"; }
                     });
                     break;
                 case 1:
@@ -68,7 +72,7 @@
                         area: null,
                         device: null,
                         control: null,
-                        template: "{{area.id}}#{{device.dev_id}}#{{control.ctrl_id}}"
+                        template: function() { return "{{device.dev_id}}#{{control.ctrl_id}}" }
                     });
                     break;
             }
@@ -78,21 +82,39 @@
             $scope.wlist.push({
                 keyWords: ['and', 'or', 'then'],
                 keyWord: null,
-                template: "{{keyWord}}"
+                template: function() {
+                    if (_.includes(['and', 'or'], this.keyWord)) {
+                        return ") {{keyWord}} (";
+                    }
+                    if(this.keyWord == 'then'){
+                        return ") } then begin ";
+                    }
+                }
             });
         };
 
         $scope.step6 = function () {
             var choice = $scope.wlist.get(-1);
             var wizard = $scope.wizard();
-            $scope.wlist.push({
-                area: null,
-                device: null,
-                control: null,
-                template: "{{area.id}}#{{device.dev_id}}#{{control.ctrl_id}}"
-            });
             if(_.includes(['and', 'or'], choice.keyWord)) {
+                $scope.wlist.push({
+                    area: null,
+                    device: null,
+                    control: null,
+                    template: function() {
+                        return "{{device.dev_id}}#{{control.ctrl_id}} ";
+                    }
+                });
                 wizard.goTo(0);
+            }else if(choice.keyWord=='then'){
+                $scope.wlist.push({
+                    area: null,
+                    device: null,
+                    control: null,
+                    template: function() {
+                        return "{{device.dev_id}}#{{control.ctrl_id}} := ";
+                    }
+                });
             }
         };
         
@@ -101,20 +123,22 @@
             var ctrlTypeName = ctrlBundle.control.type.name;
             $scope.wlist.push({
                 ctrlTypeName: ctrlTypeName,
-                value: null,
-                template: "{{value}}"
+                model: null,
+                template: function() {
+                    return "{{&model}};  end";
+                }
             });
         };
 
         $scope.step8 = function () {
+            var script = _.reduce($scope.wlist, function (result, elem) {
+                if(_.has(elem, 'template') && _.isFunction(elem.template)){
+                    result += Mustache.render(elem.template(), elem);
+                }
+                return result;
+            }, "");
 
-        };
-
-        $scope.close = function(ok) {
-            var result = {};
-            // if(ok){
-            // }
-            close(result, 500);
+            close(script, 500);
         };
     }]);
 

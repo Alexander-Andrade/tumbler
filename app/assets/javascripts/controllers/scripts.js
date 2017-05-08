@@ -16,7 +16,7 @@
               }).then(function(modal) {
                   modal.element.modal();
                   modal.close.then(function(script) {
-                    // console.log(script);
+                    console.log(script);
                   });
               });
           };

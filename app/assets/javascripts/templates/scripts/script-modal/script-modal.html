@@ -51,7 +51,7 @@
                     <wz-step wz-title="To" class="wizard-content">
                         <div class="row">
                             <div class="col-xs-12">
-                                <div class="center" btn-group list="wlist.get(-1).inputTypesList" selected-index="wlist.get(-1).selectedIndex"></div>
+                                <div class="center" btn-group list="wlist.get(-1).inputTypesList" model="_" selected-index="wlist.get(-1).selectedIndex"></div>
                             </div>
                         </div>
                         <div class="row">
@@ -123,7 +123,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step8()"></button>
+                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step8()" data-dismiss="modal"></button>
                             </div>
                         </div>
                     </wz-step>
