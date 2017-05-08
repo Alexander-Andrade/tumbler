@@ -10,28 +10,12 @@
                 <wizard name="scripts_wizard" on-finish="close(true)">
 
                     <wz-step wz-title="Select Control" class="wizard-content">
-
                         <div class="row">
                             <div class="col-xs-12">
                                 <control-select areas="areas" area="wlist.get(-1).area" device="wlist.get(-1).device" control="wlist.get(-1).control"></control-select>
-                                <!--<input type="submit" class="pull-right wizard-nav" wz-next="writeSubject()" value="Continue" class="btn btn-primary" />-->
-                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step2()"></button>
-                                <!--<ul class="pager">-->
-                                    <!--<li class="previous">-->
-                                        <!--<a href="#">-->
-                                            <!--<span class="i fa fa-angle-left"></span>-->
-                                            <!--Previous-->
-                                        <!--</a>-->
-                                    <!--</li>-->
-                                    <!--<li class="next">-->
-                                        <!--<a href="#">-->
-                                            <!--Next-->
-                                            <!--<span class="i fa fa-angle-right"></span>-->
-                                        <!--</a>-->
-                                    <!--</li>-->
-                                <!--</ul>-->
                             </div>
                         </div>
+                        <wizard-nav prev="" next="step2()"></wizard-nav>
                     </wz-step>
 
 
@@ -41,11 +25,7 @@
                                 <div btn-group list="wlist.get(-1).compList" model="wlist.get(-1).comp" selected-index="index"></div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step3()"></button>
-                            </div>
-                        </div>
+                        <wizard-nav prev="stepBack()" next="step3()"></wizard-nav>
                     </wz-step>
 
                     <wz-step wz-title="To" class="wizard-content">
@@ -54,11 +34,7 @@
                                 <div class="center" btn-group list="wlist.get(-1).inputTypesList" model="_" selected-index="wlist.get(-1).selectedIndex"></div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step4()"></button>
-                            </div>
-                        </div>
+                        <wizard-nav prev="stepBack()" next="step4()"></wizard-nav>
                     </wz-step>
 
 
@@ -78,11 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step5()"></button>
-                            </div>
-                        </div>
+                        <wizard-nav prev="stepBack()" next="step5()"></wizard-nav>
                     </wz-step>
 
                     <wz-step wz-title="Go To" class="wizard-content">
@@ -91,25 +63,17 @@
                                 <div btn-group list="wlist.get(-1).keyWords" model="wlist.get(-1).keyWord" selected-index="index"></div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step6()"></button>
-                            </div>
-                        </div>
+                        <wizard-nav prev="stepBack()" next="step6()"></wizard-nav>
                     </wz-step>
 
 
                     <wz-step wz-title="Assign To" class="wizard-content">
                         <div class="row">
                             <div class="col-xs-12">
-                                <control-select areas="areas" area="wlist.get(-1).area" device="wlist.get(-1).device" control="wlist.get(-1).control"></control-select>
+                                <control-select ng-if="wlist.get(-1).step6 == true" areas="areas" area="wlist.get(-1).area" device="wlist.get(-1).device" control="wlist.get(-1).control"></control-select>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step7()"></button>
-                            </div>
-                        </div>
+                        <wizard-nav prev="stepBack()" next="step7()"></wizard-nav>
                     </wz-step>
 
                     <wz-step wz-title="Value" class="wizard-content">
@@ -121,17 +85,13 @@
                                 <toggle-switch ng-if="wlist.get(-1).ctrlTypeName=='toggle'"   ng-model="wlist.get(-1).model" class="switch-large pull-right"></toggle-switch>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <button type="button" class="pull-right wizard-nav btn btn-primary glyphicon glyphicon-chevron-right" wz-next="step8()" data-dismiss="modal"></button>
-                            </div>
-                        </div>
+                        <wizard-nav prev="stepBack()" next="step8()"></wizard-nav>
                     </wz-step>
 
-                    <!--<wz-step wz-title="More steps" class="wizard-content">-->
-                        <!--<p>Even more steps!!</p>-->
-                        <!--<input type="submit" wz-next value="Finish now" data-dismiss="modal"/>-->
-                    <!--</wz-step>-->
+                    <wz-step wz-title="More steps" class="wizard-content">
+                        <p>Even more steps!!</p>
+                        <input type="submit" wz-next="finish()" value="Finish now" data-dismiss="modal"/>
+                    </wz-step>
 
                 </wizard>
 

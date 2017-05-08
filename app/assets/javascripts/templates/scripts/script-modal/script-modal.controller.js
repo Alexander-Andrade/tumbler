@@ -9,7 +9,7 @@
         $scope.wizard = function () {
             return WizardHandler.wizard('scripts_wizard');
         };
-
+        $scope.script = "";
         $scope.wlist = [];
         $scope.wlist.get = function (i) {
             if(i < 0){
@@ -107,10 +107,14 @@
                 });
                 wizard.goTo(0);
             }else if(choice.keyWord=='then'){
+                var defaultArea = areas[0];
+                var defaultDevice = defaultArea.devices[0];
+                var defaultControl = defaultDevice.controls[0];
                 $scope.wlist.push({
-                    area: null,
-                    device: null,
-                    control: null,
+                    step6: true,
+                    area: defaultArea,
+                    device: defaultDevice,
+                    control: defaultControl,
                     template: function() {
                         return "{{device.dev_id}}#{{control.ctrl_id}} := ";
                     }
@@ -131,14 +135,21 @@
         };
 
         $scope.step8 = function () {
-            var script = _.reduce($scope.wlist, function (result, elem) {
+            $scope.script = _.reduce($scope.wlist, function (result, elem) {
                 if(_.has(elem, 'template') && _.isFunction(elem.template)){
                     result += Mustache.render(elem.template(), elem);
                 }
                 return result;
             }, "");
+        };
 
-            close(script, 500);
+        $scope.finish = function () {
+            close($scope.script, 500);
+        };
+
+        $scope.stepBack = function () {
+            $scope.wlist.pop();
+            $scope.wizard().previous();
         };
     }]);
 
