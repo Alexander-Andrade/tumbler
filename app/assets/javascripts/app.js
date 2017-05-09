@@ -57,10 +57,10 @@ app.config([ '$stateProvider','$urlRouterProvider', 'railsSerializerProvider',
                   notifs: notifs,
                   scripts: scripts
               },
-              onEnter: ['areas','Area', 'notifs', 'scripts', function (areas, Area, notifs, scripts) {
+              onEnter: ['areas','Area', 'scripts','Script', 'notifs','Notif', function (areas, Area, scripts, Script, notifs, Notif) {
                 Area.areas = areas;
-                console.log('onEnter');
-                console.log(Area.default());
+                Script.scripts = scripts;
+                Notif.notifs = notifs;
               }]
 
           }).state('dashboard', {

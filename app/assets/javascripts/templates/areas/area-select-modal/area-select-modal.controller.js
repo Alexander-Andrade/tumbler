@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('controllers').
-    controller("areaSelectModalCtrl", [ '$scope','areas','close',
-        function($scope, areas, close) {
-            $scope.areas = areas;
+    controller("areaSelectModalCtrl", [ '$scope','Area', 'close',
+        function($scope, Area, close) {
+            $scope.areas = Area.areas;
             $scope.selectedArea = {};
 
             $scope.close = function(ok) {

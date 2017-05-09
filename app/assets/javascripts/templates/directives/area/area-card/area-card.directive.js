@@ -5,7 +5,7 @@
     directive('areaCard', function () {
 
         var ctrl = ['$scope','Area', function ($scope, Area) {
-
+            $scope.areas = Area.areas;
             $scope.updateName = function (newName) {
                 var oldName = $scope.area.name;
                 $scope.area.name = newName;
@@ -27,8 +27,6 @@
         var directive = {
             templateUrl: 'directives/area/area-card/area-card.html',
             scope: {
-                areas: '=',
-                notifs: '=',
                 area: '=',
                 onEdit: '&',
                 onDestroy: '&',

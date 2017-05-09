@@ -17,11 +17,11 @@
             return device;
         };
 
-        helper.createDevice = function(hello_pack, areas) {
+        helper.createDevice = function(hello_pack) {
             var device = helper.buildDeviceFromPack(hello_pack);
 
             return new Device(device).create().then(function (response) {
-                var defaultArea = Area.defaultArea(areas);
+                var defaultArea = Area.default();
                 defaultArea.devices.unshift(response);
 
                 helper.setControlsValues(response, hello_pack.changes_packet);
@@ -59,10 +59,10 @@
         };
 
 
-        helper.findDeviceById = function (id, areas) {
-            var areaLen = areas.length;
+        helper.findDeviceById = function (id) {
+            var areaLen = Area.areas.length;
             for(var i = 0;i < areaLen; i++){
-                var device = _.find(areas[i].devices, {dev_id: id});
+                var device = _.find(Area.areas[i].devices, {dev_id: id});
                 if(!_.isUndefined(device)){
                     return device;
                 }
@@ -70,8 +70,8 @@
             return undefined;
         };
 
-        helper.applyChanges = function (changes_pack, areas) {
-            var device = helper.findDeviceById(changes_pack.dev_id, areas);
+        helper.applyChanges = function (changes_pack) {
+            var device = helper.findDeviceById(changes_pack.dev_id);
             if(!_.isUndefined(device)){
                 helper.setControlsValues(device, changes_pack);
             }

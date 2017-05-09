@@ -4,7 +4,9 @@
     angular.module('directives').
     directive('scriptsStatCard', function () {
 
-        var ctrl = ['$scope', function ($scope) {
+        var ctrl = ['$scope', 'scriptsStat', function ($scope, scriptsStat) {
+            $scope.running = scriptsStat.running;
+            $scope.stopped = scriptsStat.stopped;
         }];
 
         var directive =  {

@@ -9,12 +9,12 @@
                 return err_array;
             }),'; ');
             var reason = params.subject + ' ' + allErrors;
-            Notif.error(params.notifs, params.title + ': '+ reason, params.origin);
+            Notif.error(params.title + ': '+ reason, params.origin);
             Notification.error({message: reason, title: params.title, closeOnClick: true});
         };
 
         notifier.info = function (params) {
-            Notif.info(params.notifs, params.title + ': ' + params.subject, params.origin);
+            Notif.info(params.title + ': ' + params.subject, params.origin);
             Notification.info({message: params.subject, title: params.title, closeOnClick: true});
         };
 

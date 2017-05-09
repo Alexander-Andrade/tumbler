@@ -4,16 +4,15 @@
     angular.module('directives').
     directive('areaDeviceItem', function () {
 
-        var ctrl = ['$scope','deviceInfo', 'ModalService', 'notifier', function($scope, deviceInfo, ModalService, notifier){
+        var ctrl = ['$scope','deviceInfo', 'ModalService', 'Area','notifier', function($scope, deviceInfo, ModalService, Area, notifier){
             $scope.info = deviceInfo.infoByLabel($scope.device.label);
+            $scope.areas = Area.areas;
 
             $scope.changeArea = function () {
                 ModalService.showModal({
                     templateUrl: "areas/area-select-modal/area-select-modal.html",
                     controller: "areaSelectModalCtrl",
-                    inputs:{
-                        areas: $scope.areas
-                    }
+
                 }).then(function(modal) {
                     modal.element.modal();
                     modal.close.then(function(selectedArea) {
@@ -28,7 +27,6 @@
                                 notifier.info({
                                     title: 'Device has been moved to '+selectedArea.name,
                                     subject: $scope.device.name,
-                                    notifs: $scope.notifs,
                                     origin: 'user'
                                 });
                             }).catch(function (response) {
@@ -38,7 +36,6 @@
                                     title: "Can't move device to "+selectedArea.name,
                                     subject: $scope.device.name,
                                     errors: response.errors,
-                                    notifs: $scope.notifs,
                                     origin: 'user'
                                 });
                             });
@@ -81,12 +78,11 @@
                 });
             };
 
-            $scope.oldName = '';
             $scope.updateName = function (newName) {
-                $scope.oldName = $scope.device.name;
+               var oldName = $scope.device.name;
                 $scope.device.name = newName;
                 return $scope.device.update().then(function(){}).catch(function () {
-                    $scope.device.name = $scope.oldName;
+                    $scope.device.name = oldName;
                 });
             };
 
@@ -97,16 +93,17 @@
             };
 
             $scope.updateControlName = function (newName, control, device) {
+                var oldName = control.name;
                 control.name = newName;
-                return $scope.device.update()
+                return $scope.device.update().then(function(){}).catch(function () {
+                    control.name = oldName;
+                });
             };
         }];
 
         var directive = {
             templateUrl: 'directives/area/area-card/area-device-item/area-device-item.html',
             scope: {
-                areas: '=',
-                notifs: '=',
                 device: "="
             },
             replace: true,

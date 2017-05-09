@@ -10,12 +10,9 @@
             <div class="card-pf-item">
                 <span class="card-pf-item-text"><span class="fa fa-cog"></span> Scripts {{scripts.length}}</span>
             </div>
-            <div class="card-pf-item">
-                <span class="card-pf-item-text"><span class="fa fa-mobile"></span> Running {{5}}</span>
-            </div>
         </div>
-        <!--<p class="card-pf-info text-center"><strong>Devices types number: </strong>{{labels.length}}</p>-->
-        <!--<p ng-repeat="label in labels" class="card-pf-info text-center"><span class="{{devIcon(label)}}"></span><strong> {{label}}:</strong>{{devNumberByLabel[label]}}</p>-->
+        <p class="card-pf-info text-center"><span class="fa pficon-spinner2"></span><strong> Running: </strong>{{running}}</p>
+        <p class="card-pf-info text-center"><span class="fa fa-ban"></span><strong> Stopped: </strong>{{stopped}}</p>
     </div>
     <div class="card-pf-view-checkbox">
         <input type="checkbox">

@@ -2,11 +2,9 @@
     'use strict';
 
     angular.module('controllers').
-    controller("areasCtrl", [ '$scope','areas','Area','ModalService','notifier','notifs',
-      function($scope, areas, Area,ModalService, notifier, notifs) {
-          $scope.areas = areas;
-          console.log('default');
-          console.log(Area.default());
+    controller("areasCtrl", [ '$scope','Area','ModalService','notifier',
+      function($scope, Area, ModalService, notifier) {
+          $scope.areas = Area.areas;
           $scope.AreaTitle = function () {
             return pluralize('Area', $scope.areas.length, true);
           };
@@ -23,13 +21,10 @@
                   modal.element.modal();
                   modal.close.then(function(area) {
                       if(!_.isEmpty(area)){
-                          new Area(area).create().then(function (response) {
-                              response.devices = [];
-                              areas.push(response);
+                          Area.Create(new Area(area)).then(function (response) {
                               notifier.info({
                                   title:'Area created',
                                   subject: response.name,
-                                  notifs: notifs,
                                   origin: 'user'
                               });
                           }).catch(function (response) {
@@ -37,7 +32,6 @@
                                   title:'Fail to create area',
                                   subject: area.name,
                                   errors: response.data.errors,
-                                  notifs: notifs,
                                   origin: 'user'
                               });
 
@@ -48,26 +42,22 @@
           };
 
           var removeAreaOnly = function(area){
-              area.delete().then(function (response) {
-                  _.remove($scope.areas, { id: area.id });
-
+              Area.Delete(area).then(function (response) {
                   notifier.info({
                       title:'Area deleted',
                       subject: response.name,
-                      notifs:notifs
                   });
               }).catch(function (response) {
                   notifier.error({
                       title:'Fail to delete area',
                       subject: area.name,
                       error: response.data.errors.name,
-                      notifs: notifs
                   });
               });
           };
 
           $scope.destroyArea = function (area) {
-              var defaultArea = Area.defaultArea($scope.areas);
+              var defaultArea = Area.default();
               if (area.id != defaultArea.id) {
                   var nDevices = area.devices.length;
                   var nUpdated = 0;
@@ -85,7 +75,6 @@
                               notifier.info({
                                   title: 'Device has been moved to '+defaultArea.name,
                                   subject: device.name,
-                                  notifs: $scope.notifs,
                                   origin: 'user'
                               });
                           });
@@ -114,7 +103,6 @@
                                 notifier.info({
                                     title:'Area updated',
                                     subject: response.name,
-                                    notifs: notifs,
                                     origin: 'user'
                                 });
                           },function (response) {
@@ -122,7 +110,6 @@
                                     title:'Fail to update area',
                                     subject: area.name,
                                     errors: response.data.errors,
-                                    notifs: notifs,
                                     origin: 'user'
                                 });
                           });

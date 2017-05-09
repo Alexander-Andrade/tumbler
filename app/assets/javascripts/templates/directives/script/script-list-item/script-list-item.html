@@ -1,7 +1,7 @@
 <div class="list-group-item">
     <div class="list-view-pf-actions">
-        <button ng-show="script.status == 'stopped'" class="btn btn-default">Run</button>
-        <button ng-show="script.status == 'running'" class="btn btn-default">Stop</button>
+        <button ng-show="script.status == 'stopped'" ng-click="run()" class="btn btn-default">Run</button>
+        <button ng-show="script.status == 'running'" ng-click="stop()" class="btn btn-default">Stop</button>
         <div class="dropdown pull-right dropdown-kebab-pf">
             <button class="btn btn-link dropdown-toggle" type="button" id="dropdownKebabRight9" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <span class="fa fa-ellipsis-v"></span>

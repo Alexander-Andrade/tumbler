@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('services').factory('scriptHelper',[ 'Script', 'automationSocket','moment', 'controlsInfo', function(Script, automationSocket, moment, controlsInfo) {
+    angular.module('services').factory('scriptHelper',[ 'Script', 'automationSocket','moment', 'scriptsStat', function(Script, automationSocket, moment, scriptsStat) {
         var h = {};
 
         h.buildStartPack = function(script) {
@@ -23,7 +23,12 @@
         };
 
         h.sendStop = function () {
-
+            automationSocket.then(function (sock) {
+                var pack  = h.buildStopPack(script);
+                console.log(pack);
+                sock.send(pack);
+            }).catch(function () {
+            });
         };
 
         h.buildStopPack = function (script) {
@@ -35,6 +40,12 @@
             };
 
             return pack;
+        };
+
+        h.applyChanges = function (pack) {
+            var script = Script.find(pack.id);
+            script.status = pack.status;
+            scriptsStat.update(pack);
         };
 
         return h;

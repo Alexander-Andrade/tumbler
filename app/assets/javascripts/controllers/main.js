@@ -2,16 +2,16 @@
     'use strict';
 
     angular.module('controllers').
-    controller("mainCtrl", [ '$scope','$window', 'Auth', 'areas','notifs','notifier','autoServSock','deviceHelper','scripts',
-      function($scope, $window, Auth, areas, notifs, notifier, autoServSock, deviceHelper, scripts) {
+    controller("mainCtrl", [ '$scope','$window', 'Auth', 'Area','Notif','notifier','autoServSock','deviceHelper','Script', 'scriptHelper',
+      function($scope, $window, Auth, Area, Notif,notifier, autoServSock, deviceHelper, Script, scriptHelper) {
           $scope.logout = function () {
               Auth.logout().then(function () {
                   $window.location.reload();
               });
           };
-          $scope.areas = areas;
-          $scope.notifs = notifs;
-          $scope.scripts = scripts;
+          $scope.areas = Area.areas;
+          $scope.notifs = Notif.notifs;
+          $scope.scripts = Script.scripts;
 
           $scope.areNewNotifs = false;
           $scope.$watch('notifs.length', function (newLength) {
@@ -22,25 +22,34 @@
               var pack = JSON.parse(message.data);
               console.log(message.data);
 
-              if(pack.type == 'dev_hello'){
-                  deviceHelper.createDevice(pack, areas).then(function (response) {
-                      notifier.info({ title: 'New device',
-                          subject: response.name,
-                          notifs: notifs,
-                          origin: 'automation_server'
+              switch(pack.type){
+                  case 'dev_hello':
+                      deviceHelper.createDevice(pack).then(function (response) {
+                          notifier.info({ title: 'New device',
+                              subject: response.name,
+                              origin: 'automation_server'
+                          });
+                      }).catch(function (response) {
+                          console.log(response);
+                          notifier.error({ title: 'New device',
+                              subject: pack.dev_id,
+                              errors: response.errors,
+                              origin: 'automation_server'
+                          });
                       });
-                  }).catch(function (response) {
-                      console.log(response);
-                      notifier.error({ title: 'New device',
-                          subject: pack.dev_id,
-                          notifs: notifs,
-                          errors: response.errors,
-                          origin: 'automation_server'
-                      });
-                  });
-              }
-              else if(pack.type == 'dev_changes'){
-                  deviceHelper.applyChanges(pack, areas);
+                      break;
+
+                  case 'dev_changes':
+                      deviceHelper.applyChanges(pack);
+                      break;
+
+                  case 'script_changes':
+                      scriptHelper.applyChanges(pack);
+                      break;
+
+                  default:
+                      console.log(pack);
+                      break;
               }
           });
       }]);
