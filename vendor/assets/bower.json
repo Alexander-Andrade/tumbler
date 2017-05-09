@@ -29,6 +29,7 @@
     "nya-bootstrap-select": "latest",
     "mustache": "latest",
     "angular-touchspin": "latest",
-    "angular-ui-codemirror": "latest"
+    "angular-ui-codemirror": "latest",
+    "pluralize": "latest"
   }
 }

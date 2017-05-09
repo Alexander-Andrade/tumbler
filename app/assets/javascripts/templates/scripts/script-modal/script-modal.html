@@ -142,15 +142,34 @@
                     </wz-step>
 
                     <!--step 8 -->
-                    <wz-step wz-title="More steps" class="wizard-content">
+                    <wz-step wz-title="More steps">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="well">Script successfully created!</div>
+                                <form name="script_form">
+                                    <div class="form-group" ng-class="{'has-error': script_form.$invalid}">
+                                        <label class="col-sm-3 control-label" for="name">Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" ng-model="script.name" id="name" class="form-control" required autofocus>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-md-12">
+                                        <label class="col-sm-3 control-label" for="name">Description</label>
+                                        <div class="col-sm-9">
+                                            <a href="#" editable-textarea="script.description" e-label="Description">{{ script.description || 'Edit Description' }}</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <a href editable-textarea="script.code" e-rows="7" e-cols="40">
-                            <pre>{{ script.code }}</pre>
-                        </a>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href editable-textarea="script.code" e-rows="7" e-cols="40">
+                                    <pre>{{ script.code }}</pre>
+                                </a>
+                            </div>
+                        </div>
                         <input type="submit" wz-next="finish()" class="btn btn-primary btn-lg" value="Finish now" data-dismiss="modal"/>
                     </wz-step>
 

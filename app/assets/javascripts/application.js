@@ -46,4 +46,5 @@
 //= require angular-touchspin/dist/angular-touchspin
 //= require codemirror/lib/codemirror
 //= require angular-ui-codemirror/ui-codemirror
+//= require pluralize/pluralize
 //= require_tree .

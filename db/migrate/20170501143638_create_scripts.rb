@@ -6,7 +6,7 @@ class CreateScripts < ActiveRecord::Migration[5.0]
       t.text :description
       t.references :user, foreign_key: true
       t.datetime :started_at
-      t.string :status, default: 'stoped'
+      t.string :status, default: 'stopped'
 
       t.timestamps
     end

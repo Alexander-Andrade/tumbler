@@ -129,7 +129,6 @@
             var ctrlBundle = $scope.wlist.get(-1);
             var ctrlTypeName = ctrlBundle.control.type.name;
             $scope.wlist.push({
-                step7Input: true,
                 ctrlTypeName: ctrlTypeName,
                 model: null,
                 template: function() {
@@ -156,7 +155,7 @@
         };
 
         $scope.finish = function () {
-            close($scope.script.code, 500);
+            close($scope.script, 500);
         };
 
         $scope.stepBack = function () {
