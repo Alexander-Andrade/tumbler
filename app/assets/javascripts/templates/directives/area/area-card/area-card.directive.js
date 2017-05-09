@@ -6,12 +6,12 @@
 
         var ctrl = ['$scope','Area', function ($scope, Area) {
 
-            $scope.oldName = '';
             $scope.updateName = function (newName) {
-                $scope.oldName = $scope.area.name;
+                var oldName = $scope.area.name;
                 $scope.area.name = newName;
-                return $scope.area.update().then(function (response) {}).catch(function (response) {
-                    $scope.area.name = $scope.oldName;
+                return $scope.area.update().then(function (response) {
+                }).catch(function (response) {
+                    $scope.area.name = oldName;
                 });
             };
         }];
