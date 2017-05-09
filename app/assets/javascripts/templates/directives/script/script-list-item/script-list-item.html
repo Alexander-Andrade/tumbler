@@ -18,19 +18,18 @@
             <span class="fa fa-cogs list-view-pf-icon-sm"></span>
         </div>
         <div class="list-view-pf-body">
-            <div class="list-view-pf-description">
-                <div class="list-group-item-heading">
-                    {{script.name}}
-                </div>
-                <div class="list-group-item-text">
-                    <a href editable-text="script.description" onbeforesave="updateDescription($data)"  e-label="Script Description">{{ script.description }}</a>
-                </div>
+
+            <div class="col-md-4 col-sm-4">
+                <a href editable-text="script.name" onbeforesave="updateName($data)"><strong>{{ script.name }}</strong></a>
             </div>
-            <div class="list-view-pf-additional-info">
-                <div class="list-view-pf-additional-info-item">
-                    <strong>status: </strong> <span ng-class="{'fa fa-spinner fa-spin': script.status=='running',
-                                                               'fa fa-ban': script.status== 'stopped'}"></span>
-                </div>
+            <div class="col-md-6 col-sm-6">
+                <a href editable-textarea="script.description" onbeforesave="updateDescription($data)">
+                <span class="text-ellipsis">{{ script.description }}</span>
+                </a>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <strong>status: </strong> <span ng-class="{'fa fa-spinner fa-spin': script.status=='running',
+                'fa fa-ban': script.status== 'stopped'}"></span>
             </div>
         </div>
     </div>

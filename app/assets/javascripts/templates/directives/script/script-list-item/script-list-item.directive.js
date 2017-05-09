@@ -6,8 +6,13 @@
 
         var ctrl = ['$scope', function ($scope) {
 
-            $scope.editName = function () {
-
+            $scope.updateName = function (name) {
+                var oldName = $scope.script.name;
+                $scope.script.name = name;
+                $scope.script.update().then(function (response) {
+                }).catch(function (response) {
+                    $scope.script.description = oldName;
+                });
             };
 
             $scope.updateDescription = function (description) {
