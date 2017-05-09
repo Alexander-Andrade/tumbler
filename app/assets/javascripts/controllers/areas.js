@@ -5,7 +5,8 @@
     controller("areasCtrl", [ '$scope','areas','Area','ModalService','notifier','notifs',
       function($scope, areas, Area,ModalService, notifier, notifs) {
           $scope.areas = areas;
-
+          console.log('default');
+          console.log(Area.default());
           $scope.AreaTitle = function () {
             return pluralize('Area', $scope.areas.length, true);
           };

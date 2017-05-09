@@ -12,8 +12,14 @@
                 })
             });
 
+            resource.areas = [];
+
             resource.defaultArea = function (areas) {
                 return _.find(areas, {default: true});
+            };
+
+            resource.default = function () {
+                return _.find(resource.areas, {default: true});
             };
 
             return resource;

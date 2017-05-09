@@ -56,7 +56,13 @@ app.config([ '$stateProvider','$urlRouterProvider', 'railsSerializerProvider',
                   autoServSock: 'automationSocket',
                   notifs: notifs,
                   scripts: scripts
-              }
+              },
+              onEnter: ['areas','Area', 'notifs', 'scripts', function (areas, Area, notifs, scripts) {
+                Area.areas = areas;
+                console.log('onEnter');
+                console.log(Area.default());
+              }]
+
           }).state('dashboard', {
               parent: 'app',
               url: '/dashboard',
