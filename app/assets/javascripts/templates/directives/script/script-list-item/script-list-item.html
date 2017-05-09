@@ -23,7 +23,7 @@
                     {{script.name}}
                 </div>
                 <div class="list-group-item-text">
-                    {{script.description}}
+                    <a href editable-text="script.description" onbeforesave="updateDescription($data)"  e-label="Script Description">{{ script.description }}</a>
                 </div>
             </div>
             <div class="list-view-pf-additional-info">

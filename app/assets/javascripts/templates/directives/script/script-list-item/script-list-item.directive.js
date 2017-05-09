@@ -10,8 +10,13 @@
 
             };
 
-            $scope.editDescription = function () {
-
+            $scope.updateDescription = function (description) {
+                var oldDescription = $scope.script.description;
+                $scope.script.description = description;
+                $scope.script.update().then(function (response) {
+                }).catch(function (response) {
+                    $scope.script.description = oldDescription;
+                });
             };
         }];
 
