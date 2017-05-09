@@ -132,12 +132,42 @@
                 ctrlTypeName: ctrlTypeName,
                 model: null,
                 template: function() {
-                    return "{{&model}}; \nend";
+                    return "{{&model}};";
                 }
             });
         };
 
         $scope.step8 = function () {
+            $scope.wlist.push({
+                keyWords: ['continue', 'end'],
+                keyWord: null,
+                template: function() {
+                    if (this.keyWord == 'continue') {
+                        return "\n";
+                    }
+                    if(this.keyWord == 'end'){
+                        return "\nend";
+                    }
+                }
+            });
+        };
+
+        $scope.step9 = function () {
+            var choice = $scope.wlist.get(-1);
+            if(choice.keyWord=='continue'){
+                var ctrlDefaults = $scope.defaultsForControl();
+                $scope.wlist.push({
+                    step6: true,
+                    area: ctrlDefaults.area,
+                    device: ctrlDefaults.device,
+                    control: ctrlDefaults.control,
+                    template: function() {
+                        return "{{device.dev_id}}#{{control.ctrl_id}} := ";
+                    }
+                });
+                $scope.wizard().goTo(5);
+            }
+
             $scope.script.code = _.reduce($scope.wlist, function (result, elem) {
                 if(_.has(elem, 'template') && _.isFunction(elem.template)){
                     result += Mustache.render(elem.template(), elem);

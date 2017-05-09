@@ -142,7 +142,25 @@
                     </wz-step>
 
                     <!--step 8 -->
-                    <wz-step wz-title="More steps">
+                    <wz-step wz-title="Go To">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="well">
+                                    <p>Choose <b>continue</b> to do one more action</p>
+                                    <p>Choose <b>end</b> go to finish step</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row wizard-content">
+                            <div class="col-xs-12">
+                                <div btn-group list="wlist.get(-1).keyWords" model="wlist.get(-1).keyWord" selected-index="index"></div>
+                            </div>
+                        </div>
+                        <wizard-nav prev="stepBack()" next="step9()"></wizard-nav>
+                    </wz-step>
+
+                    <!--step 9 -->
+                    <wz-step wz-title="Final">
                         <div class="row">
                             <div class="col-md-12">
                                 <form name="script_form">
