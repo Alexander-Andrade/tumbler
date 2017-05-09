@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('controllers').
-    controller("scriptsCtrl", [ '$scope','scripts','Script','ModalService','notifier','notifs', 'areas','WizardHandler',
-      function($scope, scripts, Script, ModalService, notifier, notifs, areas, WizardHandler){
+    controller("scriptsCtrl", [ '$scope','scripts','Script','ModalService','notifier','notifs',
+      function($scope, scripts, Script, ModalService, notifier, notifs){
         $scope.scripts = scripts;
 
           $scope.ScriptTitle = function () {
