@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('controllers').
-    controller("scriptsCtrl", [ '$scope','scripts','Script','ModalService','notifier','notifs',
-      function($scope, scripts, Script, ModalService, notifier, notifs){
+    controller("scriptsCtrl", [ '$scope','scripts','Script','ModalService','notifier','notifs', 'areas',
+      function($scope, scripts, Script, ModalService, notifier, notifs, areas){
         $scope.scripts = scripts;
 
           $scope.ScriptTitle = function () {
@@ -37,6 +37,26 @@
                               origin: 'user'
                           });
                       });
+                  });
+              });
+          };
+
+          $scope.destroy = function (item) {
+              item.delete().then(function (response) {
+                  _.remove(scripts, {id: item.id});
+                  notifier.info({
+                      title:'Script deleted',
+                      subject: item.name,
+                      notifs: notifs,
+                      origin: 'user'
+                  });
+              }).catch(function (response) {
+                  notifier.error({
+                      title:'Fail to delete script',
+                      subject: item.name,
+                      errors: response.data.errors,
+                      notifs: notifs,
+                      origin: 'user'
                   });
               });
           };
