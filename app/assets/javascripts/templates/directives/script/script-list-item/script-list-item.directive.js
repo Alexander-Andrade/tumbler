@@ -4,7 +4,7 @@
     angular.module('directives').
     directive('scriptListItem', function () {
 
-        var ctrl = ['$scope', function ($scope) {
+        var ctrl = ['$scope','scriptHelper', function ($scope, scriptHelper) {
 
             $scope.updateName = function (name) {
                 var oldName = $scope.script.name;
@@ -22,6 +22,14 @@
                 }).catch(function (response) {
                     $scope.script.description = oldDescription;
                 });
+            };
+
+            $scope.run = function () {
+                scriptHelper.sendStart($scope.script);
+            };
+
+            $scope.stop = function () {
+                scriptHelper.sendStop($scope.script);
             };
         }];
 

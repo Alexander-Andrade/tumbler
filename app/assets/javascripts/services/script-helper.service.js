@@ -22,7 +22,7 @@
             });
         };
 
-        h.sendStop = function () {
+        h.sendStop = function (script) {
             automationSocket.then(function (sock) {
                 var pack  = h.buildStopPack(script);
                 console.log(pack);
