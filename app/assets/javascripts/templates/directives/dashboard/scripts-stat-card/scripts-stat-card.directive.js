@@ -10,7 +10,7 @@
         }];
 
         var directive =  {
-            templateUrl: 'directives/scripts-stat-card/scripts-stat-card.html',
+            templateUrl: 'directives/dashboard/scripts-stat-card/scripts-stat-card.html',
             replace: true,
             scope: {
                 scripts: '='

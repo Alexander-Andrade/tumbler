@@ -20,7 +20,7 @@
         }];
 
         var directive =  {
-            templateUrl: 'directives/automation-server-card/automation-server-card.html',
+            templateUrl: 'directives/dashboard/automation-server-card/automation-server-card.html',
             replace: true,
             scope: {
                 automationServer: '=',

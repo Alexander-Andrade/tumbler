@@ -27,7 +27,7 @@
         }];
 
         var directive =  {
-            templateUrl: 'directives/dev-stat-card/dev-stat-card.html',
+            templateUrl: 'directives/dashboard/dev-stat-card/dev-stat-card.html',
             replace: true,
             scope: {
             },

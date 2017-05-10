@@ -17,7 +17,7 @@
         }];
 
         var directive =  {
-            templateUrl: 'directives/weather-card/weather-card.html',
+            templateUrl: 'directives/dashboard/weather-card/weather-card.html',
             replace: true,
             scope: {
                 automationServer: '='
