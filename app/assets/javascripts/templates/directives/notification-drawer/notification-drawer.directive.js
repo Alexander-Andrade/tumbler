@@ -5,7 +5,7 @@
     directive('notificationDrawer', function () {
 
         var ctrl = ['$scope','Notif', function ($scope, Notif) {
-
+            $scope.notifs = Notif.notifs;
             $scope.deleteAll = function () {
                 var promises = Notif.deleteAll($scope.notifs);
             };
@@ -17,7 +17,6 @@
             templateUrl: 'directives/notification-drawer/notification-drawer.html',
             replace: true,
             scope: {
-                notifs: '='
             },
             controller: ctrl
         };
