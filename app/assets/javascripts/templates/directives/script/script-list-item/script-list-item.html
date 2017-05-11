@@ -23,8 +23,8 @@
                 <a href editable-text="script.name" onbeforesave="updateName($data)" class="text-ellipsis no-underline"><strong>{{ script.name }}</strong></a>
             </div>
             <div class="col-md-6 col-sm-6">
-                <a href editable-textarea="script.description" onbeforesave="updateDescription($data)">
-                <span class="text-ellipsis">{{ script.description }}</span>
+                <a href editable-textarea="script.description" onbeforesave="updateDescription($data)" e-rows="7" class="no-underline">
+                <span class="">{{ script.description || 'no description' }}</span>
                 </a>
             </div>
             <div class="col-md-2 col-sm-2">
