@@ -45,6 +45,9 @@
         h.applyChanges = function (pack) {
             var script = Script.find(pack.id);
             script.status = pack.status;
+            if(script.status == "stopped"){
+                script.start_time = "";
+            }
             scriptsStat.update(pack);
         };
 

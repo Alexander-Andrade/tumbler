@@ -4,7 +4,7 @@
     angular.module('directives').
     directive('scriptListItem', function () {
 
-        var ctrl = ['$scope','scriptHelper', function ($scope, scriptHelper) {
+        var ctrl = ['$scope','scriptHelper', 'ModalService', function ($scope, scriptHelper, ModalService) {
 
             $scope.updateName = function (name) {
                 var oldName = $scope.script.name;
@@ -24,12 +24,28 @@
                 });
             };
 
+            $scope.shedule = function () {
+                ModalService.showModal({
+                    templateUrl: "scripts/shedule-modal/shedule-modal.html",
+                    controller: "sheduleModalCtrl",
+                }).then(function(modal) {
+                    modal.element.modal();
+                    modal.close.then(function(date) {
+                        if(!_.isEmpty(date)){
+                           $scope.script.start_time = date;
+                           $scope.run();
+                        }
+                    });
+                });
+            };
+
             $scope.run = function () {
                 scriptHelper.sendStart($scope.script);
             };
 
             $scope.stop = function () {
                 scriptHelper.sendStop($scope.script);
+
             };
         }];
 
