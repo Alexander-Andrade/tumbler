@@ -12,7 +12,8 @@
             templateUrl: 'directives/area/area-card/area-device-item/sym-value-control/sym-value-control.html',
             scope: {
                 device: "=",
-                control: '='
+                control: '=',
+                updateName: '&'
             },
             controller: ctrl
         };

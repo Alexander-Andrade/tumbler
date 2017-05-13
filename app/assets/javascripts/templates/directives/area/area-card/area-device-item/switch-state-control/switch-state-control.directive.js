@@ -19,7 +19,8 @@
             templateUrl: 'directives/area/area-card/area-device-item/switch-state-control/switch-state-control.html',
             scope: {
                 device: "=",
-                control: '='
+                control: '=',
+                updateName: '&'
             },
             controller: ctrl
         };

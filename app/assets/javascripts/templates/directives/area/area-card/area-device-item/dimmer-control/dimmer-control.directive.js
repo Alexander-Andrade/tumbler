@@ -16,7 +16,8 @@
             templateUrl: 'directives/area/area-card/area-device-item/dimmer-control/dimmer-control.html',
             scope: {
                 device: "=",
-                control: '='
+                control: '=',
+                updateName: '&'
             },
             controller: ctrl
         };

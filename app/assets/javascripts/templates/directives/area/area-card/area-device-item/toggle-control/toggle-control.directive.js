@@ -16,7 +16,8 @@
             templateUrl: 'directives/area/area-card/area-device-item/toggle-control/toggle-control.html',
             scope: {
                 device: "=",
-                control: '='
+                control: '=',
+                updateName: '&'
             },
             controller: ctrl
         };

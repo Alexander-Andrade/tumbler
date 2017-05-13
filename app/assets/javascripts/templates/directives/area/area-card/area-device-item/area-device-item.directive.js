@@ -92,7 +92,7 @@
                 $scope.show = !$scope.show;
             };
 
-            $scope.updateControlName = function (newName, control, device) {
+            $scope.updateControlName = function (newName, control) {
                 var oldName = control.name;
                 control.name = newName;
                 return $scope.device.update().then(function(){}).catch(function () {
