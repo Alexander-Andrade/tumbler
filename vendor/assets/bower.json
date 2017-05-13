@@ -6,15 +6,10 @@
     "angular-resource": "latest",
     "angular-devise": "latest",
     "angular-rangeslider": "latest",
-    "seiyria-bootstrap-slider": "latest",
-    "angular-flash-alert": "latest",
-    "angular-ui-switch": "latest",
     "angular-modal-service": "latest",
     "angular-bootstrap": "latest",
     "angular-wizard": "latest",
-    "angularjs-slider": "latest",
     "lodash": "latest",
-    "angular-spinner": "latest",
     "angular-websocket": "latest",
     "matchheight": "latest",
     "c3": "latest",
@@ -30,6 +25,8 @@
     "mustache": "latest",
     "angular-touchspin": "latest",
     "angular-ui-codemirror": "latest",
-    "pluralize": "latest"
+    "pluralize": "latest",
+    "angular-slick": "latest",
+    "moment-picker": "latest"
   }
 }

@@ -39,7 +39,11 @@
 //= require nya-bootstrap-select/dist/js/nya-bs-select
 //= require mustache/mustache
 //= require angular-touchspin/dist/angular-touchspin
-//= require codemirror/lib/codemirror
-//= require angular-ui-codemirror/ui-codemirror
+// require codemirror/lib/codemirror
+// require angular-ui-codemirror/ui-codemirror
 //= require pluralize/pluralize
+// require jquery.slick
+// require slick-carousel/slick/slick
+// require angular-slick/dist/slick
+//= require moment-picker/dist/angular-moment-picker
 //= require_tree .

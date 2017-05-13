@@ -49,7 +49,7 @@
                         </div>
                         <div class="row wizard-content">
                             <div class="col-xs-12">
-                                <div class="center" btn-group list="wlist.get(-1).inputTypesList" model="_" selected-index="wlist.get(-1).selectedIndex"></div>
+                                <div class="center" wizard-alternatives list="wlist.get(-1).inputTypesList" model="_" selected-index="wlist.get(-1).selectedIndex"></div>
                             </div>
                         </div>
                         <wizard-nav prev="stepBack()" next="step4()"></wizard-nav>
@@ -153,7 +153,7 @@
                         </div>
                         <div class="row wizard-content">
                             <div class="col-xs-12">
-                                <div btn-group list="wlist.get(-1).keyWords" model="wlist.get(-1).keyWord" selected-index="index"></div>
+                                <div wizard-alternatives list="wlist.get(-1).keyWords" model="wlist.get(-1).keyWord" selected-index="index"></div>
                             </div>
                         </div>
                         <wizard-nav prev="stepBack()" next="step9()"></wizard-nav>

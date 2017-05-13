@@ -16,7 +16,7 @@ var app = angular.module('app',[
   'toggle-switch',
   'nya.bootstrap.select',
   'nk.touchspin',
-  'ui.codemirror',
+  'moment-picker',
   'controllers',
   'services',
   'directives',

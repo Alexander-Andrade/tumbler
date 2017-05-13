@@ -5,7 +5,27 @@
     controller("scriptsCtrl", [ '$scope', 'Script','ModalService','notifier', 'Area',
       function($scope, Script, ModalService, notifier, Area){
         $scope.scripts = Script.scripts;
-
+        $scope.currentIndex = 3;
+        $scope.responsive =  [
+              {
+                  breakpoint: 768,
+                  settings: {
+                      arrows: false,
+                      centerMode: true,
+                      centerPadding: '40px',
+                      slidesToShow: 3
+                  }
+              },
+              {
+                  breakpoint: 480,
+                  settings: {
+                      arrows: false,
+                      centerMode: true,
+                      centerPadding: '40px',
+                      slidesToShow: 1
+                  }
+              }
+          ];
           $scope.ScriptTitle = function () {
               return pluralize('Script', $scope.scripts.length, true);
           };

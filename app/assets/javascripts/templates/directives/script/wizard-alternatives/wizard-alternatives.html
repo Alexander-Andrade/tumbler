@@ -1,0 +1,15 @@
+<div class="list-group list-view-pf list-view-pf-view">
+    <div ng-repeat="item in list track by $index" ng-click="select(item, $index)" class="list-group-item" ng-class="{'active': $index==selectedIndex }">
+        <div class="list-group-item-header">
+            <div class="list-view-pf-main-info">
+                <div class="list-view-pf-body">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h3><b>{{item}}</b></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

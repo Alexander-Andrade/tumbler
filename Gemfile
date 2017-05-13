@@ -48,6 +48,7 @@ gem 'responders'
 # icons
 gem 'rails-assets-ionicons', source: 'https://rails-assets.org'
 gem 'rails-assets-devicons', source: 'https://rails-assets.org'
+gem 'jquery-slick-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
