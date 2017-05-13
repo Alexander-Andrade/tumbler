@@ -6,8 +6,8 @@
                 <h4 class="modal-title">Shedule</h4>
             </div>
             <div class="modal-body">
-                <form name="form">
-                    <div class="form-group" ng-class="{'has-error': area_form.$invalid}">
+                <form name="shedule_form">
+                    <div class="form-group" ng-class="{'has-error': shedule_form.$invalid}">
                         <label class="col-sm-3 control-label" for="date">Date and Time</label>
                         <div class="col-sm-9">
                             <input class="form-control"
@@ -22,10 +22,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" ng-disabled="area_form.$invalid" ng-click="close(true)" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                <button type="button" ng-disabled="shedule_form.$invalid" ng-click="close(true)" class="btn btn-primary" data-dismiss="modal">Yes</button>
                 <button type="button" ng-click="close(false)" class="btn btn-default" data-dismiss="modal">No</button>
-            </div>
-
             </div>
         </div>
     </div>
