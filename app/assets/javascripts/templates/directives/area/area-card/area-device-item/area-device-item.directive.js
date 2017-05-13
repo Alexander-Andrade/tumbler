@@ -95,7 +95,8 @@
             $scope.updateControlName = function (newName, control) {
                 var oldName = control.name;
                 control.name = newName;
-                return $scope.device.update().then(function(){}).catch(function () {
+                return $scope.device.update().then(function(){}).catch(function (response) {
+                    console.log(response);
                     control.name = oldName;
                 });
             };
