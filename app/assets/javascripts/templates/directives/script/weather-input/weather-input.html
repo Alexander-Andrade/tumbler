@@ -1,0 +1,33 @@
+<form class="">
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" for="temp">Temperature</label>
+        <div class="col-sm-2">
+            <input type="checkbox" ng-model="enableTemp">
+        </div>
+        <div class="col-sm-7">
+            <div touch-spin id="temp" ng-model="temperature" on-change="tempChanged(value)"  disabled="!enableTemp"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" for="humid">Humidity</label>
+        <div class="col-sm-2">
+            <input type="checkbox" ng-model="enableHumid">
+        </div>
+        <div class="col-sm-7">
+            <div range-slider on-handle-up="humidityChanged()" min="0" max="100" model-max="humidity" pin-handle="min" disabled="!enableHumid"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" for="pressure">Pressure</label>
+        <div class="col-sm-2">
+            <input type="checkbox" ng-model="enablePressure">
+        </div>
+        <div class="col-sm-7" >
+            <div touch-spin id="pressure" ng-model="pressure" on-change="pressureChanged(value)"  disabled="!enablePressure"></div>
+        </div>
+    </div>
+
+</form>

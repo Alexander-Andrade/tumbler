@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
 
-                <wizard name="scripts_wizard" on-finish="close(true)">
+                <wizard name="scripts_wizard" on-finish="close(true)" hide-indicators="true">
 
                     <!--step 1 -->
                     <wz-step wz-title="Condition Type">
@@ -51,6 +51,19 @@
                     </wz-step>
 
                     <!--step 3 -->
+                    <wz-step wz-title="Weather">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="well"></div>
+                            </div>
+                        </div>
+                        <div class="row wizard-content">
+                            <weather-input temperature="wlist.get(-1).temperature" enable-temp="wlist.get(-1).enableTemp" humidity="wlist.get(-1).humidity" enable-humid="wlist.get(-1).enableHumid" pressure="wlist.get(-1).pressure" enable-pressure="wlist.get(-1).enablePressure"></weather-input>
+                        </div>
+                        <wizard-nav prev="stepBack()" next="step4()"></wizard-nav>
+                    </wz-step>
+
+                    <!--step 3 -->
                     <wz-step wz-title="Select Control">
                         <div class="row">
                             <div class="col-md-12">
@@ -62,7 +75,7 @@
                                 <control-select areas="areas" area="wlist.get(-1).area" device="wlist.get(-1).device" control="wlist.get(-1).control"></control-select>
                             </div>
                         </div>
-                        <wizard-nav prev="" next="step4()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step5()"></wizard-nav>
                     </wz-step>
 
 
@@ -78,7 +91,7 @@
                                 <div btn-group list="wlist.get(-1).compList" model="wlist.get(-1).comp" selected-index="index"></div>
                             </div>
                         </div>
-                        <wizard-nav prev="stepBack()" next="step5()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step6()"></wizard-nav>
                     </wz-step>
 
                     <!--step 5 -->
@@ -93,7 +106,7 @@
                                 <div class="center" wizard-alternatives list="wlist.get(-1).inputTypesList" model="_" selected-index="wlist.get(-1).selectedIndex"></div>
                             </div>
                         </div>
-                        <wizard-nav prev="stepBack()" next="step6()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step7()"></wizard-nav>
                     </wz-step>
 
                     <!--step 6 -->
@@ -126,7 +139,7 @@
                                 </div>
                             </div>
                         </div>
-                        <wizard-nav prev="stepBack()" next="step7()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step8()"></wizard-nav>
                     </wz-step>
 
                     <!--step 7 -->
@@ -144,7 +157,7 @@
                                 <div btn-group list="wlist.get(-1).keyWords" model="wlist.get(-1).keyWord" selected-index="index"></div>
                             </div>
                         </div>
-                        <wizard-nav prev="stepBack()" next="step8()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step9()"></wizard-nav>
                     </wz-step>
 
                     <!--step 8 -->
@@ -161,7 +174,7 @@
                                 <control-select areas="areas" area="wlist.get(-1).area" device="wlist.get(-1).device" control="wlist.get(-1).control"></control-select>
                             </div>
                         </div>
-                        <wizard-nav prev="stepBack()" next="step9()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step10()"></wizard-nav>
                     </wz-step>
 
                     <!--step 9 -->
@@ -179,7 +192,7 @@
                                 <control-input type="wlist.get(-1).ctrlTypeName" model="wlist.get(-1).model" class="center-inner"></control-input>
                             </div>
                         </div>
-                        <wizard-nav prev="stepBack()" next="step10()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step11()"></wizard-nav>
                     </wz-step>
 
                     <!--step 10 -->
@@ -197,7 +210,7 @@
                                 <div wizard-alternatives list="wlist.get(-1).keyWords" model="wlist.get(-1).keyWord" selected-index="index"></div>
                             </div>
                         </div>
-                        <wizard-nav prev="stepBack()" next="step11()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step12()"></wizard-nav>
                     </wz-step>
 
                     <!--step 11 -->

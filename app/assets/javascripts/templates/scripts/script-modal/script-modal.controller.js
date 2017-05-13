@@ -30,7 +30,7 @@
 
         $scope.step1 = function () {
             $scope.wlist.push({
-                inputTypesList: ['Time moment', 'Device control value'],
+                inputTypesList: ['Time moment', 'Device control value', 'Weather'],
                 selectedIndex: null
             });
         };
@@ -42,34 +42,74 @@
 
         $scope.step2 = function () {
             var choice = $scope.wlist.get(-1);
-            if(choice.selectedIndex == 0){
-                //time moment
-                $scope.wlist.push({
-                    time: null,
-                    template:  function(){
-                        return "(time={{{time}}}";
-                    }
-                });
-            }else if(choice.selectedIndex == 1){
-                var ctrlDefaults = $scope.defaultsForControl();
-                $scope.wlist.push({
-                    area: ctrlDefaults.area,
-                    device: ctrlDefaults.device,
-                    control: ctrlDefaults.control,
-                    template:  function(){
-                        return "( {{device.dev_id}}#{{control.ctrl_id}}";
-                    }
-                });
-                $scope.wizard().goTo(2);
+            switch(choice.selectedIndex){
+                case 0:
+                    //time moment
+                    $scope.wlist.push({
+                        time: null,
+                        template:  function(){
+                            return "(time={{{time}}}";
+                        }
+                    });
+                    break;
+                case 1: // device control
+                    var ctrlDefaults = $scope.defaultsForControl();
+                    $scope.wlist.push({
+                        area: ctrlDefaults.area,
+                        device: ctrlDefaults.device,
+                        control: ctrlDefaults.control,
+                        template:  function(){
+                            return "( {{device.dev_id}}#{{control.ctrl_id}}";
+                        }
+                    });
+                    $scope.wizard().goTo(3);
+                    break;
+                case 2: // weather
+                    $scope.wlist.push({
+                        enableTemp: true,
+                        temperature: null,
+                        enableHumid: true,
+                        humidity: null,
+                        enablePressure: true,
+                        pressure: null,
+
+                        template:  function(){
+                            var templ = "";
+                            if(this.enableTemp){
+                                templ += "(weather.temperature={{temperature}}";
+                            }
+                            if(this.enableHumid){
+                                if(!_.isEmpty(templ)){
+                                    templ += ") and ";
+                                }
+                                templ += "(weather.humidity={{humidity}}";
+                            }
+                            if(this.enablePressure){
+                                if(!_.isEmpty(templ)){
+                                    templ += ") and ";
+                                }
+                                templ += "(weather.pressure={{pressure}}";
+                            }
+
+                            return templ;
+                        }
+                    });
+                    $scope.wizard().goTo(2);
+                    break;
             }
         };
 
         $scope.step3 = function () {
-            $scope.step7();
-            $scope.wizard().goTo(6);
+            $scope.step8();
+            $scope.wizard().goTo(7);
         };
 
         $scope.step4 = function () {
+            $scope.step8();
+            $scope.wizard().goTo(7);
+        };
+
+        $scope.step5 = function () {
             var ctrlBundle = $scope.wlist.get(-1);
             var ctrlType = ctrlBundle.control.type.name;
 
@@ -80,14 +120,14 @@
             });
         };
 
-        $scope.step5 = function () {
+        $scope.step6 = function () {
             $scope.wlist.push({
                 inputTypesList: ['value from input', 'value from device control'],
                 selectedIndex: null
             });
         };
         
-        $scope.step6 = function () {
+        $scope.step7 = function () {
             var choice = $scope.wlist.get(-1);
             var ctrlBundle = $scope.wlist.get(-3);
             var ctrlTypeName = ctrlBundle.control.type.name;
@@ -111,7 +151,7 @@
             }
         };
 
-        $scope.step7 = function () {
+        $scope.step8 = function () {
             $scope.wlist.push({
                 keyWords: ['and', 'or', 'then'],
                 keyWord: null,
@@ -126,7 +166,7 @@
             });
         };
 
-        $scope.step8 = function () {
+        $scope.step9 = function () {
             var choice = $scope.wlist.get(-1);
             var wizard = $scope.wizard();
             var ctrlDefaults = $scope.defaultsForControl();
@@ -147,7 +187,7 @@
             }
         };
         
-        $scope.step9 = function () {
+        $scope.step10 = function () {
             var ctrlBundle = $scope.wlist.get(-1);
             var ctrlTypeName = ctrlBundle.control.type.name;
             $scope.wlist.push({
@@ -159,7 +199,7 @@
             });
         };
 
-        $scope.step10 = function () {
+        $scope.step11 = function () {
             $scope.wlist.push({
                 keyWords: ['continue', 'end'],
                 keyWord: null,
@@ -174,7 +214,7 @@
             });
         };
 
-        $scope.step11 = function () {
+        $scope.step12 = function () {
             var choice = $scope.wlist.get(-1);
             if(choice.keyWord=='continue'){
                 var ctrlDefaults = $scope.defaultsForControl();
@@ -186,7 +226,7 @@
                         return "{{device.dev_id}}#{{control.ctrl_id}} := ";
                     }
                 });
-                $scope.wizard().goTo(7);
+                $scope.wizard().goTo(8);
             }
 
             $scope.script.code = _.reduce($scope.wlist, function (result, elem) {
