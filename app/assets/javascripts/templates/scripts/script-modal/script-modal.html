@@ -10,6 +10,47 @@
                 <wizard name="scripts_wizard" on-finish="close(true)">
 
                     <!--step 1 -->
+                    <wz-step wz-title="Condition Type">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="well">Choose type of condition</div>
+                            </div>
+                        </div>
+                        <div class="row wizard-content">
+                            <div class="col-xs-12">
+                                <div class="center" wizard-alternatives list="wlist.get(-1).inputTypesList" model="_" selected-index="wlist.get(-1).selectedIndex"></div>
+                            </div>
+                        </div>
+                        <wizard-nav prev="stepBack()" next="step2()"></wizard-nav>
+                    </wz-step>
+
+
+                    <!--step 2 -->
+                    <wz-step wz-title="Time">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="well"></div>
+                            </div>
+                        </div>
+                        <div class="row wizard-content">
+                            <div class="col-xs-12">
+                                <div class="input-group"
+                                     moment-picker="wlist.get(-1).time"
+                                     format="HH:mm:ss">
+                                    <span class="input-group-addon">
+                                            <i class="fa fa-clock-o"></i>
+                                    </span>
+                                    <input class="form-control"
+                                           placeholder="Select a time"
+                                           ng-model="wlist.get(-1).time"
+                                           ng-model-options="{ updateOn: 'blur' }">
+                                </div>
+                            </div>
+                        </div>
+                        <wizard-nav prev="stepBack()" next="step3()"></wizard-nav>
+                    </wz-step>
+
+                    <!--step 3 -->
                     <wz-step wz-title="Select Control">
                         <div class="row">
                             <div class="col-md-12">
@@ -21,11 +62,11 @@
                                 <control-select areas="areas" area="wlist.get(-1).area" device="wlist.get(-1).device" control="wlist.get(-1).control"></control-select>
                             </div>
                         </div>
-                        <wizard-nav prev="" next="step2()"></wizard-nav>
+                        <wizard-nav prev="" next="step4()"></wizard-nav>
                     </wz-step>
 
 
-                    <!--step 2 -->
+                    <!--step 4 -->
                     <wz-step wz-title="Compare">
                         <div class="row">
                             <div class="col-md-12">
@@ -37,10 +78,10 @@
                                 <div btn-group list="wlist.get(-1).compList" model="wlist.get(-1).comp" selected-index="index"></div>
                             </div>
                         </div>
-                        <wizard-nav prev="stepBack()" next="step3()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step5()"></wizard-nav>
                     </wz-step>
 
-                    <!--step 3 -->
+                    <!--step 5 -->
                     <wz-step wz-title="To">
                         <div class="row">
                             <div class="col-md-12">
@@ -52,10 +93,10 @@
                                 <div class="center" wizard-alternatives list="wlist.get(-1).inputTypesList" model="_" selected-index="wlist.get(-1).selectedIndex"></div>
                             </div>
                         </div>
-                        <wizard-nav prev="stepBack()" next="step4()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step6()"></wizard-nav>
                     </wz-step>
 
-                    <!--step 4 -->
+                    <!--step 6 -->
                     <wz-step wz-title="Value">
                         <!--value from input-->
                         <div ng-if="wlist.get(-2).selectedIndex==0">
@@ -68,7 +109,7 @@
                             </div>
                             <div class="row wizard-content">
                                 <div class="col-xs-12 center-outer">
-                                    <control-input ng-if="isCurrentStep(4)" type="wlist.get(-1).ctrlTypeName" model="wlist.get(-1).model" class="center-inner"></control-input>
+                                    <control-input type="wlist.get(-1).ctrlTypeName" model="wlist.get(-1).model" class="center-inner"></control-input>
                                 </div>
                             </div>
                         </div>
@@ -85,10 +126,10 @@
                                 </div>
                             </div>
                         </div>
-                        <wizard-nav prev="stepBack()" next="step5()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step7()"></wizard-nav>
                     </wz-step>
 
-                    <!--step 5 -->
+                    <!--step 7 -->
                     <wz-step wz-title="Go To">
                         <div class="row">
                             <div class="col-md-12">
@@ -103,10 +144,10 @@
                                 <div btn-group list="wlist.get(-1).keyWords" model="wlist.get(-1).keyWord" selected-index="index"></div>
                             </div>
                         </div>
-                        <wizard-nav prev="stepBack()" next="step6()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step8()"></wizard-nav>
                     </wz-step>
 
-                    <!--step 6 -->
+                    <!--step 8 -->
                     <wz-step wz-title="Assign To">
                         <div class="row">
                             <div class="col-md-12">
@@ -120,10 +161,10 @@
                                 <control-select areas="areas" area="wlist.get(-1).area" device="wlist.get(-1).device" control="wlist.get(-1).control"></control-select>
                             </div>
                         </div>
-                        <wizard-nav prev="stepBack()" next="step7()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step9()"></wizard-nav>
                     </wz-step>
 
-                    <!--step 7 -->
+                    <!--step 9 -->
                     <wz-step wz-title="Value">
                         <div class="row">
                             <div class="col-md-12">
@@ -135,13 +176,13 @@
                         </div>
                         <div class="row wizard-content">
                             <div class="col-xs-12 center-outer">
-                                <control-input ng-if="isCurrentStep(7)" type="wlist.get(-1).ctrlTypeName" model="wlist.get(-1).model" class="center-inner"></control-input>
+                                <control-input type="wlist.get(-1).ctrlTypeName" model="wlist.get(-1).model" class="center-inner"></control-input>
                             </div>
                         </div>
-                        <wizard-nav prev="stepBack()" next="step8()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step10()"></wizard-nav>
                     </wz-step>
 
-                    <!--step 8 -->
+                    <!--step 10 -->
                     <wz-step wz-title="Go To">
                         <div class="row">
                             <div class="col-md-12">
@@ -156,10 +197,10 @@
                                 <div wizard-alternatives list="wlist.get(-1).keyWords" model="wlist.get(-1).keyWord" selected-index="index"></div>
                             </div>
                         </div>
-                        <wizard-nav prev="stepBack()" next="step9()"></wizard-nav>
+                        <wizard-nav prev="stepBack()" next="step11()"></wizard-nav>
                     </wz-step>
 
-                    <!--step 9 -->
+                    <!--step 11 -->
                     <wz-step wz-title="Final">
                         <div class="row">
                             <div class="col-md-12">

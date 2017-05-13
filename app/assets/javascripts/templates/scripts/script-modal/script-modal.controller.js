@@ -20,27 +20,56 @@
             return this[i];
         };
 
-        $scope.step1 = function () {
+        $scope.step0 = function () {
             $scope.wlist.push({
                 template: function () {
                     return "if { ";
                 }
             });
+        };
 
+        $scope.step1 = function () {
             $scope.wlist.push({
-                description: "",
-                area: null,
-                device: null,
-                control: null,
-                template:  function(){
-                    return "( {{device.dev_id}}#{{control.ctrl_id}}";
-                }
+                inputTypesList: ['Time moment', 'Device control value'],
+                selectedIndex: null
             });
         };
 
+        $scope.step0();
         $scope.step1();
 
+
+
         $scope.step2 = function () {
+            var choice = $scope.wlist.get(-1);
+            if(choice.selectedIndex == 0){
+                //time moment
+                $scope.wlist.push({
+                    time: null,
+                    template:  function(){
+                        return "(time={{{time}}}";
+                    }
+                });
+            }else if(choice.selectedIndex == 1){
+                var ctrlDefaults = $scope.defaultsForControl();
+                $scope.wlist.push({
+                    area: ctrlDefaults.area,
+                    device: ctrlDefaults.device,
+                    control: ctrlDefaults.control,
+                    template:  function(){
+                        return "( {{device.dev_id}}#{{control.ctrl_id}}";
+                    }
+                });
+                $scope.wizard().goTo(2);
+            }
+        };
+
+        $scope.step3 = function () {
+            $scope.step7();
+            $scope.wizard().goTo(6);
+        };
+
+        $scope.step4 = function () {
             var ctrlBundle = $scope.wlist.get(-1);
             var ctrlType = ctrlBundle.control.type.name;
 
@@ -51,14 +80,14 @@
             });
         };
 
-        $scope.step3 = function () {
+        $scope.step5 = function () {
             $scope.wlist.push({
                 inputTypesList: ['value from input', 'value from device control'],
                 selectedIndex: null
             });
         };
         
-        $scope.step4 = function () {
+        $scope.step6 = function () {
             var choice = $scope.wlist.get(-1);
             var ctrlBundle = $scope.wlist.get(-3);
             var ctrlTypeName = ctrlBundle.control.type.name;
@@ -82,13 +111,13 @@
             }
         };
 
-        $scope.step5 = function () {
+        $scope.step7 = function () {
             $scope.wlist.push({
                 keyWords: ['and', 'or', 'then'],
                 keyWord: null,
                 template: function() {
                     if (_.includes(['and', 'or'], this.keyWord)) {
-                        return ") {{keyWord}} (";
+                        return ") {{keyWord}} ";
                     }
                     if(this.keyWord == 'then'){
                         return ") } \nthen\nbegin\n";
@@ -97,20 +126,13 @@
             });
         };
 
-        $scope.step6 = function () {
+        $scope.step8 = function () {
             var choice = $scope.wlist.get(-1);
             var wizard = $scope.wizard();
             var ctrlDefaults = $scope.defaultsForControl();
 
             if(_.includes(['and', 'or'], choice.keyWord)) {
-                $scope.wlist.push({
-                    area: ctrlDefaults.area,
-                    device: ctrlDefaults.device,
-                    control: ctrlDefaults.control,
-                    template: function() {
-                        return "{{device.dev_id}}#{{control.ctrl_id}} ";
-                    }
-                });
+                $scope.step1();
                 wizard.goTo(0);
             }else if(choice.keyWord=='then'){
                 $scope.wlist.push({
@@ -125,7 +147,7 @@
             }
         };
         
-        $scope.step7 = function () {
+        $scope.step9 = function () {
             var ctrlBundle = $scope.wlist.get(-1);
             var ctrlTypeName = ctrlBundle.control.type.name;
             $scope.wlist.push({
@@ -137,7 +159,7 @@
             });
         };
 
-        $scope.step8 = function () {
+        $scope.step10 = function () {
             $scope.wlist.push({
                 keyWords: ['continue', 'end'],
                 keyWord: null,
@@ -152,12 +174,11 @@
             });
         };
 
-        $scope.step9 = function () {
+        $scope.step11 = function () {
             var choice = $scope.wlist.get(-1);
             if(choice.keyWord=='continue'){
                 var ctrlDefaults = $scope.defaultsForControl();
                 $scope.wlist.push({
-                    step6: true,
                     area: ctrlDefaults.area,
                     device: ctrlDefaults.device,
                     control: ctrlDefaults.control,
@@ -165,7 +186,7 @@
                         return "{{device.dev_id}}#{{control.ctrl_id}} := ";
                     }
                 });
-                $scope.wizard().goTo(5);
+                $scope.wizard().goTo(7);
             }
 
             $scope.script.code = _.reduce($scope.wlist, function (result, elem) {
