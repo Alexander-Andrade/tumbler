@@ -17,6 +17,7 @@ var app = angular.module('app',[
   'nya.bootstrap.select',
   'nk.touchspin',
   'moment-picker',
+  'ymaps',
   'controllers',
   'services',
   'directives',
@@ -94,10 +95,23 @@ app.config([ '$stateProvider','$urlRouterProvider', 'railsSerializerProvider',
                       controller: 'areasCtrl'
                   }
               }
-          });
+          }).state('automation_server_location',{
+              parent: 'app',
+              url: '/automation_server_location',
+              templateUrl: "automation-server-location/location.html",
+              controller: 'locationCtrl'
+      });
+
+
       $urlRouterProvider.otherwise('/dashboard');
 
       railsSerializerProvider.underscore(angular.identity).camelize(angular.identity);
+
+      // uiGmapGoogleMapApiProvider.configure({
+      //     key: 'AIzaSyB1hgUqgEG5lpgt0JbQdLceGq82i_dZX6I',
+      //     v: '3.20', //defaults to latest 3.X anyhow
+      //     libraries: 'weather,geometry,visualization'
+      // });
   }]);
 
 areas = ['Area', function(Area) {

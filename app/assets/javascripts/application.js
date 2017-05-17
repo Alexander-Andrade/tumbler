@@ -46,4 +46,5 @@
 // require slick-carousel/slick/slick
 // require angular-slick/dist/slick
 //= require moment-picker/dist/angular-moment-picker
+//= require angular-ymaps/angular-ymaps
 //= require_tree .
