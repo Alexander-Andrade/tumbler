@@ -5,10 +5,10 @@
         var info = {
             device: {
                 lamp: {
-                    icon: 'fa-lightbulb-o',
+                    icon: 'fa  fa-lightbulb-o',
                 },
                 temperature_sensor: {
-                    icon: 'ion-thermometer'
+                    icon: 'fa fa-asterisk'
                 },
                 light_sensor: {
                     icon: 'fa fa-lightbulb-o'
@@ -23,7 +23,7 @@
                     icon: 'fa fa-tint'
                 },
                 gas_sensor: {
-                    icon: 'fa fa-bomb'
+                    icon: 'fa fa-fire'
                 },
                 motion_or_sound_sensor: {
                     icon: 'fa fa-volume-up'
