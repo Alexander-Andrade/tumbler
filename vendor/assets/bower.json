@@ -28,8 +28,6 @@
     "pluralize": "latest",
     "angular-slick": "latest",
     "moment-picker": "latest",
-    "angular-google-maps": "latest",
-    "angular-yandex-map": "latest",
     "angular-ymaps": "latest"
   }
 }
