@@ -5,13 +5,7 @@
         var info = {
             device: {
                 lamp: {
-                    icon: 'ion-ios-lightbulb',
-                    control: {
-                        toggle: {
-                            onn: 'ion-ios-lightbulb-outline',
-                            off: 'ion-ios-lightbulb'
-                        }
-                    }
+                    icon: 'fa-lightbulb-o',
                 },
                 temperature_sensor: {
                     icon: 'ion-thermometer'
@@ -21,12 +15,6 @@
                 },
                 door_sensor: {
                     icon: 'fa fa-key',
-                    control: {
-                        toggle: {
-                            onn: 'ion-ios-unlocked',
-                            off: 'ion-ios-locked'
-                        }
-                    }
                 },
                 smoke_detector: {
                     icon: 'fa fa-fire-extinguisher'
@@ -42,12 +30,6 @@
                 },
                 unknown_device: {
                     icon: 'fa fa-question',
-                    control: {
-                        toggle: {
-                            onn: 'ion-toggle-filled',
-                            off: 'ion-toggle'
-                        }
-                    }
                 }
             }
         };
