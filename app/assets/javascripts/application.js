@@ -47,5 +47,4 @@
 // require angular-slick/dist/slick
 //= require moment-picker/dist/angular-moment-picker
 //= require angular-ymaps/angular-ymaps
-//= require bootstrap-sass/assets/javascripts/bootstrap-sprockets
 //= require_tree .
