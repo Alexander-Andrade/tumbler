@@ -10,7 +10,8 @@
             center: serverCoords,
             coordinates: serverCoords,
             properties: {
-                hintContent: "automation server"
+                hintContent: "Automation Server",
+                balloonContent: "Automation Server"
             },
             zoom: 10
         };

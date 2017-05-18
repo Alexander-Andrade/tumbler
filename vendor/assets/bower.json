@@ -28,6 +28,7 @@
     "pluralize": "latest",
     "angular-slick": "latest",
     "moment-picker": "latest",
-    "angular-ymaps": "latest"
+    "angular-ymaps": "latest",
+    "bootstrap-sass": "latest"
   }
 }

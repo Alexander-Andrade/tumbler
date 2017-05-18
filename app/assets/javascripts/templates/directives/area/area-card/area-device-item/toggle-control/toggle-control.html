@@ -1,10 +1,10 @@
 <div class="row vertical-align">
-    <div class="col-md-8 col-sm-8 col-xs-8">
+    <div class="col-md-8 col-sm-12">
         <!--<span class="text-ellipsis"><b>{{control.name}}</b></span>-->
         <a href class="text-wrap" editable-text="control.name" ng-dblclick="ctrlNameForm.$show()" e-form="ctrlNameForm" onbeforesave="updateName({newName:$data, control: control})"><b>{{ control.name }}</b></a>
     </div>
-    <div class="col-md-4 col-sm-4 col-xs-4">
-        <toggle-switch ng-model="control.state" on-change="onChange()" class="switch-large pull-right"></toggle-switch>
+    <div class="col-md-4 col-sm-12">
+        <toggle-switch ng-model="control.state" on-change="onChange()" class="switch-large pull-right-large pull-left-small"></toggle-switch>
     </div>
 </div>
 

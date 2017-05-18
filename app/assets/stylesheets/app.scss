@@ -1,8 +1,20 @@
-.vertical-align {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
+@media (min-width: 768px) {
+  .vertical-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .pull-right-large {
+    float: right;
+  }
+}
+
+@media (max-width: 768px) {
+  .pull-left-small {
+    float: left;
+  }
 }
 
 .control-select {
