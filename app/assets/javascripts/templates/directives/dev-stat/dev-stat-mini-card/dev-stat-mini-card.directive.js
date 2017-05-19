@@ -17,6 +17,7 @@
                 icon: '=',
                 number: '='
             },
+            replace: true,
             controller: ctrl
         };
 
