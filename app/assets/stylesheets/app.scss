@@ -71,3 +71,30 @@ yandex-map {
   height: 100%;
   width: 100%;
 }
+
+.counter {
+  font-size: 19px;
+  color: #42648b;
+  padding-bottom: 3px;
+  line-height: 21px
+}
+
+.left_count_wrap {
+  zoom: 1;
+  vertical-align: top;
+  color: rgb(91, 110, 133);
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  font-size: 11px;
+  line-height: 17px;
+  height: 16px;
+  margin: 2px 0px 2px 2px;
+  padding: 4px 6px;
+  background: rgb(209, 217, 224);
+  border-radius: 2px;
+  transition: background-color 200ms linear, color 200ms linear;
+}
+
+.fl_r {
+  float: right;
+}

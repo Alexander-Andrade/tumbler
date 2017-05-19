@@ -11,7 +11,8 @@
             coordinates: serverCoords,
             properties: {
                 hintContent: "Automation Server",
-                balloonContent: "Automation Server"
+                balloonContentHeader: "Automation Server",
+                balloonContentBody: Mustache.render("latitude: {{0}}\nlongitude: {{1}}", serverCoords)
             },
             zoom: 10
         };

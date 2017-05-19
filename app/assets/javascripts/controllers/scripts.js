@@ -5,7 +5,6 @@
     controller("scriptsCtrl", [ '$scope', 'Script','ModalService','notifier', 'Area',
       function($scope, Script, ModalService, notifier, Area){
         $scope.scripts = Script.scripts;
-        $scope.currentIndex = 3;
         $scope.responsive =  [
               {
                   breakpoint: 768,
