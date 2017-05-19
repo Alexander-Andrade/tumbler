@@ -98,13 +98,29 @@ app.config([ '$stateProvider','$urlRouterProvider', 'railsSerializerProvider',
           }).state('automation_server_location',{
               parent: 'app',
               url: '/automation_server_location',
-              templateUrl: "automation-server-location/location.html",
-              controller: 'locationCtrl'
+              views:{
+                  '': {
+                      templateUrl: "automation-server-location/location.html",
+                      controller: 'locationCtrl'
+                  },
+                  'toolbar': {
+                      templateUrl: 'automation-server-location/toolbar.html',
+                      controller: 'locationCtrl'
+                  }
+              },
           }).state('devices_statistics',{
               parent: 'app',
               url: '/devices_statistics',
-              templateUrl: "devices-statistics/statistics.html",
-              controller: 'devStatCtrl'
+              views:{
+                  '': {
+                      templateUrl: "devices-statistics/statistics.html",
+                      controller: 'devStatCtrl'
+                  },
+                  'toolbar': {
+                      templateUrl: 'devices-statistics/toolbar.html',
+                      controller: 'devStatCtrl'
+                  }
+              },
       });
 
 
