@@ -1,4 +1,4 @@
-<div class="card-pf card-pf-view card-pf-view-select card-pf-view-single-select">
+<div class="card-pf card-pf-view card-pf-view-select card-pf-view-single-select" ui-sref="devices_statistics">
     <div class="card-pf-body">
         <div class="card-pf-top-element">
             <span class="fa fa-sort-amount-asc card-pf-icon-circle"></span>
@@ -15,9 +15,10 @@
             </div>
         </div>
         <p class="card-pf-info text-center"><strong>Devices types number: </strong>{{labels.length}}</p>
-        <p ng-repeat="label in labels" class="card-pf-info text-center"><span class="{{devIcon(label)}}"></span><strong> {{label}}:</strong>{{devNumberByLabel[label]}}</p>
     </div>
     <div class="card-pf-view-checkbox">
         <input type="checkbox">
     </div>
+
+    <p class="card-pf-info text-center" style="margin-bottom: 0px"><a href><span class="pficon pficon-info"></span> more info</a></p>
 </div>

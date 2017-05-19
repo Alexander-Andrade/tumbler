@@ -100,6 +100,11 @@ app.config([ '$stateProvider','$urlRouterProvider', 'railsSerializerProvider',
               url: '/automation_server_location',
               templateUrl: "automation-server-location/location.html",
               controller: 'locationCtrl'
+          }).state('devices_statistics',{
+              parent: 'app',
+              url: '/devices_statistics',
+              templateUrl: "devices-statistics/statistics.html",
+              controller: 'devStatCtrl'
       });
 
 
