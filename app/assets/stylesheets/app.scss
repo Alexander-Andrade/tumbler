@@ -72,6 +72,18 @@ yandex-map {
   width: 100%;
 }
 
+.card-info {
+  position:absolute;
+  bottom:0;
+  left: 40%
+}
+
+.stat-number {
+  position:absolute;
+  bottom:30px;
+  left:48%
+}
+
 .counter {
   font-size: 19px;
   color: #42648b;
