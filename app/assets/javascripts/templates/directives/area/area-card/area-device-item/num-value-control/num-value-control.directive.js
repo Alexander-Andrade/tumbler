@@ -9,15 +9,14 @@
 
             $scope.data = [{}];
             $scope.config = $scope.control.type.optional;
-            console.log($scope.control);
-            console.log($scope.config);
+
             $scope.columns = [
                 {
                     "id": $scope.control.name,
                     "type": "gauge"
                 }
             ];
-            console.log($scope.control.min);
+
             $scope.$watch('control.state', function (state) {
                 $scope.data[0][$scope.control.name] = state;
             });
