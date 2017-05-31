@@ -29,6 +29,7 @@
     "angular-slick": "latest",
     "moment-picker": "latest",
     "angular-ymaps": "latest",
-    "bootstrap-sass": "latest"
+    "bootstrap-sass": "latest",
+    "c3-angular": "latest"
   }
 }

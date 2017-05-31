@@ -26,6 +26,7 @@
 //= require matchheight/dist/jquery.matchHeight
 //= require c3/c3
 //= require d3/d3
+//= require c3-angular/c3-angular
 //= require angularjs-rails-resource/angularjs-rails-resource
 //= require moment/moment
 //= require angular-moment/angular-moment

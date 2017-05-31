@@ -4,9 +4,11 @@
         <a href class="text-wrap" editable-text="control.name" ng-dblclick="ctrlNameForm.$show()" e-form="ctrlNameForm" onbeforesave="updateName({newName:$data, control: control})"><b>{{ control.name }}</b></a>
     </div>
     <div class="col-md-8 col-sm-12">
-        <div class="btn-group pull-right-large pull-left-small" role="group">
-                <button ng-repeat="name in control.type.optional.names track by $index"  ng-click="switch($index)" type="button" ng-class="{'btn-primary': $index==control.state,
-                                                                                       'btn-default': $index!=control.state}" class="btn pull-right"><h4>{{name}}</h4></button>
+        <div class="btn-group btn-group-justified pull-right-large pull-left-small" role="group">
+            <div ng-repeat="name in control.type.optional.names track by $index" class="btn-group" role="group">
+                <button  ng-click="switch($index)" type="button" ng-class="{'btn-primary': $index==control.state,
+                                                                                           'btn-default': $index!=control.state}" class="btn pull-right"><h4>{{name}}</h4></button>
+            </div>
         </div>
     </div>
 </div>

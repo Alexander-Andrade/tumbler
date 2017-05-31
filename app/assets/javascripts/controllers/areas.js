@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('controllers').
-    controller("areasCtrl", [ '$scope','Area','ModalService','notifier',
-      function($scope, Area, ModalService, notifier) {
+    controller("areasCtrl", [ '$scope','Area','ModalService','notifier','$timeout',
+      function($scope, Area, ModalService, notifier, $timeout) {
           $scope.areas = Area.areas;
           console.log($scope.areas);
           $scope.AreaTitle = function () {

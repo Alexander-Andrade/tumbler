@@ -18,6 +18,7 @@ var app = angular.module('app',[
   'nk.touchspin',
   'moment-picker',
   'ymaps',
+  'gridshore.c3js.chart',
   'controllers',
   'services',
   'directives',
