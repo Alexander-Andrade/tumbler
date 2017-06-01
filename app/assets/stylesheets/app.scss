@@ -110,3 +110,25 @@ yandex-map {
 .fl_r {
   float: right;
 }
+
+
+.icon-blue-circle {
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  border-radius: 50%;
+  border: 2px solid #39a5dc;
+  font-size: 1.4em;
+  height: 30px;
+  line-height: 30px;
+  width: 30px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .scripts-wizard {
+    width: 80% !important;
+    margin: 10px !important;
+    left: 10%;
+  }
+}
+

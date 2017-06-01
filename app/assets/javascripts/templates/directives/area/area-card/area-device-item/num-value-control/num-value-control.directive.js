@@ -8,8 +8,9 @@
             $scope.info = deviceInfo.infoByLabel($scope.device.label);
 
             $scope.data = [{}];
-            $scope.config = $scope.control.type.optional;
 
+            $scope.config = $scope.control.type.optional;
+            $scope.data[0][$scope.control.name] = $scope.config.min;
             $scope.columns = [
                 {
                     "id": $scope.control.name,

@@ -2,8 +2,11 @@
     'use strict';
 
     angular.module('controllers').
-    controller("scriptModalCtrl", [ '$scope', 'Script', 'areas', 'close', 'WizardHandler', 'scriptHelper','controlsInfo',
-        function($scope, Script, areas, close, WizardHandler, scriptHelper, controlsInfo) {
+    controller("scriptModalCtrl", [ '$scope', 'Script', 'areas', 'close', 'WizardHandler', 'scriptHelper','controlsInfo','$element',
+        function($scope, Script, areas, close, WizardHandler, scriptHelper, controlsInfo, $element) {
+
+        console.log($element.find('.modal-dialog').addClass('scripts-wizard'));
+
         $scope.areas = areas;
 
         $scope.wizard = function () {
