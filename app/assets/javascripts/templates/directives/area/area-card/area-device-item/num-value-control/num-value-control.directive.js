@@ -4,7 +4,7 @@
     angular.module('directives').
     directive('numValueControl', function () {
 
-        var ctrl = ['$scope', 'deviceHelper','deviceInfo', function($scope, deviceHelper, deviceInfo){
+        var ctrl = ['$scope', 'deviceHelper','deviceInfo','$timeout','$element', function($scope, deviceHelper, deviceInfo, $timeout, $element){
             $scope.info = deviceInfo.infoByLabel($scope.device.label);
 
             $scope.data = [{}];
@@ -24,7 +24,7 @@
 
             $scope.format = function (value, ratio) {
                 return value;
-            }
+            };
         }];
 
         var directive = {
@@ -32,7 +32,8 @@
             scope: {
                 device: "=",
                 control: '=',
-                updateName: '&'
+                updateName: '&',
+                visible: '='
             },
             controller: ctrl
         };

@@ -4,7 +4,7 @@
     angular.module('directives').
     directive('areaDeviceItem', function () {
 
-        var ctrl = ['$scope','deviceInfo', 'ModalService', 'Area','notifier', function($scope, deviceInfo, ModalService, Area, notifier){
+        var ctrl = ['$scope','deviceInfo', 'ModalService', 'Area','notifier','$window','$element','$timeout', function($scope, deviceInfo, ModalService, Area, notifier, $window, $element, $timeout){
             $scope.info = deviceInfo.infoByLabel($scope.device.label);
             $scope.areas = Area.areas;
 
@@ -88,8 +88,16 @@
 
             $scope.show = false;
 
+            // $timeout(function(){
+            //     $scope.show = false;
+            // }, 500);
+
             $scope.toggleControlsAppearance = function () {
                 $scope.show = !$scope.show;
+                // if($scope.show){
+                //     $element.triggerHandler('resize');
+                //     // jQuery(window).trigger('resize');
+                // }
             };
 
             $scope.updateControlName = function (newName, control) {

@@ -1,10 +1,10 @@
 <div class="row vertical-align" >
-    <div class="col-md-4 col-sm-12">
+    <div class="col-md-4 col-sm-12 col-xs-12">
         <!--<span class="pull-right" style="margin-top: 30px"><b>{{control.name}}</b></span>-->
         <a href class="text-wrap" editable-text="control.name" ng-dblclick="ctrlNameForm.$show()" e-form="ctrlNameForm" onbeforesave="updateName({newName:$data, control: control})"><b>{{ control.name }}</b></a>
     </div>
-    <div class="col-md-8 col-sm-12 text-center">
-        <c3chart bindto-id="{{control.name}}" chart-data="data" chart-columns="columns">
+    <div class="col-md-8 col-sm-12 col-xs-12 text-center">
+        <c3chart ng-if="visible" bindto-id="{{control.name}}" chart-data="data" chart-columns="columns">
             <chart-gauge min="{{config.min}}"
                          max="{{config.max}}"
                          units="{{config.units}}"
