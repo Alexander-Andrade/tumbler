@@ -10,7 +10,7 @@
         };
 
         var validToggleState = function (state, ctrl) {
-            return _.includes([true, false],state);
+            return _.includes(['on', 'off'],state);
         };
 
         var validSymValueState = function (state, ctrl) {
