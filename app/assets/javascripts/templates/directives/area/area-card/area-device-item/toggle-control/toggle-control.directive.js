@@ -12,7 +12,7 @@
             });
 
             $scope.onChange = function () {
-                $scope.control.state = $scope.model.state;
+                $scope.control.state = $scope.model.state ? 'on' : 'off';
                 deviceHelper.sendDeviceChange($scope.control, $scope.device);
             };
         }];
