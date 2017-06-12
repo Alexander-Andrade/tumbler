@@ -108,6 +108,21 @@
                     control.name = oldName;
                 });
             };
+
+
+            $scope.showStatistics = function() {
+                ModalService.showModal({
+                    templateUrl: "areas/dev-stat-modal/dev-stat-modal.html",
+                    controller: "devStatModalCtrl",
+                    inputs:{
+                        device: $scope.device
+                    }
+                }).then(function(modal) {
+                    modal.element.modal();
+                    modal.close.then(function() {
+                    })
+                })
+            }
         }];
 
         var directive = {

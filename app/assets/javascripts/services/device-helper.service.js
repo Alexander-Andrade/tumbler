@@ -96,7 +96,23 @@
             });
         };
 
+        helper.buildDevStatQueryPack = function(device) {
+            return {
+                type: "dev_statistics_query",
+                query_type: "realtime",
+                dev_id: device.dev_id,
+                time_stamp: moment().format()
+            };
+        };
 
+
+        helper.sendDevStatQuery = function(device) {
+            automationSocket.then(function (sock) {
+                var devStatQueryPack = helper.buildDevStatQueryPack(device);
+                console.log(devStatQueryPack);
+                sock.send(devStatQueryPack);
+            });
+        };
 
         return helper;
     }]);

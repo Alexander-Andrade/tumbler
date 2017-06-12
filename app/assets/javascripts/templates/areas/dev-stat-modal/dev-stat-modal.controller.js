@@ -2,23 +2,15 @@
     'use strict';
 
     angular.module('controllers').
-    controller("areaSelectModalCtrl", [ '$scope','Area', 'close',
-        function($scope, Area, close) {
-            $scope.areas = Area.areas;
-            $scope.selectedArea = {};
+    controller("devStatModalCtrl", [ '$scope','device', 'close',
+        function($scope, device, close) {
+            $scope.device = device;
+
 
             $scope.close = function(ok) {
-                var result = $scope.selectedArea;
-                close(result, 500);
+                close(ok, 500);
             };
 
-            $scope.select = function (area) {
-                $scope.selectedArea = area;
-            };
-
-            $scope.selected = function (area) {
-                return (!_.isEmpty($scope.selectedArea)) ? $scope.selectedArea.id == area.id : false;
-            };
         }]);
 
 }());

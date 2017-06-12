@@ -9,10 +9,6 @@
             return (state >= 0) && (state <= 100);
         };
 
-        var convertToggleStateFromStr = function (state) {
-            return (state == 'true');
-        };
-
         var validToggleState = function (state, ctrl) {
             return _.includes([true, false],state);
         };
@@ -36,7 +32,6 @@
 
         info.toggle = {
             validate: validToggleState,
-            convertFromStr: convertToggleStateFromStr,
             comp: _.without(compList, '<', '>'),
         };
 
