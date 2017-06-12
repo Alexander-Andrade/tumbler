@@ -8,7 +8,7 @@
             var model = '';
 
             $scope.$watch('control.state', function(state){
-                model = (state == 'on');
+                model.state = (state == 'on');
             });
 
             $scope.onChange = function () {
