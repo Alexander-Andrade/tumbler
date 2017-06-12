@@ -5,13 +5,14 @@
     directive('toggleControl', function () {
 
         var ctrl = ['$scope', 'deviceHelper','deviceInfo', function($scope, deviceHelper, deviceInfo){
-            var model = '';
+            $scope.model = {};
 
             $scope.$watch('control.state', function(state){
-                model.state = (state == 'on');
+                $scope.model.state = (state == 'on');
             });
 
             $scope.onChange = function () {
+                $scope.control.state = $scope.model.state;
                 deviceHelper.sendDeviceChange($scope.control, $scope.device);
             };
         }];
